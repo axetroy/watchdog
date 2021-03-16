@@ -3,6 +3,8 @@ package proto
 import (
 	"net"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func CreateTCPServer(addr string, cb func(c net.Listener)) error {
@@ -49,18 +51,14 @@ func TestPingTCP(t *testing.T) {
 			if tt.listen == true {
 				err := CreateTCPServer(tt.args.addr, func(connection net.Listener) {
 					defer connection.Close()
-					if err := PingTCP(tt.args.addr); (err != nil) && !tt.wantErr {
-						t.Errorf("PingTCP() error = %v, wantErr %v", err, tt.wantErr)
-					}
+					err := PingTCP(tt.args.addr)
+					assert.Equal(t, tt.wantErr, err != nil, tt.name)
 				})
 
-				if (err != nil) && !tt.wantErr {
-					t.Errorf("PingTCP() error = %v, wantErr %v", err, tt.wantErr)
-				}
+				assert.Equal(t, tt.wantErr, err != nil, tt.name)
 			} else {
-				if err := PingTCP(tt.args.addr); (err != nil) && !tt.wantErr {
-					t.Errorf("PingTCP() error = %v, wantErr %v", err, tt.wantErr)
-				}
+				err := PingTCP(tt.args.addr)
+				assert.Equal(t, tt.wantErr, err != nil, tt.name)
 			}
 
 		})

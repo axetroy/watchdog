@@ -14,7 +14,7 @@ func PingTCP(addr string) error {
 	conn, err := net.Dial("tcp", addr)
 
 	if err != nil {
-		return nil
+		return err
 	}
 
 	defer conn.Close()
