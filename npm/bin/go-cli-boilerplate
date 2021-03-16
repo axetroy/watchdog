@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+
+throw new Error("go-cli-boilerplate command line did not install correctly. reinstall without '--ignore-scripts' flag");

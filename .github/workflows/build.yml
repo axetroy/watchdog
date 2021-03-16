@@ -1,0 +1,98 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        go: ["^1.15.0"]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+    name: Go ${{ matrix.go }} in ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+
+      - name: Environment
+        run: |
+          go version
+          go env
+
+      - name: Install tools
+        env:
+          GO111MODULE: on
+        run: |
+          go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.27.0
+          golangci-lint --version
+
+      - name: Lint
+        run: make lint
+
+      - name: Format
+        run: make format-check
+
+      - name: Test
+        run: |
+          make test
+          go mod tidy
+          git checkout ./
+
+      - name: Build
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          version: latest
+          args: release --rm-dist --skip-publish
+
+  release:
+    name: Release to Github
+    if: startsWith(github.ref, 'refs/tags/') && github.repository == 'axetroy/go-cli-boilerplate'
+    needs: [ci]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ["^1.15.0"]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+
+      - name: Release to Github
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          version: latest
+          args: release --rm-dist --release-notes=./release.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - uses: axetroy/setup-whatchanged@v1
+        with:
+          version: v0.3.4
+
+      - name: Generate release.md
+        run: |
+          whatchanged --tpl=release.tpl --output=release.md
+          cat release.md
+
+      - name: Prepare publish
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        run: |
+          cp README.md ./npm/README.md
+          cp release.md ./npm/CHANGELOG.md
+          cp LICENSE ./npm/LICENSE
+          node ./npm/scripts/bump.js
+
+      - name: Publish to NPM
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          package: ./npm/package.json
+          token: ${{ secrets.NPM_TOKEN }}

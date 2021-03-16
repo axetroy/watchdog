@@ -1,0 +1,7 @@
+node_modules
+*.lock
+package-lock.json
+dist
+whatchanged
+whatchanged.exe
+scripts/bump.js

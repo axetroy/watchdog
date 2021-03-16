@@ -1,0 +1,26 @@
+{
+  "author": "Axetroy",
+  "bin": {
+    "boilerplate": "./bin/boilerplate"
+  },
+  "dependencies": {
+    "download": "8.0.0",
+    "progress": "2.0.3"
+  },
+  "description": "a go cli boilerplate",
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "bin/go-cli-boilerplate",
+    "scripts/postinstall.js",
+    "download/.gitkeep"
+  ],
+  "license": "MIT",
+  "name": "@axetroy/go-cli-boilerplate",
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.0"
+}
