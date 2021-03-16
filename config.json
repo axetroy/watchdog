@@ -1,0 +1,19 @@
+{
+  "service": [
+    {
+      "name": "Web server",
+      "protocol": "http",
+      "addr": "https://baidu.com"
+    },
+    {
+      "name": "TCP server",
+      "protocol": "tcp",
+      "addr": "127.0.0.1:8080"
+    },
+    {
+      "name": "Websocket",
+      "protocol": "ws",
+      "addr": "127.0.0.1:8080"
+    }
+  ]
+}
