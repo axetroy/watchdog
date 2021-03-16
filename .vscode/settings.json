@@ -8,5 +8,6 @@
   "go.buildFlags": ["-mod=vendor"],
   "go.toolsEnvVars": {
     "GOFLAGS": "-mod=vendor"
-  }
+  },
+  "go.testFlags": ["-v"]
 }

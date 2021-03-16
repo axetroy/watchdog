@@ -12,12 +12,12 @@
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
-    "bin/go-cli-boilerplate",
+    "bin/watchdog",
     "scripts/postinstall.js",
     "download/.gitkeep"
   ],
   "license": "MIT",
-  "name": "@axetroy/go-cli-boilerplate",
+  "name": "@axetroy/watchdog",
   "scripts": {
     "postinstall": "node scripts/postinstall.js",
     "test": "echo \"Error: no test specified\" && exit 1"

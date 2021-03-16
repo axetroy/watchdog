@@ -1,12 +1,12 @@
-[![Build Status](https://github.com/axetroy/go-cli-boilerplate/workflows/ci/badge.svg)](https://github.com/axetroy/go-cli-boilerplate/actions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/go-cli-boilerplate)](https://goreportcard.com/report/github.com/axetroy/go-cli-boilerplate)
-![Latest Version](https://img.shields.io/github/v/release/axetroy/go-cli-boilerplate.svg)
-![License](https://img.shields.io/github/license/axetroy/go-cli-boilerplate.svg)
-![Repo Size](https://img.shields.io/github/repo-size/axetroy/go-cli-boilerplate.svg)
+[![Build Status](https://github.com/axetroy/watchdog/workflows/ci/badge.svg)](https://github.com/axetroy/watchdog/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/watchdog)](https://goreportcard.com/report/github.com/axetroy/watchdog)
+![Latest Version](https://img.shields.io/github/v/release/axetroy/watchdog.svg)
+![License](https://img.shields.io/github/license/axetroy/watchdog.svg)
+![Repo Size](https://img.shields.io/github/repo-size/axetroy/watchdog.svg)
 
-## go-cli-boilerplate
+## watchdog
 
-> go-cli-boilerplate
+> watchdog
 
 ### Usage
 
@@ -19,31 +19,31 @@
 If you have installed nodejs, you can install it via npm
 
 ```bash
-npm install @axetroy/go-cli-boilerplate -g
+npm install @axetroy/watchdog -g
 ```
 
 If you are using Linux/macOS. you can install it with the following command:
 
 ```shell
 # install latest version
-curl -fsSL https://raw.githubusercontent.com/axetroy/go-cli-boilerplate/master/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/axetroy/watchdog/master/install.sh | bash
 # or install specified version
-curl -fsSL https://raw.githubusercontent.com/axetroy/go-cli-boilerplate/master/install.sh | bash -s v1.3.0
+curl -fsSL https://raw.githubusercontent.com/axetroy/watchdog/master/install.sh | bash -s v1.3.0
 # or install from gobinaries.com
-curl -sf https://gobinaries.com/axetroy/go-cli-boilerplate@v1.3.0 | sh
+curl -sf https://gobinaries.com/axetroy/watchdog@v1.3.0 | sh
 ```
 
 Or
 
-Download the executable file for your platform at [release page](https://github.com/axetroy/go-cli-boilerplate/releases)
+Download the executable file for your platform at [release page](https://github.com/axetroy/watchdog/releases)
 
 ### Build from source code
 
-Make sure you have `Golang@v1.15.x` installed.
+Make sure you have `Golang@v1.16.x` installed.
 
 ```shell
-$ git clone https://github.com/axetroy/go-cli-boilerplate.git $GOPATH/src/github.com/axetroy/go-cli-boilerplate
-$ cd $GOPATH/src/github.com/axetroy/go-cli-boilerplate
+$ git clone https://github.com/axetroy/watchdog.git $GOPATH/src/github.com/axetroy/watchdog
+$ cd $GOPATH/src/github.com/axetroy/watchdog
 $ make build
 ```
 

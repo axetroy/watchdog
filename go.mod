@@ -1,3 +1,5 @@
-module github.com/axetroy/go-cli-boilerplate
+module github.com/axetroy/watchdog
 
-go 1.15
+go 1.16
+
+require github.com/stretchr/testify v1.7.0
