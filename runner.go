@@ -15,19 +15,34 @@ type RunnerResult struct {
 
 type RunnerError struct {
 	Name       string `json:"name"`        // 服务名称
-	Error      error  `json:"error"`       // 错误信息
+	Error      string `json:"error"`       // 错误信息
 	RetryTimes uint   `json:"retry_times"` // 重试次数
 }
 
-func Run(config Config) error {
+func Run(config Config) (r RunnerResult) {
+	t1 := time.Now()
+
 	for _, s := range config.Service {
 		err := processSingleService(s)
 
 		if err != nil {
+			if r.Errors == nil {
+				r.Errors = make([]RunnerError, 0)
+			}
+
+			r.Errors = append(r.Errors, RunnerError{
+				Name:       s.Name,
+				Error:      err.Error(),
+				RetryTimes: 0,
+			})
 		}
 	}
 
-	return nil
+	t2 := time.Now()
+
+	r.Duration = uint(t2.Sub(t1).Seconds())
+
+	return r
 }
 
 func processSingleService(s Service) error {

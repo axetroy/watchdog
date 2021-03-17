@@ -34,16 +34,20 @@ var (
 func isValidProtocol(protocol string) bool {
 	switch protocol {
 	case "http":
+		fallthrough
 	case "https":
+		fallthrough
 	case "tcp":
+		fallthrough
 	case "udp":
+		fallthrough
 	case "ws":
+		fallthrough
 	case "wss":
 		return true
 	default:
 		return false
 	}
-	return false
 }
 
 func init() {
