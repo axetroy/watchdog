@@ -12,7 +12,7 @@ var (
 	version = "dev"
 	commit  = "none"
 	date    = "unknown"
-	builtBy = "unknown"
+	// builtBy = "unknown"
 )
 
 func printHelp() {
