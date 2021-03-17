@@ -1,5 +1,6 @@
 builds:
   - binary: watchdog
+    main: ./cmd/watchdog/main.go
     goos:
       - windows
       - darwin
