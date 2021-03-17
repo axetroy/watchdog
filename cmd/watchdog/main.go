@@ -4,8 +4,10 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/axetroy/watchdog"
+	"github.com/axetroy/watchdog/scheduling"
 	"github.com/gookit/color"
 )
 
@@ -61,6 +63,17 @@ func main() {
 		color.Enable = !noColor
 	} else {
 		color.Enable = false
+	}
+
+	c, err := watchdog.NewConfigFromFile(configPath)
+
+	if err != nil {
+		panic(err)
+	}
+
+	for _, s := range c.Service {
+		scheduler := scheduling.NewScheduling(time.Second*time.Duration(c.Interval), watchdog.NewRunnerJob(s))
+		go scheduler.Start()
 	}
 
 	watchdog.Serve(port)

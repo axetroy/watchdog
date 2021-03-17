@@ -1,4 +1,5 @@
 {
+  "interval": 5,
   "service": [
     {
       "name": "Web server",
