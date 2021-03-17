@@ -37,12 +37,12 @@ func TestRun(t *testing.T) {
 				Errors: []RunnerError{
 					{
 						Name:       "Web",
-						Error:      "Head \"http://localhost:9000\": dial tcp 127.0.0.1:9000: connect: connection refused",
+						Error:      "Head \"http://localhost:9000\": dial tcp [::1]:9000: connect: connection refused",
 						RetryTimes: 0,
 					},
 					{
 						Name:       "RPC",
-						Error:      "dial tcp 127.0.0.1:9000: connect: connection refused",
+						Error:      "dial tcp [::1]:9000: connect: connection refused",
 						RetryTimes: 0,
 					},
 				},

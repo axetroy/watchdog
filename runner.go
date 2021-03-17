@@ -2,6 +2,7 @@ package watchdog
 
 import (
 	"context"
+	"sync"
 	"time"
 
 	"github.com/axetroy/watchdog/protocol"
@@ -22,21 +23,38 @@ type RunnerError struct {
 func Run(config Config) (r RunnerResult) {
 	t1 := time.Now()
 
-	for _, s := range config.Service {
-		err := processSingleService(s)
+	wg := sync.WaitGroup{}
 
-		if err != nil {
-			if r.Errors == nil {
-				r.Errors = make([]RunnerError, 0)
+	var ch = make(chan int, 10) // 最大并发数量 10
+
+	for _, s := range config.Service {
+		wg.Add(1)
+
+		go func(s Service) {
+			err := processSingleService(s)
+
+			defer wg.Done()
+
+			ch <- 1
+
+			if err != nil {
+				if r.Errors == nil {
+					r.Errors = make([]RunnerError, 0)
+				}
+
+				r.Errors = append(r.Errors, RunnerError{
+					Name:       s.Name,
+					Error:      err.Error(),
+					RetryTimes: 0,
+				})
 			}
 
-			r.Errors = append(r.Errors, RunnerError{
-				Name:       s.Name,
-				Error:      err.Error(),
-				RetryTimes: 0,
-			})
-		}
+			<-ch
+		}(s)
 	}
+
+	wg.Wait()
+	close(ch)
 
 	t2 := time.Now()
 

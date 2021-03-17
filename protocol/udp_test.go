@@ -58,13 +58,13 @@ func TestPingUDP(t *testing.T) {
 				err := CreateUDPServer(tt.args.addr, func(connection *net.UDPConn) {
 					defer connection.Close()
 					err := PingUDP(tt.args.addr)
-					assert.Equal(t, tt.wantErr, err != nil)
+					assert.Equal(t, tt.wantErr, err != nil, tt.name)
 				})
 
-				assert.Equal(t, tt.wantErr, err != nil)
+				assert.Equal(t, tt.wantErr, err != nil, tt.name)
 			} else {
 				err := PingUDP(tt.args.addr)
-				assert.Equal(t, tt.wantErr, err != nil)
+				assert.Equal(t, tt.wantErr, err != nil, tt.name)
 			}
 		})
 	}

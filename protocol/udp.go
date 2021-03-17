@@ -14,7 +14,7 @@ func PingUDP(addr string) error {
 	conn, err := net.ListenUDP("udp", udpAddr)
 
 	if err != nil {
-		return nil
+		return err
 	}
 
 	defer conn.Close()
