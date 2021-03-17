@@ -11,4 +11,5 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.7.0
 	github.com/yosuke-furukawa/json5 v0.1.1
+	golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3
 )

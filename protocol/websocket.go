@@ -1,17 +1,11 @@
 package protocol
 
 import (
-	"net"
+	"golang.org/x/net/websocket"
 )
 
 func PingWebsocket(addr string) error {
-	_, err := net.ResolveTCPAddr("tcp", addr)
-
-	if err != nil {
-		return err
-	}
-
-	conn, err := net.Dial("tcp", addr)
+	conn, err := websocket.Dial(addr, "", "http://localhost/")
 
 	if err != nil {
 		return err

@@ -61,6 +61,8 @@ func isValidProtocol(protocol string) bool {
 	default:
 		return false
 	}
+
+	return false
 }
 
 func init() {
