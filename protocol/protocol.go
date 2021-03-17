@@ -30,6 +30,10 @@ func Ping(proto string, addr string, ctx context.Context) error {
 		return PingSMTP(addr)
 	case "pop3":
 		return PingPop3(addr)
+	case "smb":
+		return PingSMB(addr)
+	case "nfs":
+		return PingNFS(addr)
 	default:
 		return errors.Errorf("invalid proto '%s'", proto)
 	}

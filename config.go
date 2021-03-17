@@ -26,6 +26,12 @@ type Service struct {
 	Addr         string         `json:"addr" validate:"required"`              // 地址
 	Interval     uint           `json:"interval"`                              // 检测任务的间隔时间
 	Notifycation []Notification `json:"notification"`                          // 通知渠道，支持多个通知渠道
+	Account      Account        `json:"account"`
+}
+
+type Account struct {
+	Username string `json:"username"` // 用户名
+	Password string `json:"password"` // 密码/认证信息
 }
 
 // 消息通知渠道
@@ -57,6 +63,10 @@ func isValidProtocol(protocol string) bool {
 	case "sftp":
 		fallthrough
 	case "ssh":
+		fallthrough
+	case "smb":
+		fallthrough
+	case "nfs":
 		return true
 	default:
 		return false

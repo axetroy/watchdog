@@ -35,6 +35,15 @@
       "protocol": "ws",
       "addr": "127.0.0.1:8080",
       "interval": 15
+    },
+    {
+      "name": "SMB",
+      "protocol": "smb",
+      "addr": "127.0.0.1:8080",
+      "account": {
+        "username": "xxx",
+        "password": "xxxx"
+      }
     }
   ]
 }
