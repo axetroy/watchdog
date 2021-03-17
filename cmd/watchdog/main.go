@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/axetroy/watchdog"
 	"github.com/gookit/color"
 )
 
@@ -23,6 +24,7 @@ OPTIONS:
   --help        Print help information.
   --version     Print version information.
   --config      Specify config file
+  --port        Specify the port for HTTP listening
 SOURCE CODE:
   https://github.com/axetroy/watchdog`)
 }
@@ -32,10 +34,12 @@ func main() {
 		showHelp    bool
 		showVersion bool
 		configPath  string
+		port        string
 		noColor     bool
 	)
 
 	flag.StringVar(&configPath, "config", "", "The config file path")
+	flag.StringVar(&port, "port", "", "Specify the port for HTTP listening")
 	flag.BoolVar(&showHelp, "help", false, "Print help information")
 	flag.BoolVar(&showVersion, "version", false, "Print version information")
 
@@ -58,4 +62,6 @@ func main() {
 	} else {
 		color.Enable = false
 	}
+
+	watchdog.Serve(port)
 }
