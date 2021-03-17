@@ -24,7 +24,7 @@ OPTIONS:
   --version     Print version information.
   --config      Specify config file
 SOURCE CODE:
-  https://github.com/axetroy/fslint`)
+  https://github.com/axetroy/watchdog`)
 }
 
 func main() {
