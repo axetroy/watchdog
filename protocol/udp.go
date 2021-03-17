@@ -11,7 +11,8 @@ func PingUDP(addr string) error {
 		return err
 	}
 
-	conn, err := net.ListenUDP("udp", udpAddr)
+	// 连接服务器
+	conn, err := net.DialUDP("udp", nil, udpAddr)
 
 	if err != nil {
 		return err

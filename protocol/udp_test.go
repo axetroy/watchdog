@@ -48,7 +48,7 @@ func TestPingUDP(t *testing.T) {
 			args: args{
 				addr: "localhost:8887",
 			},
-			wantErr: true,
+			wantErr: false, // 由于 UDP 的特性，无法检测是否已连接
 			listen:  false,
 		},
 	}
