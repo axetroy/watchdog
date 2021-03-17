@@ -5,7 +5,7 @@
       "name": "Web server",
       "protocol": "http",
       "addr": "https://baidu.com",
-      "interval": 5,
+      "interval": 5, // 每隔 5s 检测一次
       "notification": [
         // 发送邮箱通知
         {
@@ -19,7 +19,7 @@
         },
         // Web Hook通知
         {
-          "protocol": "wechat",
+          "protocol": "webhook",
           "target": ["https://example/api/webhook"]
         }
       ]
