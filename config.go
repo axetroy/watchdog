@@ -21,9 +21,17 @@ type Config struct {
 }
 
 type Service struct {
-	Name     string `json:"name" validate:"required"`              // 服务名称
-	Protocol string `json:"protocol" validate:"required,protocol"` // 服务协议
-	Addr     string `json:"addr" validate:"required"`              // 地址
+	Name         string         `json:"name" validate:"required"`              // 服务名称
+	Protocol     string         `json:"protocol" validate:"required,protocol"` // 服务协议, 支持 http/https/ws/wss/tcp/tdp/ssh
+	Addr         string         `json:"addr" validate:"required"`              // 地址
+	Interval     uint           `json:"interval"`                              // 检测任务的间隔时间
+	Notifycation []Notification `json:"notification"`                          // 通知渠道，支持多个通知渠道
+}
+
+// 消息通知渠道
+type Notification struct {
+	Protocol string   // 协议，支持 wechat/email/slack/webhook
+	Target   []string // 推送的目标，可以是多个目标
 }
 
 var (

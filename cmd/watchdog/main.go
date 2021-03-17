@@ -72,7 +72,19 @@ func main() {
 	}
 
 	for _, s := range c.Service {
-		scheduler := scheduling.NewScheduling(time.Second*time.Duration(c.Interval), watchdog.NewRunnerJob(s))
+		interval := s.Interval
+
+		// 如果服务没有单独设置间隔时间，则获取全局配置
+		if interval == 0 {
+			interval = c.Interval
+		}
+
+		// 默认 30 s 间隔
+		if interval == 0 {
+			interval = 5
+		}
+
+		scheduler := scheduling.NewScheduling(time.Second*time.Duration(interval), watchdog.NewRunnerJob(s))
 		go scheduler.Start()
 	}
 

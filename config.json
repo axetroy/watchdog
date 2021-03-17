@@ -4,17 +4,37 @@
     {
       "name": "Web server",
       "protocol": "http",
-      "addr": "https://baidu.com"
+      "addr": "https://baidu.com",
+      "interval": 5,
+      "notification": [
+        // 发送邮箱通知
+        {
+          "protocol": "email",
+          "target": ["admin@example.com", "super@example.com"]
+        },
+        // 微信通知
+        {
+          "protocol": "wechat",
+          "target": ["微信公众号用户ID1", "微信公众号用户ID2"]
+        },
+        // Web Hook通知
+        {
+          "protocol": "wechat",
+          "target": ["https://example/api/webhook"]
+        }
+      ]
     },
     {
       "name": "TCP server",
       "protocol": "tcp",
-      "addr": "127.0.0.1:8080"
+      "addr": "127.0.0.1:8080",
+      "interval": 10
     },
     {
       "name": "Websocket",
       "protocol": "ws",
-      "addr": "127.0.0.1:8080"
+      "addr": "127.0.0.1:8080",
+      "interval": 15
     }
   ]
 }
