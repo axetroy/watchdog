@@ -8,7 +8,7 @@ jobs:
     timeout-minutes: 30
     strategy:
       matrix:
-        go: ["^1.15.0"]
+        go: ["^1.16.0"]
         os: [ubuntu-latest, macOS-latest, windows-latest]
     name: Go ${{ matrix.go }} in ${{ matrix.os }}
     steps:
@@ -23,15 +23,11 @@ jobs:
           go version
           go env
 
-      - name: Install tools
-        env:
-          GO111MODULE: on
-        run: |
-          go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.27.0
-          golangci-lint --version
-
-      - name: Lint
-        run: make lint
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.37.0
+          args: -v
 
       - name: Format
         run: make format-check
@@ -53,17 +49,10 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/') && github.repository == 'axetroy/watchdog'
     needs: [ci]
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go: ["^1.15.0"]
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - uses: actions/setup-go@v2
-        with:
-          go-version: ${{ matrix.go }}
 
       - name: Release to Github
         uses: goreleaser/goreleaser-action@v2
@@ -75,7 +64,7 @@ jobs:
 
       - uses: axetroy/setup-whatchanged@v1
         with:
-          version: v0.3.4
+          version: v0.3.5
 
       - name: Generate release.md
         run: |
