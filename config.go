@@ -52,6 +52,11 @@ func isValidProtocol(protocol string) bool {
 	case "ws":
 		fallthrough
 	case "wss":
+	case "ftp":
+		fallthrough
+	case "sftp":
+		fallthrough
+	case "ssh":
 		return true
 	default:
 		return false

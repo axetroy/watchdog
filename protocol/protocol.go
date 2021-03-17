@@ -20,6 +20,12 @@ func Ping(proto string, addr string, ctx context.Context) error {
 		fallthrough
 	case "wss":
 		return PingWebsocket(addr)
+	case "ftp":
+		fallthrough
+	case "sftp":
+		return PingFTP(addr)
+	case "ssh":
+		return PingSSH(addr)
 	default:
 		return errors.Errorf("invalid proto '%s'", proto)
 	}
