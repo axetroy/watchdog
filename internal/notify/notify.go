@@ -12,19 +12,20 @@ type Notifier interface {
 	Push(msg string) error
 }
 
-type Notify struct {
+type notifier struct {
 	reporter []watchdog.Reporter
-	handler  Handler
+	handler  handler
 }
 
-type HandlerFn = func(message string, reporter watchdog.Reporter) error
+type handlerFn = func(message string, reporter watchdog.Reporter) error
 
-type Handler = map[string]HandlerFn
+type handler = map[string]handlerFn
 
+// 创建新的消息通知器
 func NewNotifier(ns []watchdog.Reporter) Notifier {
-	notify := Notify{
+	notify := notifier{
 		reporter: ns,
-		handler:  map[string]HandlerFn{},
+		handler:  map[string]handlerFn{},
 	}
 
 	notify.use("wechat", Wechat)
@@ -34,11 +35,12 @@ func NewNotifier(ns []watchdog.Reporter) Notifier {
 }
 
 // 注册处理器
-func (n *Notify) use(protocol string, handler HandlerFn) {
+func (n *notifier) use(protocol string, handler handlerFn) {
 	n.handler[protocol] = handler
 }
 
-func (n Notify) Push(content string) error {
+// 推送消息
+func (n notifier) Push(content string) error {
 	wg := sync.WaitGroup{}
 	wg.Add(len(n.reporter))
 
@@ -66,9 +68,5 @@ func (n Notify) Push(content string) error {
 	}
 
 	wg.Wait()
-	return nil
-}
-
-func (n Notify) PushEmail(msg string) error {
 	return nil
 }
