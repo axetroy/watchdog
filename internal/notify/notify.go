@@ -28,6 +28,7 @@ func NewNotifier(ns []watchdog.Reporter) Notifier {
 	}
 
 	notify.use("wechat", Wechat)
+	notify.use("webhook", Webhook)
 
 	return notify
 }

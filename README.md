@@ -22,7 +22,7 @@
 
 支持通知的渠道
 
-- [ ] Webhook
+- [x] Webhook
 - [ ] 邮件(pop3/smtp)
 - [x] 微信
 - [ ] 企业微信
