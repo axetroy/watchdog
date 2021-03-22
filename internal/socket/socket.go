@@ -17,7 +17,7 @@ var upgrader = websocket.Upgrader{
 }
 
 type Data struct {
-	Event   string      `json:"event"`
+	Event   Event       `json:"event"`
 	Payload interface{} `json:"payload"`
 }
 

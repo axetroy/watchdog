@@ -64,34 +64,53 @@ export default defineComponent({
         this.services.push(s);
       }
     },
+    connect() {
+      if (this.ws) {
+        this.ws.close();
+        this.ws = null;
+      }
+      const ws = new WebSocket("ws://localhost:9999/api/ws");
+
+      this.ws = ws;
+
+      ws.onopen = () => {
+        console.log("Websocket 已连接");
+      };
+
+      ws.onclose = (event) => {
+        console.log(
+          "Socket is closed. Reconnect will be attempted in 1 second.",
+          event.reason
+        );
+        setTimeout(() => {
+          this.connect();
+        }, 1000);
+      };
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data) as Message;
+
+        switch (data.event) {
+          case "init":
+            {
+              const payload = (data as Message<Service[]>).payload;
+              for (const p of payload) {
+                this.updateService(p);
+              }
+            }
+            break;
+          case "update":
+            {
+              const payload = (data as Message<Service>).payload;
+              this.updateService(payload);
+            }
+            break;
+        }
+      };
+    },
   },
   mounted() {
-    const ws = new WebSocket("ws://localhost:9999/api/ws");
-
-    ws.onopen = () => {
-      console.log("Websocket 已连接");
-    };
-
-    ws.onmessage = (event) => {
-      const data = JSON.parse(event.data) as Message;
-
-      switch (data.event) {
-        case "init":
-          {
-            const payload = (data as Message<Service[]>).payload;
-            for (const p of payload) {
-              this.updateService(p);
-            }
-          }
-          break;
-        case "update":
-          {
-            const payload = (data as Message<Service>).payload;
-            this.updateService(payload);
-          }
-          break;
-      }
-    };
+    this.connect();
   },
   unmounted() {},
 });

@@ -88,5 +88,5 @@ func main() {
 		go scheduler.Start()
 	}
 
-	watchdog.Serve(port)
+	watchdog.Serve(port, c)
 }

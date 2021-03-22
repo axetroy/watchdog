@@ -42,16 +42,16 @@ func (s *Scheduling) Start() {
 			err := s.job.Do()
 
 			data := socket.Data{
-				Event: "update",
+				Event: socket.EventUpdate,
 			}
 
-			payload := map[string]string{
-				"name":       service.Name,
-				"updated_at": time.Now().Format(time.RFC3339),
+			serviceStatus := watchdog.ServiceStatus{
+				Name:      service.Name,
+				UpdatedAt: time.Now().Format(time.RFC3339),
 			}
 
 			if err != nil {
-				payload["error"] = err.Error()
+				serviceStatus.Error = err.Error()
 
 				// 如果报错的话，检查是否应该上报错误
 				if s.alarm.Tick() {
@@ -67,7 +67,7 @@ func (s *Scheduling) Start() {
 				}
 			}
 
-			data.Payload = payload
+			data.Payload = serviceStatus
 			socket.Pool.Broadcast(data)
 		}
 		ch <- 1

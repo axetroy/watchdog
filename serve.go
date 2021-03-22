@@ -14,11 +14,18 @@ import (
 var content embed.FS
 
 type HTTPHandler struct {
+	config *Config
+}
+
+type ServiceStatus struct {
+	Name      string `json:"name"`
+	Error     string `json:"error"`
+	UpdatedAt string `json:"updated_at"`
 }
 
 func (t HTTPHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	if strings.HasPrefix("/api/ws", req.URL.Path) {
-		socket, err := socket.NewSocket(res, req)
+		s, err := socket.NewSocket(res, req)
 
 		if err != nil {
 			res.WriteHeader(http.StatusInternalServerError)
@@ -26,10 +33,25 @@ func (t HTTPHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		defer socket.Close()
+		initPayload := make([]ServiceStatus, 0)
+
+		for _, sr := range t.config.Service {
+			initPayload = append(initPayload, ServiceStatus{
+				Name:      sr.Name,
+				Error:     "",
+				UpdatedAt: time.Now().Format(time.RFC3339),
+			})
+		}
+
+		socket.Pool.BroadcastTo(s.UUID, socket.Data{
+			Event:   socket.EventInit,
+			Payload: initPayload,
+		})
+
+		defer s.Close()
 
 		for {
-			_, _, err := socket.ReadMessage()
+			_, _, err := s.ReadMessage()
 			if err != nil {
 				break
 			}
@@ -42,10 +64,12 @@ func (t HTTPHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	}
 }
 
-func Serve(port string) {
+func Serve(port string, config *Config) {
 	server := http.Server{
-		Addr:        ":" + port,
-		Handler:     &HTTPHandler{},
+		Addr: ":" + port,
+		Handler: &HTTPHandler{
+			config: config,
+		},
 		ReadTimeout: 3 * time.Second,
 	}
 	log.Fatal(server.ListenAndServe())
