@@ -28,6 +28,7 @@ jobs:
         with:
           version: v1.37.0
           args: -v
+          skip-go-installation: true
 
       - name: Format
         run: make format-check

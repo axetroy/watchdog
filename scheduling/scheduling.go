@@ -35,6 +35,7 @@ func (s *Scheduling) Start() {
 	//定时任务
 	ticker := time.NewTicker(s.interval)
 	go func() {
+		defer ticker.Stop()
 		for range ticker.C {
 			err := s.job.Do()
 
