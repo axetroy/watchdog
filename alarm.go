@@ -23,7 +23,7 @@ func NewAlarm(interval time.Duration, maxTriggerPerDate uint) *Alarm {
 	}
 }
 
-func (a *Alarm) ShouldTrigger() (shouldTrigger bool) {
+func (a *Alarm) Tick() (shouldTrigger bool) {
 	a.mux.Lock()
 	defer a.mux.Unlock()
 

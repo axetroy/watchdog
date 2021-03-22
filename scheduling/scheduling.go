@@ -41,7 +41,7 @@ func (s *Scheduling) Start() {
 
 			if err != nil {
 				// 如果报错的话，检查是否应该上报错误
-				if s.alarm.ShouldTrigger() {
+				if s.alarm.Tick() {
 					// 开始推送
 					log.Println("开始推送")
 					service := s.job.GetService()

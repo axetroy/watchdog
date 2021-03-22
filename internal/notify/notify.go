@@ -5,10 +5,7 @@ import (
 	"sync"
 
 	"github.com/axetroy/watchdog"
-	"github.com/mitchellh/mapstructure"
 	"github.com/pkg/errors"
-	"github.com/wxpusher/wxpusher-sdk-go"
-	"github.com/wxpusher/wxpusher-sdk-go/model"
 )
 
 type Notifier interface {
@@ -17,12 +14,27 @@ type Notifier interface {
 
 type Notify struct {
 	reporter []watchdog.Reporter
+	handler  Handler
 }
 
+type HandlerFn = func(message string, reporter watchdog.Reporter) error
+
+type Handler = map[string]HandlerFn
+
 func NewNotifier(ns []watchdog.Reporter) Notifier {
-	return Notify{
+	notify := Notify{
 		reporter: ns,
+		handler:  map[string]HandlerFn{},
 	}
+
+	notify.use("wechat", Wechat)
+
+	return notify
+}
+
+// 注册处理器
+func (n *Notify) use(protocol string, handler HandlerFn) {
+	n.handler[protocol] = handler
 }
 
 func (n Notify) Push(content string) error {
@@ -30,7 +42,7 @@ func (n Notify) Push(content string) error {
 	wg.Add(len(n.reporter))
 
 	for _, reporter := range n.reporter {
-		go func(notification watchdog.Reporter) {
+		go func(reporter watchdog.Reporter) {
 			var (
 				err error
 			)
@@ -43,38 +55,11 @@ func (n Notify) Push(content string) error {
 
 			defer wg.Done()
 
-			switch notification.Protocol {
-			case "wechat":
-				type Payload struct {
-					AppToken string `json:"app_token" mapstructure:"app_token"`
-				}
-
-				payload := Payload{}
-
-				if err = mapstructure.Decode(notification.Payload, &payload); err != nil {
-					err = errors.WithMessage(err, "微信配置不正确")
-					return
-				}
-
-				msg := model.
-					NewMessage(payload.AppToken).
-					SetContent(content).SetSummary(content)
-				if len(notification.Target) > 1 {
-					msg = msg.AddUId(notification.Target[0], notification.Target[1:]...)
-				} else if len(notification.Target) == 1 {
-					msg = msg.AddUId(notification.Target[0])
-				} else {
-					return
-				}
-
-				_, err = wxpusher.SendMessage(msg)
-				if err != nil {
-					return
-				}
-
-			default:
-				err = errors.Errorf("invlid protocol '%s'", notification.Protocol)
-				return
+			if handler, ok := n.handler[reporter.Protocol]; ok {
+				//do something here
+				err = handler(content, reporter)
+			} else {
+				err = errors.Errorf("invlid protocol '%s'", reporter.Protocol)
 			}
 		}(reporter)
 	}
