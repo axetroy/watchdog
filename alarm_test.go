@@ -52,6 +52,6 @@ func TestAlarm(t *testing.T) {
 			time.Sleep(time.Millisecond * 105)
 		}
 
-		assert.GreaterOrEqual(t, 10, int(alarm.triggerTimesToDay))
+		assert.LessOrEqual(t, 10, int(alarm.triggerTimesToDay))
 	}
 }
