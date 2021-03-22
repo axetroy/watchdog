@@ -16,21 +16,21 @@ type Notifier interface {
 }
 
 type Notify struct {
-	notification []watchdog.Notification
+	reporter []watchdog.Reporter
 }
 
-func NewNotifier(ns []watchdog.Notification) Notifier {
+func NewNotifier(ns []watchdog.Reporter) Notifier {
 	return Notify{
-		notification: ns,
+		reporter: ns,
 	}
 }
 
 func (n Notify) Push(content string) error {
 	wg := sync.WaitGroup{}
-	wg.Add(len(n.notification))
+	wg.Add(len(n.reporter))
 
-	for _, notification := range n.notification {
-		go func(notification watchdog.Notification) {
+	for _, reporter := range n.reporter {
+		go func(notification watchdog.Reporter) {
 			var (
 				err error
 			)
@@ -76,7 +76,7 @@ func (n Notify) Push(content string) error {
 				err = errors.Errorf("invlid protocol '%s'", notification.Protocol)
 				return
 			}
-		}(notification)
+		}(reporter)
 	}
 
 	wg.Wait()

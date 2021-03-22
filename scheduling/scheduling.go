@@ -45,7 +45,7 @@ func (s *Scheduling) Start() {
 					// 开始推送
 					log.Println("开始推送")
 					service := s.job.GetService()
-					pusher := notify.NewNotifier(service.Notifycation)
+					pusher := notify.NewNotifier(service.Report)
 
 					msg := fmt.Sprintf(`「watchdog」服务 '%s' 不可用, %s`, service.Name, err.Error())
 

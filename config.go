@@ -21,12 +21,11 @@ type Config struct {
 }
 
 type Service struct {
-	Name         string         `json:"name" validate:"required"`              // 服务名称
-	Protocol     string         `json:"protocol" validate:"required,protocol"` // 服务协议, 支持 http/https/ws/wss/tcp/tdp/ssh
-	Addr         string         `json:"addr" validate:"required"`              // 地址
-	Interval     uint           `json:"interval"`                              // 检测任务的间隔时间
-	Notifycation []Notification `json:"notification"`                          // 通知渠道，支持多个通知渠道
-	Account      Account        `json:"account"`
+	Name     string     `json:"name" validate:"required"`              // 服务名称
+	Protocol string     `json:"protocol" validate:"required,protocol"` // 服务协议, 支持 http/https/ws/wss/tcp/tdp/ssh
+	Addr     string     `json:"addr" validate:"required"`              // 地址
+	Interval uint       `json:"interval"`                              // 检测任务的间隔时间
+	Report   []Reporter `json:"report"`                                // 通知渠道，支持多个通知渠道
 }
 
 type Account struct {
@@ -35,10 +34,10 @@ type Account struct {
 }
 
 // 消息通知渠道
-type Notification struct {
+type Reporter struct {
 	Protocol string      `json:"protocol"` // 协议，支持 wechat/email/slack/webhook
 	Target   []string    `json:"target"`   // 推送的目标，可以是多个目标
-	Payload  interface{} `json:"payload"`  // 额外的数据
+	Payload  interface{} `json:"payload"`  // 额外的数据，根据不同的协议，所带的数据不同
 }
 
 var (
