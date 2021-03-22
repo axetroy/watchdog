@@ -11,9 +11,8 @@
         border-radius: 4px;
       "
     >
-      ALL PASS {{ name }}
+      ALL PASS
     </div>
-
     <table style="width: 100%; margin-top: 10px">
       <thead>
         <tr>
@@ -23,36 +22,79 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>PASS</td>
-          <td>TCP server</td>
-          <td>2021-03-22 19:32:22</td>
-        </tr>
-        <tr>
-          <td>PASS</td>
-          <td>TCP server</td>
-          <td>2021-03-22 19:32:22</td>
-        </tr>
-        <tr>
-          <td>PASS</td>
-          <td>TCP server</td>
-          <td>2021-03-22 19:32:22</td>
+        <tr v-for="v in services" :key="v.name">
+          <td>{{ v.error ? "ERROR" : "PASS" }}</td>
+          <td>{{ v.name }}</td>
+          <td>{{ v.updated_at }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 </template>
 
-<script lang="ts" setup>
-const ws = new WebSocket("ws://localhost:9999/api/ws");
+<script lang="ts">
+import { defineComponent } from "vue";
 
-ws.onopen = () => {
-  console.log("Websocket 已连接");
-};
+interface Message<T = unknown> {
+  event: string;
+  payload: T;
+}
 
-ws.onmessage = (data) => {
-  console.log("on message", data);
-};
+interface Service {
+  name: string; // 服务名称
+  error?: string; // 错误信息
+  updated_at: string; // 更新日期
+}
+
+export default defineComponent({
+  data: () => {
+    return {
+      services: [] as Service[],
+    };
+  },
+  methods: {
+    updateService(s: Service) {
+      const service = this.services.find((v) => v.name === s.name);
+
+      if (service) {
+        for (const attr in s) {
+          service[attr] = s[attr];
+        }
+      } else {
+        this.services.push(s);
+      }
+    },
+  },
+  mounted() {
+    const ws = new WebSocket("ws://localhost:9999/api/ws");
+
+    ws.onopen = () => {
+      console.log("Websocket 已连接");
+    };
+
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data) as Message;
+
+      switch (data.event) {
+        case "init":
+          {
+            const payload = (data as Message<Service[]>).payload;
+            for (const p of payload) {
+              this.updateService(p);
+            }
+          }
+          break;
+        case "update":
+          {
+            const payload = (data as Message<Service>).payload;
+            this.updateService(payload);
+          }
+          break;
+      }
+    };
+  },
+  unmounted() {},
+});
 </script>
 
 <style>

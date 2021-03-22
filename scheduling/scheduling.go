@@ -7,6 +7,7 @@ import (
 
 	"github.com/axetroy/watchdog"
 	"github.com/axetroy/watchdog/internal/notify"
+	"github.com/axetroy/watchdog/socket"
 )
 
 type Job interface {
@@ -37,14 +38,24 @@ func (s *Scheduling) Start() {
 	go func() {
 		defer ticker.Stop()
 		for range ticker.C {
+			service := s.job.GetService()
 			err := s.job.Do()
 
+			data := socket.Data{
+				Event: "update",
+			}
+
+			payload := map[string]string{
+				"name":       service.Name,
+				"updated_at": time.Now().Format(time.RFC3339),
+			}
+
 			if err != nil {
+				payload["error"] = err.Error()
+
 				// 如果报错的话，检查是否应该上报错误
 				if s.alarm.Tick() {
 					// 开始推送
-					log.Println("开始推送")
-					service := s.job.GetService()
 					pusher := notify.NewNotifier(service.Report)
 
 					msg := fmt.Sprintf(`「watchdog」服务 '%s' 不可用, %s`, service.Name, err.Error())
@@ -53,9 +64,11 @@ func (s *Scheduling) Start() {
 						// write to log
 						log.Println(pushErr)
 					}
-					log.Println("推送完毕")
 				}
 			}
+
+			data.Payload = payload
+			socket.Pool.Broadcast(data)
 		}
 		ch <- 1
 	}()

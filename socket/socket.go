@@ -16,6 +16,11 @@ var upgrader = websocket.Upgrader{
 	},
 }
 
+type Data struct {
+	Event   string      `json:"event"`
+	Payload interface{} `json:"payload"`
+}
+
 type Socket struct {
 	UUID string
 	conn *websocket.Conn
@@ -46,6 +51,10 @@ func (s *Socket) ReadMessage() (messageType int, p []byte, err error) {
 
 func (s *Socket) WriteMessage(messageType int, data []byte) error {
 	return s.conn.WriteMessage(messageType, data)
+}
+
+func (s *Socket) WriteJSON(v Data) error {
+	return s.conn.WriteJSON(v)
 }
 
 func (s *Socket) Close() error {
