@@ -36,7 +36,7 @@ func TestAlarm(t *testing.T) {
 	}
 
 	{
-		alarm := NewAlarm(time.Microsecond*200, 20) // 间隔 2s，每天最多触发次数 20 次
+		alarm := NewAlarm(time.Millisecond*200, 20) // 间隔 2s，每天最多触发次数 20 次
 
 		index := 0
 		for {
@@ -48,9 +48,9 @@ func TestAlarm(t *testing.T) {
 
 			_ = alarm.ShouldTrigger()
 
-			time.Sleep(time.Microsecond * 100)
+			time.Sleep(time.Millisecond * 100)
 		}
 
-		assert.Equal(t, 11, int(alarm.triggerTimesToDay), index)
+		assert.Equal(t, 10, int(alarm.triggerTimesToDay), index)
 	}
 }
