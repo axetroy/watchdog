@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/axetroy/watchdog/socket"
+	"github.com/axetroy/watchdog/internal/socket"
 )
 
 //go:embed web/dist

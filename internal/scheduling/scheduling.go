@@ -7,7 +7,7 @@ import (
 
 	"github.com/axetroy/watchdog"
 	"github.com/axetroy/watchdog/internal/notify"
-	"github.com/axetroy/watchdog/socket"
+	"github.com/axetroy/watchdog/internal/socket"
 )
 
 type Job interface {

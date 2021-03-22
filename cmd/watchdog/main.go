@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/axetroy/watchdog"
-	"github.com/axetroy/watchdog/scheduling"
+	"github.com/axetroy/watchdog/internal/scheduling"
 	"github.com/gookit/color"
 )
 

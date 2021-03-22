@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/axetroy/watchdog/protocol"
+	"github.com/axetroy/watchdog/internal/protocol"
 	"github.com/gookit/color"
 	"github.com/pkg/errors"
 )
