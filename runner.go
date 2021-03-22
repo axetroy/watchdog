@@ -64,6 +64,7 @@ func Run(config Config) (r RunnerResult) {
 	return r
 }
 
+// 如果返回 error，说明服务异常
 func processSingleService(s Service) error {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*30)
 
@@ -92,6 +93,10 @@ func (r RunnerJob) Name() string {
 	return r.service.Name
 }
 
+func (r RunnerJob) GetService() Service {
+	return r.service
+}
+
 func (r RunnerJob) Do() error {
 	err := processSingleService(r.service)
 
@@ -101,5 +106,5 @@ func (r RunnerJob) Do() error {
 		color.Green.Printf("[%s]: 正常\n", r.service.Name)
 	}
 
-	return nil
+	return err
 }

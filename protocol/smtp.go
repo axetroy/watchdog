@@ -1,5 +1,5 @@
 package protocol
 
-func PingPop3(addr string) error {
+func PingSMTP(addr string) error {
 	return nil
 }

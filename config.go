@@ -36,8 +36,9 @@ type Account struct {
 
 // 消息通知渠道
 type Notification struct {
-	Protocol string   // 协议，支持 wechat/email/slack/webhook
-	Target   []string // 推送的目标，可以是多个目标
+	Protocol string      `json:"protocol"` // 协议，支持 wechat/email/slack/webhook
+	Target   []string    `json:"target"`   // 推送的目标，可以是多个目标
+	Payload  interface{} `json:"payload"`  // 额外的数据
 }
 
 var (

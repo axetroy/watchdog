@@ -13,6 +13,7 @@ type Alarm struct {
 	lastTriggerAt     *time.Time    // 上一次触发时间
 	triggerTimesToDay uint          // 今日已触发次数
 	maxTriggerPerDate uint          // 每天最多触发次数，0 无限次数
+	// maxTriggerPerHour uint          // TODO: 每小时最多触发次数，0 无限次数
 }
 
 func NewAlarm(interval time.Duration, maxTriggerPerDate uint) *Alarm {
@@ -38,7 +39,6 @@ func (a *Alarm) ShouldTrigger() (shouldTrigger bool) {
 			}
 
 			a.lastTriggerAt = &t
-
 		}
 	}()
 

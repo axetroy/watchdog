@@ -29,7 +29,7 @@ func Ping(proto string, addr string, ctx context.Context) error {
 	case "smtp":
 		return PingSMTP(addr)
 	case "pop3":
-		return PingPop3(addr)
+		return PingPOP3(addr)
 	case "smb":
 		return PingSMB(addr)
 	case "nfs":
