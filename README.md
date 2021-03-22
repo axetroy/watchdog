@@ -4,17 +4,15 @@
 ![License](https://img.shields.io/github/license/axetroy/watchdog.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/axetroy/watchdog.svg)
 
-## watchdog
+看门狗，一个服务监听者，监听各种协议的服务是否在线
 
-> watchdog
-
-### Usage
+### 使用
 
 ```bash
-
+watchdog --config=./config.json
 ```
 
-### Installation
+### 安装
 
 If you have installed nodejs, you can install it via npm
 
@@ -37,7 +35,7 @@ Or
 
 Download the executable file for your platform at [release page](https://github.com/axetroy/watchdog/releases)
 
-### Build from source code
+### 从源码构建
 
 Make sure you have `Golang@v1.16.x` installed.
 
@@ -47,12 +45,12 @@ $ cd $GOPATH/src/github.com/axetroy/watchdog
 $ make build
 ```
 
-### Test
+### 测试
 
 ```bash
 $ make test
 ```
 
-### License
+### 开源许可
 
 The [MIT License](LICENSE)
