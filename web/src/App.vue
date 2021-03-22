@@ -43,7 +43,17 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const ws = new WebSocket("ws://localhost:9999/api/ws");
+
+ws.onopen = () => {
+  console.log("Websocket 已连接");
+};
+
+ws.onmessage = (data) => {
+  console.log("on message", data);
+};
+</script>
 
 <style>
 .container {
