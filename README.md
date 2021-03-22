@@ -4,7 +4,27 @@
 ![License](https://img.shields.io/github/license/axetroy/watchdog.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/axetroy/watchdog.svg)
 
-看门狗，一个服务监听者，监听各种协议的服务是否在线
+看门狗，一个服务监听者，监听各种协议的服务是否在线，然后通过各种渠道通知开发者
+
+支持监听的协议包括:
+
+- [ ] ftp
+- [ ] sftp
+- [x] http/https
+- [ ] nfs
+- [ ] pop3
+- [ ] smb
+- [ ] smtp
+- [ ] ssh
+- [x] tcp
+- [x] udp
+- [x] websocket
+
+支持通知的渠道
+
+- [ ] 邮件(pop3/smtp)
+- [x] 微信
+- [ ] 企业微信
 
 ### 使用
 
