@@ -49,7 +49,7 @@ func TestAlarm(t *testing.T) {
 			_ = alarm.ShouldTrigger()
 
 			// The default quantum under Linux is 10ms so this is expected behavior and is a property of Linux, not go.
-			time.Sleep(time.Millisecond * 100)
+			time.Sleep(time.Millisecond * 105)
 		}
 
 		assert.Equal(t, 10, int(alarm.triggerTimesToDay), index)
