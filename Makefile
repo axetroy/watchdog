@@ -11,4 +11,4 @@ format:
 	go fmt ./...
 
 format-check:
-	@gofmt -l *.go **/*.go
+	@gofmt -l *.go internal/**/*.go cmd/**/*.go
