@@ -1,3 +1,5 @@
+![logo](./logo.png)
+
 [![Build Status](https://github.com/axetroy/watchdog/workflows/ci/badge.svg)](https://github.com/axetroy/watchdog/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/watchdog)](https://goreportcard.com/report/github.com/axetroy/watchdog)
 ![Latest Version](https://img.shields.io/github/v/release/axetroy/watchdog.svg)
