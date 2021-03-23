@@ -36,7 +36,7 @@ function getPlatform() {
 }
 
 function getDownloadURL(version) {
-  const url = `https://github.com/axetroy/watchdog/releases/download/${version}/boilerplate_${getPlatform()}_${getArch()}.tar.gz`;
+  const url = `https://github.com/axetroy/watchdog/releases/download/${version}/watchdog_${getPlatform()}_${getArch()}.tar.gz`;
   return url;
 }
 

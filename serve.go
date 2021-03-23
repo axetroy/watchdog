@@ -24,7 +24,7 @@ type ServiceStatus struct {
 }
 
 func (t HTTPHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	if strings.HasPrefix("/api/ws", req.URL.Path) {
+	if strings.HasPrefix(req.URL.Path, "/api/ws") {
 		s, err := socket.NewSocket(res, req)
 
 		if err != nil {
