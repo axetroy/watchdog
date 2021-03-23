@@ -99,7 +99,7 @@ watchdog --help
 watchdog --config=./watchdog.config.json --port=9999
 ```
 
-服务启动成功，开发 `http://localhost:9999` 页面查看监控状态
+服务启动成功，用浏览器打开 `http://localhost:9999` 页面查看监控状态
 
 ## FAQ
 
