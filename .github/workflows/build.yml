@@ -42,7 +42,7 @@ jobs:
         uses: golangci/golangci-lint-action@v2
         with:
           version: v1.37.0
-          args: -v
+          args: -v --timeout 10m0s
           skip-go-installation: true
 
       - name: Format
