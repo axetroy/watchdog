@@ -28,11 +28,6 @@ type Service struct {
 	Report   []Reporter `json:"report"`                                // 通知渠道，支持多个通知渠道
 }
 
-type Account struct {
-	Username string `json:"username"` // 用户名
-	Password string `json:"password"` // 密码/认证信息
-}
-
 // 消息通知渠道
 type Reporter struct {
 	Protocol string      `json:"protocol"` // 协议，支持 wechat/email/slack/webhook
