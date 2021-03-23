@@ -1,0 +1,65 @@
+<svg data-v-1e121de1="" version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" width="160px" height="160px" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet" color-interpolation-filters="sRGB" style="margin: auto;">
+  <rect data-v-1e121de1="" x="0" y="0" width="100%" height="100%" fill="#fff" fill-opacity="1" class="background"></rect>
+  <g data-v-1e121de1="" fill="#303030" transform="translate(0,0)">
+    <g fill="" class="iconsvg-imagesvg icon_container" transform="translate(0,0)">
+      <rect fill="#ffffff" fill-opacity="0" stroke-width="2" x="0" y="0" width="100%" height="100%" class="image-rect"></rect>
+      <svg viewBox="0 0 60 60" x="0" y="0" width="300px" height="300px">
+        <g hollow-target="iconBnFill" mask="url(#b9d5923c-152c-4a01-8513-4a63de04fce6)">
+          <g>
+            <svg xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0" y="0" viewBox="2.5 2.5 95 95" enable-background="new 0 0 100 100" xml:space="preserve" width="60" height="60" filtersec="colorsf8810196219">
+              <g>
+                <path d="M50,6.5C26.014,6.5,6.5,26.014,6.5,50c0,23.986,19.514,43.5,43.5,43.5c23.986,0,43.5-19.514,43.5-43.5   C93.5,26.014,73.986,6.5,50,6.5z"></path>
+                <path d="M50,2.5C23.767,2.5,2.5,23.767,2.5,50S23.767,97.5,50,97.5S97.5,76.233,97.5,50S76.233,2.5,50,2.5z M50,95.5   C24.911,95.5,4.5,75.089,4.5,50S24.911,4.5,50,4.5S95.5,24.911,95.5,50S75.089,95.5,50,95.5z"></path>
+              </g>
+            </svg>
+          </g>
+          <g filter="url(#colors6848697011)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.76 53.24" width="35" height="35" x="12.5" y="12.5">
+              <g>
+                <g fill="#000000">
+                  <path d="M7.27 24.1v-1.85a1 1 0 1 0-2.1 0v1.85a1 1 0 1 0 2.1 0z"></path>
+                  <path d="M37.52 6.44Q30.28 0 14.8 0H0v9.82a10.57 10.57 0 0 1 7.06-3.9 22.43 22.43 0 0 0-1.29 6c5.32-4.06 10.13-2 10.13-2a26.73 26.73 0 0 0-5.9 9.7 11.19 11.19 0 0 1 1.62 5v.08h9.58c5.37 0 9.72-1 9.72 4.35 0 4.08-2.52 10.67-6.08 13.6-2.39-.06-9.16-.59-12.35-4.65a1.09 1.09 0 1 0-1.71 1.34c2.13 2.72 5.44 4.1 8.41 4.8h-12c-1.82 2.46-4.36 5.93-6.44 9.1H14.8q15.41 0 22.68-6.45t7.27-20.22q.01-13.7-7.23-20.13zm-1.58 18.81c-.92 1.37-2.46 1.94-3.45 1.28s-1-2.31-.13-3.68 2.46-1.94 3.45-1.28 1.05 2.31.13 3.68z"></path>
+                </g>
+              </g>
+            </svg>
+          </g>
+        </g>
+        <mask id="b9d5923c-152c-4a01-8513-4a63de04fce6">
+          <g fill="white">
+            <svg xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0" y="0" viewBox="2.5 2.5 95 95" enable-background="new 0 0 100 100" xml:space="preserve" width="60" height="60" filtersec="colorsf8810196219">
+              <g>
+                <path d="M50,6.5C26.014,6.5,6.5,26.014,6.5,50c0,23.986,19.514,43.5,43.5,43.5c23.986,0,43.5-19.514,43.5-43.5   C93.5,26.014,73.986,6.5,50,6.5z"></path>
+                <path d="M50,2.5C23.767,2.5,2.5,23.767,2.5,50S23.767,97.5,50,97.5S97.5,76.233,97.5,50S76.233,2.5,50,2.5z M50,95.5   C24.911,95.5,4.5,75.089,4.5,50S24.911,4.5,50,4.5S95.5,24.911,95.5,50S75.089,95.5,50,95.5z"></path>
+              </g>
+            </svg>
+          </g>
+          <g fill="black">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.76 53.24" width="35" height="35" x="12.5" y="12.5">
+              <g>
+                <g>
+                  <path d="M7.27 24.1v-1.85a1 1 0 1 0-2.1 0v1.85a1 1 0 1 0 2.1 0z"></path>
+                  <path d="M37.52 6.44Q30.28 0 14.8 0H0v9.82a10.57 10.57 0 0 1 7.06-3.9 22.43 22.43 0 0 0-1.29 6c5.32-4.06 10.13-2 10.13-2a26.73 26.73 0 0 0-5.9 9.7 11.19 11.19 0 0 1 1.62 5v.08h9.58c5.37 0 9.72-1 9.72 4.35 0 4.08-2.52 10.67-6.08 13.6-2.39-.06-9.16-.59-12.35-4.65a1.09 1.09 0 1 0-1.71 1.34c2.13 2.72 5.44 4.1 8.41 4.8h-12c-1.82 2.46-4.36 5.93-6.44 9.1H14.8q15.41 0 22.68-6.45t7.27-20.22q.01-13.7-7.23-20.13zm-1.58 18.81c-.92 1.37-2.46 1.94-3.45 1.28s-1-2.31-.13-3.68 2.46-1.94 3.45-1.28 1.05 2.31.13 3.68z"></path>
+                </g>
+              </g>
+            </svg>
+          </g>
+        </mask>
+      </svg>
+      <defs>
+        <filter id="colors6848697011">
+          <feColorMatrix type="matrix" values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0" class="icon-fecolormatrix"></feColorMatrix>
+        </filter>
+        <filter id="colorsf8810196219">
+          <feColorMatrix type="matrix" values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0" class="icon-fecolormatrix"></feColorMatrix>
+        </filter>
+        <filter id="colorsb5316984386">
+          <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" class="icon-fecolormatrix"></feColorMatrix>
+        </filter>
+      </defs>
+    </g>
+  </g>
+</svg>

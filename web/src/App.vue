@@ -1,7 +1,6 @@
 <template>
-  <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
   <div class="container">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <img alt="Logo" src="./assets/logo.svg" />
 
     <div
       style="padding: 10px; color: #fff; border-radius: 4px"
