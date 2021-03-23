@@ -48,9 +48,15 @@ interface Service {
 
 export default defineComponent({
   data: () => {
-    return {
-      services: [] as Service[],
+    const state: {
+      services: Service[];
+      ws?: WebSocket | null;
+    } = {
+      services: [],
+      ws: null,
     };
+
+    return state;
   },
   methods: {
     updateService(s: Service) {
@@ -58,6 +64,7 @@ export default defineComponent({
 
       if (service) {
         for (const attr in s) {
+          // @ts-expect-error ignore
           service[attr] = s[attr];
         }
       } else {
@@ -66,7 +73,7 @@ export default defineComponent({
     },
     connect() {
       if (this.ws) {
-        this.ws.close();
+        this.ws?.close();
         this.ws = null;
       }
       const ws = new WebSocket("ws://localhost:9999/api/ws");
