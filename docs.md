@@ -150,8 +150,8 @@ Q: 支持分布式吗？
 
 | 协议  | 说明                    | addr 字段                                             |
 | ----- | ----------------------- | ----------------------------------------------------- |
-| ftp   | 检测 FTP 服务           | `FTP` 协议的地址，例如 `ftp://localhost:22`           |
-| sftp  | 检测 SFTP 服务          | `SFTP` 协议的地址，例如 `sftp://localhost:22`         |
+| ftp   | -                       | -                                                     |
+| sftp  | -                       | -                                                     |
 | http  | 检测 HTTP 服务          | `HTTP` 协议的地址，例如 `http://localhost:22`         |
 | https | 检测 HTTPS 服务         | `HTTPS` 协议的地址，例如 `https://localhost:22`       |
 | nfs   | -                       | -                                                     |
