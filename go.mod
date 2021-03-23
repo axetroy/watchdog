@@ -11,6 +11,7 @@ require (
 	github.com/gookit/color v1.3.8
 	github.com/gorilla/websocket v1.4.2
 	github.com/mitchellh/mapstructure v1.4.1
+	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.7.0
 	github.com/wxpusher/wxpusher-sdk-go v1.0.3

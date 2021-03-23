@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img alt="Logo" src="./assets/logo.svg" />
+    <img alt="Logo" src="./assets/logo.svg" style="margin-bottom: 20px" />
 
     <div
       style="padding: 10px; color: #fff; border-radius: 4px"
@@ -80,9 +80,11 @@ export default defineComponent({
   data: () => {
     const state: {
       services: Service[];
+      hisgory: Map<string, Service[]>;
       ws?: WebSocket | null;
     } = {
       services: [],
+      hisgory: new Map(),
       ws: null,
     };
 
@@ -133,9 +135,15 @@ export default defineComponent({
         switch (data.event) {
           case "init":
             {
-              const payload = (data as Message<Service[]>).payload;
-              for (const p of payload) {
-                this.updateService(p);
+              const payload = (data as Message<{ [key: string]: Service[] }>)
+                .payload;
+              const services = Object.keys(payload);
+              for (const n of services) {
+                this.hisgory.set(n, payload[n]);
+                const status = payload[n];
+                if (status && status.length) {
+                  this.updateService(status[status.length - 1]);
+                }
               }
             }
             break;
@@ -143,6 +151,13 @@ export default defineComponent({
             {
               const payload = (data as Message<Service>).payload;
               this.updateService(payload);
+              const target = this.hisgory.get(payload.name) || [];
+
+              target.push(payload);
+
+              const newHistory = target.slice(0, 100);
+
+              this.hisgory.set(payload.name, newHistory);
             }
             break;
         }

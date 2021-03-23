@@ -69,6 +69,8 @@ func (s *Scheduling) Start() {
 
 			data.Payload = serviceStatus
 			socket.Pool.Broadcast(data)
+
+			watchdog.Store.SetItem(serviceStatus.Name, []watchdog.ServiceStatus{serviceStatus})
 		}
 		ch <- 1
 	}()

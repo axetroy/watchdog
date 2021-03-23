@@ -33,6 +33,9 @@ github.com/mattn/go-isatty
 # github.com/mitchellh/mapstructure v1.4.1
 ## explicit
 github.com/mitchellh/mapstructure
+# github.com/patrickmn/go-cache v2.1.0+incompatible
+## explicit
+github.com/patrickmn/go-cache
 # github.com/pkg/errors v0.9.1
 ## explicit
 github.com/pkg/errors

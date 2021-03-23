@@ -33,14 +33,15 @@ func (t HTTPHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		initPayload := make([]ServiceStatus, 0)
+		initPayload := map[string][]ServiceStatus{}
 
 		for _, sr := range t.config.Service {
-			initPayload = append(initPayload, ServiceStatus{
-				Name:      sr.Name,
-				Error:     "",
-				UpdatedAt: time.Now().Format(time.RFC3339),
-			})
+			cached := Store.GetItem(sr.Name)
+			if cached == nil {
+				initPayload[sr.Name] = []ServiceStatus{}
+			} else {
+				initPayload[sr.Name] = *cached
+			}
 		}
 
 		socket.Pool.BroadcastTo(s.UUID, socket.Data{
