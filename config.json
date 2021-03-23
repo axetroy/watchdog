@@ -2,13 +2,25 @@
   "interval": 5,
   "service": [
     {
-      "name": "TCP server",
-      "protocol": "tcp",
-      "addr": "127.0.0.1:8080",
+      "name": "百度",
+      "protocol": "https",
+      "addr": "https://www.baidu.com",
       "interval": 10,
-      "report": [
-
-      ]
+      "report": []
+    },
+    {
+      "name": "Google",
+      "protocol": "https",
+      "addr": "https://google.com",
+      "interval": 10,
+      "report": []
+    },
+    {
+      "name": "本地代理",
+      "protocol": "tcp",
+      "addr": "127.0.0.1:1080",
+      "interval": 5,
+      "report": []
     }
   ]
 }
