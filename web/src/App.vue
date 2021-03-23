@@ -4,12 +4,12 @@
     <img alt="Vue logo" src="./assets/logo.png" />
 
     <div
-      style="
-        background-color: #13ce66;
-        padding: 10px;
-        color: #fff;
-        border-radius: 4px;
-      "
+      style="padding: 10px; color: #fff; border-radius: 4px"
+      :class="{
+        'bg-success': services.every((v) => !v.error),
+        'bg-warning': services.some((v) => v.error),
+        'bg-error': services.every((v) => v.error),
+      }"
     >
       ALL PASS
     </div>
@@ -23,9 +23,20 @@
       </thead>
       <tbody>
         <tr v-for="v in services" :key="v.name">
-          <td>{{ v.error ? "ERROR" : "PASS" }}</td>
+          <td>
+            <img
+              v-if="v.error"
+              style="widht: 30px; height: 30px"
+              src="./assets/error.svg"
+            />
+            <img
+              v-else
+              style="widht: 30px; height: 30px"
+              src="./assets/check.svg"
+            />
+          </td>
           <td>{{ v.name }}</td>
-          <td>{{ v.updated_at }}</td>
+          <td>{{ formatDate(v.updated_at) }}</td>
         </tr>
       </tbody>
     </table>
@@ -34,6 +45,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { format } from "date-fns";
 
 interface Message<T = unknown> {
   event: string;
@@ -59,6 +71,9 @@ export default defineComponent({
     return state;
   },
   methods: {
+    formatDate(val: string) {
+      return format(new Date(val), "yyyy-MM-dd HH:mm:ss");
+    },
     updateService(s: Service) {
       const service = this.services.find((v) => v.name === s.name);
 
@@ -139,6 +154,18 @@ tbody tr {
 
 tbody tr td {
   padding: 10px 0;
+}
+
+.bg-success {
+  background-color: #13ce66;
+}
+
+.bg-warning {
+  background-color: #ebdd65;
+}
+
+.bg-error {
+  background-color: #f44336;
 }
 
 #app {
