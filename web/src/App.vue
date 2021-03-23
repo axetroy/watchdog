@@ -10,7 +10,9 @@
         'bg-error': services.every((v) => v.error),
       }"
     >
-      ALL PASS
+      <template v-if="services.every((v) => !v.error)">ALL PASS</template>
+      <template v-else-if="services.every((v) => v.error)">ALL ERROR</template>
+      <template v-else-if="services.some((v) => v.error)">SOME ERROR</template>
     </div>
     <table style="width: 100%; margin-top: 10px">
       <thead>
@@ -22,17 +24,34 @@
       </thead>
       <tbody>
         <tr v-for="v in services" :key="v.name">
-          <td>
+          <td style="position: relative">
             <img
               v-if="v.error"
-              style="widht: 30px; height: 30px"
+              style="widht: 30px; height: 30px; vertical-align: middle"
               src="./assets/error.svg"
             />
             <img
               v-else
-              style="widht: 30px; height: 30px"
+              style="widht: 30px; height: 30px; vertical-align: middle"
               src="./assets/check.svg"
             />
+            <span
+              style="
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                vertical-align: middle;
+                display: inline-block;
+                width: 120px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                cursor: pointer;
+              "
+              :title="v.error"
+            >
+              {{ v.error }}
+            </span>
           </td>
           <td>{{ v.name }}</td>
           <td>{{ formatDate(v.updated_at) }}</td>
