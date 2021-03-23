@@ -111,7 +111,14 @@ export default defineComponent({
         this.ws?.close();
         this.ws = null;
       }
-      const ws = new WebSocket("ws://localhost:9999/api/ws");
+
+      const host =
+        // @ts-expect-error
+        process.env.NODE_ENV === "production"
+          ? location.host
+          : "localhost:9999";
+
+      const ws = new WebSocket(`ws://${host}/api/ws`);
 
       this.ws = ws;
 
