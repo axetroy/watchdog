@@ -6,6 +6,7 @@ import (
 	"github.com/pkg/errors"
 )
 
+// 检测服务 TODO: 使用 ctx 进行超时检测
 func Ping(proto string, addr string, ctx context.Context) error {
 	switch proto {
 	case "http":
