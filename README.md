@@ -9,6 +9,7 @@
 [变更日志](CHANGELOG.md) |
 [贡献代码](CONTRIBUTING.md)
 
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 [![Build Status](https://github.com/axetroy/watchdog/workflows/ci/badge.svg)](https://github.com/axetroy/watchdog/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/watchdog)](https://goreportcard.com/report/github.com/axetroy/watchdog)
 ![Latest Version](https://img.shields.io/github/v/release/axetroy/watchdog.svg)
@@ -25,4 +26,4 @@
 
 ### 开源许可
 
-The [MIT License](LICENSE)
+The [Anti-996 License](LICENSE)
