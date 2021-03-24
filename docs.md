@@ -375,7 +375,7 @@ git clone https://github.com/axetroy/watchdog.git $GOPATH/src/github.com/axetroy
 
 ```bash
 # 启动监控服务，并监听 9999 端口
-go run cmd/watchdog/main.go --config=./config.json --port=9999
+go run cmd/watchdog/main.go --config=./watchdog.config.json --port=9999
 ```
 
 2. 运行前端页面
