@@ -339,3 +339,47 @@ TODO
 #### SMTP-例子
 
 TODO
+
+## 开发
+
+克隆项目
+
+```bash
+git clone https://github.com/axetroy/watchdog.git $GOPATH/src/github.com/axetroy/watchdog
+```
+
+### 开发环境
+
+从 [Golang 官网](https://golang.org/dl/) 下载安装 Golang1.16.x
+
+并且正确设置好环境变量 `$GOROOT` 和 `$GOPATH`
+
+### 编辑器
+
+有条件的，推荐使用 [Goland](https://www.jetbrains.com/go/) 进行开发，几乎是零配置即可开发。
+
+其次推荐使用 [Visual Studio Code](https://code.visualstudio.com/) 进行开发，安装 [Go 扩展](https://marketplace.visualstudio.com/items?itemName=golang.Go) 和 [Vue 扩展](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+
+### 测试
+
+运行以下命令运行测试用例
+
+```bash
+make test
+```
+
+### 编译
+
+运行以下命令编译当前平台的可执行文件, 更多参数通过 `go help build` 查看
+
+```bash
+go build -o dist/watchdog cmd/watchdog/main.go
+```
+
+也可以通过以下命令进行全平台编译
+
+> 运行前请先安装 [goreleaser](https://github.com/goreleaser/goreleaser)
+
+```bash
+make build
+```
