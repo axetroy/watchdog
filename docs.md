@@ -350,15 +350,45 @@ git clone https://github.com/axetroy/watchdog.git $GOPATH/src/github.com/axetroy
 
 ### 开发环境
 
+1. 安装 Golang
+
 从 [Golang 官网](https://golang.org/dl/) 下载安装 Golang1.16.x
 
 并且正确设置好环境变量 `$GOROOT` 和 `$GOPATH`
+
+2. 安装 nodejs
+
+因为项目中包含有前端的部分，所以我们需要安装 nodejs
+
+从 [nodejs 官网](https://nodejs.org) 下载安装 nodejs 14.x 版本
 
 ### 编辑器
 
 有条件的，推荐使用 [Goland](https://www.jetbrains.com/go/) 进行开发，几乎是零配置即可开发。
 
 其次推荐使用 [Visual Studio Code](https://code.visualstudio.com/) 进行开发，安装 [Go 扩展](https://marketplace.visualstudio.com/items?itemName=golang.Go) 和 [Vue 扩展](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+
+### 运行项目
+
+1. 运行后端监控服务
+
+```bash
+# 启动监控服务，并监听 9999 端口
+go run cmd/watchdog/main.go --config=./config.json --port=9999
+```
+
+2. 运行前端页面
+
+```bash
+# 切换工作目录
+cd web
+# 安装 nodejs 依赖
+yarn
+# 运行前端页面
+yarn dev
+```
+
+然后打开浏览器，输入地址 `http://localhost:3000` 即可看到监控页面
 
 ### 测试
 
@@ -369,6 +399,8 @@ make test
 ```
 
 ### 编译
+
+> 在编译前，请先在 [web](./web) 目录中运行 `npm run build` 构建前端资源
 
 运行以下命令编译当前平台的可执行文件, 更多参数通过 `go help build` 查看
 
