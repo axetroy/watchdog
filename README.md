@@ -21,21 +21,7 @@
 
 看门狗，一个服务监听者，监听各种协议的服务是否在线，然后通过各种渠道通知开发者。
 
-### 从源码构建
-
-Make sure you have `Golang@v1.16.x` installed.
-
-```shell
-$ git clone https://github.com/axetroy/watchdog.git $GOPATH/src/github.com/axetroy/watchdog
-$ cd $GOPATH/src/github.com/axetroy/watchdog
-$ make build
-```
-
-### 测试
-
-```bash
-$ make test
-```
+服务在线有保障，睡的更香，头发不再掉。
 
 ### 开源许可
 
