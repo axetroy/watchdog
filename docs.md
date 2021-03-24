@@ -46,6 +46,7 @@
   - [编辑器](#编辑器)
   - [测试](#测试)
   - [编译](#编译)
+- [开源协议](#开源协议)
 
 </td></tr>
 </table>
@@ -415,3 +416,7 @@ go build -o dist/watchdog cmd/watchdog/main.go
 ```bash
 make build
 ```
+
+## 开源协议
+
+项目使用 The [Anti-996 License](LICENSE) 开源协议，在使用该项目前，请确保您已悉知！
