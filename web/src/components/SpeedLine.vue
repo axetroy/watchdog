@@ -32,7 +32,7 @@ export default defineComponent({
     return {};
   },
   computed: {
-    option() {
+    option(): any {
       const dateList = this.dataSource.map((v) => v.updated_at);
       const valueList = this.dataSource.map((v) => v.duration);
 
