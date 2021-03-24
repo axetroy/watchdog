@@ -18,9 +18,10 @@ type HTTPHandler struct {
 }
 
 type ServiceStatus struct {
-	Name      string `json:"name"`
-	Error     string `json:"error"`
-	UpdatedAt string `json:"updated_at"`
+	Name      string        `json:"name"`       // 服务名称
+	Error     string        `json:"error"`      // 错误信息
+	UpdatedAt string        `json:"updated_at"` // 检测时间
+	Duration  time.Duration `json:"duration"`   // 持续时间
 }
 
 func (t HTTPHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {

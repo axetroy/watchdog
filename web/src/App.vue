@@ -19,6 +19,7 @@
         <tr>
           <th>STATUS</th>
           <th>NAME</th>
+          <th>DURATION</th>
           <th>LATEST CHECK</th>
         </tr>
       </thead>
@@ -54,6 +55,7 @@
             </span>
           </td>
           <td>{{ v.name }}</td>
+          <td>{{ formatDuration(v.duration) }}ms</td>
           <td>{{ formatDate(v.updated_at) }}</td>
         </tr>
       </tbody>
@@ -74,6 +76,7 @@ interface Service {
   name: string; // 服务名称
   error?: string; // 错误信息
   updated_at: string; // 更新日期
+  duration: number; // 持续时间
 }
 
 export default defineComponent({
@@ -93,6 +96,9 @@ export default defineComponent({
   methods: {
     formatDate(val: string) {
       return format(new Date(val), "yyyy-MM-dd HH:mm:ss");
+    },
+    formatDuration(duration: number) {
+      return (duration / 1000 / 1000).toFixed(2);
     },
     updateService(s: Service) {
       const service = this.services.find((v) => v.name === s.name);

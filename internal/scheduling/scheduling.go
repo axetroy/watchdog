@@ -39,7 +39,9 @@ func (s *Scheduling) Start() {
 		defer ticker.Stop()
 		for range ticker.C {
 			service := s.job.GetService()
+			t1 := time.Now()
 			err := s.job.Do()
+			duration := time.Since(t1)
 
 			data := socket.Data{
 				Event: socket.EventUpdate,
@@ -48,6 +50,7 @@ func (s *Scheduling) Start() {
 			serviceStatus := watchdog.ServiceStatus{
 				Name:      service.Name,
 				UpdatedAt: time.Now().Format(time.RFC3339),
+				Duration:  duration,
 			}
 
 			if err != nil {
