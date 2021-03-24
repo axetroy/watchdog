@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "date-fns": "^2.19.0",
-    "vue": "^3.0.5"
+    "echarts": "^5.0.2",
+    "vue": "^3.0.5",
+    "vue-echarts": "^6.0.0-rc.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.1.5",

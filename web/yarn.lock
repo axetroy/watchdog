@@ -206,6 +206,14 @@ duplexer2@~0.1.4:
   dependencies:
     readable-stream "^2.0.2"
 
+echarts@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npmjs.org/echarts/-/echarts-5.0.2.tgz#1726d17a57cf05d62cd0567b4325e1201a56baf6"
+  integrity sha512-En0VYpc96nw2/2AZoBWPHsGi471zMublttj50kfFpYAeR4geup0Tj9iVgEXh7QYZFPnRiruDJEjcB5PXZ+BYzQ==
+  dependencies:
+    tslib "2.0.3"
+    zrender "5.0.4"
+
 emojis-list@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
@@ -499,6 +507,11 @@ readable-stream@^2.0.2, readable-stream@~2.3.6:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
+resize-detector@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/resize-detector/-/resize-detector-0.3.0.tgz#fe495112e184695500a8f51e0389f15774cb1cfc"
+  integrity sha512-R/tCuvuOHQ8o2boRP6vgx8hXCCy87H1eY9V5imBYeVNyNVpuL9ciReSccLj2gDcax9+2weXy3bc8Vv+NRXeEvQ==
+
 resolve@^1.19.0:
   version "1.20.0"
   resolved "https://registry.npmjs.org/resolve/-/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
@@ -563,6 +576,11 @@ to-fast-properties@^2.0.0:
   resolved "https://registry.npmjs.org/traverse/-/traverse-0.3.9.tgz#717b8f220cc0bb7b44e40514c22b2e8bbc70d8b9"
   integrity sha1-cXuPIgzAu3tE5AUUwisui7xw2Lk=
 
+tslib@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
+  integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
+
 typescript@^4.2.3:
   version "4.2.3"
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
@@ -606,6 +624,19 @@ vite@^2.1.2:
   optionalDependencies:
     fsevents "~2.3.1"
 
+vue-demi@^0.7.1:
+  version "0.7.4"
+  resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.7.4.tgz#4c6be525788e1f6b3fd5d4f5f9f2148cf6645979"
+  integrity sha512-PT0qzI9Rp8R8eUAsTPXADC+KAZdrMufmbZqEMMqvaiesWyjCpgyuuvS5Su8cvBjK9RevLT/YfFiKWxc8YB9/8g==
+
+vue-echarts@^6.0.0-rc.3:
+  version "6.0.0-rc.3"
+  resolved "https://registry.npmjs.org/vue-echarts/-/vue-echarts-6.0.0-rc.3.tgz#040471fc19025b989c96c901689f6c0d1022d1ff"
+  integrity sha512-B7xfwpHaOeM9+cjallrK3AW893oaeqT9Sjx7tHgwoyGdfPTq6cwDc2Hcdmjgrs/KEp+ZZXMIajXky30Wu4/TDw==
+  dependencies:
+    resize-detector "^0.3.0"
+    vue-demi "^0.7.1"
+
 vue-tsc@^0.0.14:
   version "0.0.14"
   resolved "https://registry.npmjs.org/vue-tsc/-/vue-tsc-0.0.14.tgz#d79f53d534287f5716cd341346747207fbf4611c"
@@ -631,3 +662,10 @@ yallist@^3.0.2:
   version "3.1.1"
   resolved "https://registry.npmjs.org/yallist/-/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"
   integrity sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
+
+zrender@5.0.4:
+  version "5.0.4"
+  resolved "https://registry.npmjs.org/zrender/-/zrender-5.0.4.tgz#89c355af908b9f64a301b38f751b7951f2c8a95a"
+  integrity sha512-DJpy0yrHYY5CuH6vhb9IINWbjvBUe/56J8aH86Jb7O8rRPAYZ3M2E469Qf5B3EOIfM3o3aUrO5edRQfLJ+l1Qw==
+  dependencies:
+    tslib "2.0.3"

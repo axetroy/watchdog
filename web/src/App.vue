@@ -20,6 +20,7 @@
           <th>STATUS</th>
           <th>NAME</th>
           <th>DURATION</th>
+          <th>TREND</th>
           <th>LATEST CHECK</th>
         </tr>
       </thead>
@@ -30,32 +31,20 @@
               v-if="v.error"
               style="widht: 30px; height: 30px; vertical-align: middle"
               src="./assets/error.svg"
+              :title="v.error"
             />
             <img
               v-else
               style="widht: 30px; height: 30px; vertical-align: middle"
               src="./assets/check.svg"
+              title="success"
             />
-            <span
-              style="
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                vertical-align: middle;
-                display: inline-block;
-                width: 120px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                cursor: pointer;
-              "
-              :title="v.error"
-            >
-              {{ v.error }}
-            </span>
           </td>
           <td>{{ v.name }}</td>
           <td>{{ formatDuration(v.duration) }}ms</td>
+          <td style="width: 300px">
+            <speed-line :data-source="hisgory.get(v.name)"></speed-line>
+          </td>
           <td>{{ formatDate(v.updated_at) }}</td>
         </tr>
       </tbody>
@@ -66,13 +55,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { format } from "date-fns";
+import SpeedLine from "./components/SpeedLine.vue";
 
 interface Message<T = unknown> {
   event: string;
   payload: T;
 }
 
-interface Service {
+export interface Service {
   name: string; // 服务名称
   error?: string; // 错误信息
   updated_at: string; // 更新日期
@@ -80,6 +70,9 @@ interface Service {
 }
 
 export default defineComponent({
+  components: {
+    SpeedLine,
+  },
   data: () => {
     const state: {
       services: Service[];
