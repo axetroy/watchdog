@@ -15,6 +15,8 @@
 ![License](https://img.shields.io/github/license/axetroy/watchdog.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/axetroy/watchdog.svg)
 
+![screenshot](./screenshot.png)
+
 </div>
 
 看门狗，一个服务监听者，监听各种协议的服务是否在线，然后通过各种渠道通知开发者。
