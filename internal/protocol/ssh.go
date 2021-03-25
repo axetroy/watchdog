@@ -3,6 +3,7 @@ package protocol
 import (
 	"time"
 
+	"github.com/mitchellh/mapstructure"
 	"github.com/pkg/errors"
 	"golang.org/x/crypto/ssh"
 )
@@ -24,19 +25,21 @@ func PingSSH(addr string, auth interface{}) error {
 	}
 
 	if auth != nil {
-		if entry, ok := auth.(AuthWithPassword); ok {
+		authPassword := AuthWithPassword{}
+		authPrivateKey := AuthWithPrivateKey{}
+		if err := mapstructure.Decode(auth, &authPassword); err == nil {
 			// 用户名 + 密码
-			config.User = entry.Username
-			config.Auth = []ssh.AuthMethod{ssh.Password(entry.Password)}
-		} else if entry, ok := auth.(AuthWithPrivateKey); ok {
+			config.User = authPassword.Username
+			config.Auth = []ssh.AuthMethod{ssh.Password(authPassword.Password)}
+		} else if err := mapstructure.Decode(auth, &authPrivateKey); err == nil {
 			// 用户名 + 私钥
-			signer, err := ssh.ParsePrivateKey([]byte(entry.PrivateKey))
+			signer, err := ssh.ParsePrivateKey([]byte(authPrivateKey.PrivateKey))
 
 			if err != nil {
 				return errors.WithStack(err)
 			}
 
-			config.User = entry.Username
+			config.User = authPrivateKey.Username
 			config.Auth = []ssh.AuthMethod{ssh.PublicKeys(signer)}
 		}
 	}
