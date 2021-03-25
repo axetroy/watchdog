@@ -149,21 +149,23 @@ Q: 支持分布式吗？
 
 ## 服务协议
 
-| 协议  | 说明                    | addr 字段                                             |
-| ----- | ----------------------- | ----------------------------------------------------- |
-| ftp   | 检测 FTP 服务 Ï         | `FTP` 协议的地址，例如 `localhost:21`                 |
-| sftp  | 检测 SFTP 服务          | `FTP` 协议的地址，例如 `localhost:21`                 |
-| http  | 检测 HTTP 服务          | `HTTP` 协议的地址，例如 `http://localhost:80`         |
-| https | 检测 HTTPS 服务         | `HTTPS` 协议的地址，例如 `https://localhost:443`      |
-| nfs   | -                       | -                                                     |
-| pop3  | -                       | -                                                     |
-| smb   | -                       | -                                                     |
-| smtp  | -                       | -                                                     |
-| ssh   | -                       | -                                                     |
-| tcp   | 检测 TCP 服务           | `TCP` 协议的地址，例如 `localhost:22`                 |
-| udp   | 检测 UDP 服务           | `UDP` 协议的地址，例如 `localhost:22`                 |
-| ws    | 检测 WebSocket 服务     | `WebSocket` 协议的地址，例如 `ws://localhost:22`      |
-| wss   | 检测 WebSocket SSL 服务 | `WebSocket SSL` 协议的地址，例如 `wss://localhost:22` |
+| 协议   | 说明                    | addr 字段                                             |
+| ------ | ----------------------- | ----------------------------------------------------- |
+| ftp    | 检测 FTP 服务 Ï         | `FTP` 协议的地址，例如 `localhost:21`                 |
+| sftp   | 检测 SFTP 服务          | `FTP` 协议的地址，例如 `localhost:21`                 |
+| http   | 检测 HTTP 服务          | `HTTP` 协议的地址，例如 `http://localhost:80`         |
+| https  | 检测 HTTPS 服务         | `HTTPS` 协议的地址，例如 `https://localhost:443`      |
+| nfs    | -                       | -                                                     |
+| pop3   | -                       | -                                                     |
+| smb    | -                       | -                                                     |
+| smtp   | -                       | -                                                     |
+| ssh    | -                       | -                                                     |
+| tcp    | 检测 TCP 服务           | `TCP` 协议的地址，例如 `localhost:22`                 |
+| udp    | 检测 UDP 服务           | `UDP` 协议的地址，例如 `localhost:22`                 |
+| ws     | 检测 WebSocket 服务     | `WebSocket` 协议的地址，例如 `ws://localhost:22`      |
+| wss    | 检测 WebSocket SSL 服务 | `WebSocket SSL` 协议的地址，例如 `wss://localhost:22` |
+| grpc   | -                       | -                                                     |
+| thrift | -                       | -                                                     |
 
 ## 通知渠道
 
