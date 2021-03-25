@@ -1,8 +1,14 @@
+# github.com/anmitsu/go-shlex v0.0.0-20200514113438-38f4b401e2be
+## explicit
+github.com/anmitsu/go-shlex
 # github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
 # github.com/fatih/color v1.10.0
 ## explicit
 github.com/fatih/color
+# github.com/gliderlabs/ssh v0.3.2
+## explicit
+github.com/gliderlabs/ssh
 # github.com/go-playground/locales v0.13.0
 ## explicit
 github.com/go-playground/locales
@@ -59,7 +65,17 @@ github.com/yosuke-furukawa/json5/encoding/json5
 goftp.io/server/v2
 goftp.io/server/v2/ratelimit
 # golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
+## explicit
+golang.org/x/crypto/blowfish
+golang.org/x/crypto/chacha20
+golang.org/x/crypto/curve25519
+golang.org/x/crypto/ed25519
+golang.org/x/crypto/ed25519/internal/edwards25519
+golang.org/x/crypto/internal/subtle
+golang.org/x/crypto/poly1305
 golang.org/x/crypto/sha3
+golang.org/x/crypto/ssh
+golang.org/x/crypto/ssh/internal/bcrypt_pbkdf
 # golang.org/x/net v0.0.0-20190724013045-ca1201d0de80
 ## explicit
 golang.org/x/net/websocket

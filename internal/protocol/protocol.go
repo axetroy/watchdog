@@ -7,7 +7,7 @@ import (
 )
 
 // 检测服务 TODO: 使用 ctx 进行超时检测
-func Ping(proto string, addr string, ctx context.Context) error {
+func Ping(proto string, addr string, auth interface{}, ctx context.Context) error {
 	switch proto {
 	case "http":
 		fallthrough
@@ -26,7 +26,7 @@ func Ping(proto string, addr string, ctx context.Context) error {
 	case "sftp":
 		return PingFTP(addr)
 	case "ssh":
-		return PingSSH(addr)
+		return PingSSH(addr, auth)
 	case "smtp":
 		return PingSMTP(addr)
 	case "pop3":

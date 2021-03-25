@@ -139,33 +139,74 @@ Q: 支持分布式吗？
 
 ## 服务配置
 
-| 字段     | 类型                    | 必填 | 说明                                                        |
-| -------- | ----------------------- | ---- | ----------------------------------------------------------- |
-| name     | string                  | \*   | 服务名称，并且唯一                                          |
-| protocol | [string](#服务协议)     | \*   | 服务协议                                                    |
-| addr     | string                  | \*   | 服务地址                                                    |
-| interval | int                     | \*   | 服务检测的间隔时间，单位为 `秒`，如果不设置，则使用全局配置 |
-| reporter | [[]Reporter](#通知渠道) | \*   | 服务状态变更的通知渠道                                      |
+| 字段     | 类型                    | 必填 | 说明                                                               |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------------ |
+| name     | string                  | \*   | 服务名称，并且唯一                                                 |
+| protocol | [string](#服务协议)     | \*   | 服务协议                                                           |
+| addr     | string                  | \*   | 服务地址                                                           |
+| auth     | interface{}             |      | 连接服务的认证信息，有些服务需要用户名/密码/密钥等，都填写在此字段 |
+| interval | int                     | \*   | 服务检测的间隔时间，单位为 `秒`，如果不设置，则使用全局配置        |
+| reporter | [[]Reporter](#通知渠道) | \*   | 服务状态变更的通知渠道                                             |
 
 ## 服务协议
 
-| 协议   | 说明                    | addr 字段                                             |
-| ------ | ----------------------- | ----------------------------------------------------- |
-| ftp    | 检测 FTP 服务 Ï         | `FTP` 协议的地址，例如 `localhost:21`                 |
-| sftp   | 检测 SFTP 服务          | `FTP` 协议的地址，例如 `localhost:21`                 |
-| http   | 检测 HTTP 服务          | `HTTP` 协议的地址，例如 `http://localhost:80`         |
-| https  | 检测 HTTPS 服务         | `HTTPS` 协议的地址，例如 `https://localhost:443`      |
-| nfs    | -                       | -                                                     |
-| pop3   | -                       | -                                                     |
-| smb    | -                       | -                                                     |
-| smtp   | -                       | -                                                     |
-| ssh    | -                       | -                                                     |
-| tcp    | 检测 TCP 服务           | `TCP` 协议的地址，例如 `localhost:22`                 |
-| udp    | 检测 UDP 服务           | `UDP` 协议的地址，例如 `localhost:22`                 |
-| ws     | 检测 WebSocket 服务     | `WebSocket` 协议的地址，例如 `ws://localhost:22`      |
-| wss    | 检测 WebSocket SSL 服务 | `WebSocket SSL` 协议的地址，例如 `wss://localhost:22` |
-| grpc   | -                       | -                                                     |
-| thrift | -                       | -                                                     |
+| 协议   | 说明                    | addr 字段                                             | auth 字段             |
+| ------ | ----------------------- | ----------------------------------------------------- | --------------------- |
+| ftp    | 检测 FTP 服务 Ï         | `FTP` 协议的地址，例如 `localhost:21`                 |                       |
+| sftp   | 检测 SFTP 服务          | `FTP` 协议的地址，例如 `localhost:21`                 |                       |
+| http   | 检测 HTTP 服务          | `HTTP` 协议的地址，例如 `http://localhost:80`         |                       |
+| https  | 检测 HTTPS 服务         | `HTTPS` 协议的地址，例如 `https://localhost:443`      |                       |
+| nfs    | -                       | -                                                     |                       |
+| pop3   | -                       | -                                                     |                       |
+| smb    | -                       | -                                                     |                       |
+| smtp   | -                       | -                                                     |                       |
+| ssh    | 检测 SSH 服务           | `SSH` 协议的地址，例如 `localhost:22`                 | [查看字段](#SSH-认证) |
+| tcp    | 检测 TCP 服务           | `TCP` 协议的地址，例如 `localhost:22`                 |                       |
+| udp    | 检测 UDP 服务           | `UDP` 协议的地址，例如 `localhost:22`                 |                       |
+| ws     | 检测 WebSocket 服务     | `WebSocket` 协议的地址，例如 `ws://localhost:22`      |                       |
+| wss    | 检测 WebSocket SSL 服务 | `WebSocket SSL` 协议的地址，例如 `wss://localhost:22` |                       |
+| grpc   | -                       | -                                                     |                       |
+| thrift | -                       | -                                                     |                       |
+
+### 协议认证
+
+#### SSH-认证
+
+SSH 支持两种方式进行认证
+
+1. 用户名 + 密码
+
+| 字段     | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| username | string | \*   | 连接服务器的用户名 |
+| password | string | \*   | 连接服务器的密码   |
+
+例如:
+
+```json
+{
+  "username": "root",
+  "password": "123456"
+}
+```
+
+2. 用户名 + 私钥
+
+| 字段        | 类型   | 必填 | 说明               |
+| ----------- | ------ | ---- | ------------------ |
+| username    | string | \*   | 连接服务器的用户名 |
+| private_key | string | \*   | 连接服务器的私钥   |
+
+例如:
+
+```json
+{
+  "username": "root",
+  "private_key": "xxxxxx"
+}
+```
+
+例如
 
 ## 通知渠道
 

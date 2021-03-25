@@ -21,11 +21,12 @@ type Config struct {
 }
 
 type Service struct {
-	Name     string     `json:"name" validate:"required"`              // 服务名称
-	Protocol string     `json:"protocol" validate:"required,protocol"` // 服务协议, 支持 http/https/ws/wss/tcp/tdp/ssh
-	Addr     string     `json:"addr" validate:"required"`              // 地址
-	Interval uint       `json:"interval"`                              // 检测任务的间隔时间
-	Report   []Reporter `json:"report"`                                // 通知渠道，支持多个通知渠道
+	Name     string      `json:"name" validate:"required"`              // 服务名称
+	Protocol string      `json:"protocol" validate:"required,protocol"` // 服务协议, 支持 http/https/ws/wss/tcp/tdp/ssh
+	Addr     string      `json:"addr" validate:"required"`              // 地址
+	Interval uint        `json:"interval"`                              // 检测任务的间隔时间
+	Report   []Reporter  `json:"report"`                                // 通知渠道，支持多个通知渠道
+	Auth     interface{} `json:"auth"`                                  // 身份认证的字段，任意类型，主要是每个协议可能需要的字段不一样
 }
 
 // 消息通知渠道
