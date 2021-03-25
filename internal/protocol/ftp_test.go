@@ -25,7 +25,7 @@ func CreateFTPServer(addr string, cb func(c *server.Server)) error {
 
 	go func() {
 		if err := server.ListenAndServe(); err != nil {
-			log.Panicln(err)
+			log.Println(err)
 		}
 	}()
 
