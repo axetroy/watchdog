@@ -1,4 +1,4 @@
-# github.com/davecgh/go-spew v1.1.0
+# github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
 # github.com/fatih/color v1.10.0
 ## explicit
@@ -24,6 +24,9 @@ github.com/gookit/color
 # github.com/gorilla/websocket v1.4.2
 ## explicit
 github.com/gorilla/websocket
+# github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067
+## explicit
+github.com/jlaffaye/ftp
 # github.com/leodido/go-urn v1.2.0
 github.com/leodido/go-urn
 # github.com/mattn/go-colorable v0.1.8
@@ -51,9 +54,13 @@ github.com/wxpusher/wxpusher-sdk-go/model
 # github.com/yosuke-furukawa/json5 v0.1.1
 ## explicit
 github.com/yosuke-furukawa/json5/encoding/json5
+# goftp.io/server/v2 v2.0.0
+## explicit
+goftp.io/server/v2
+goftp.io/server/v2/ratelimit
 # golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
 golang.org/x/crypto/sha3
-# golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3
+# golang.org/x/net v0.0.0-20190724013045-ca1201d0de80
 ## explicit
 golang.org/x/net/websocket
 # golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae
