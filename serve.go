@@ -72,7 +72,8 @@ func Serve(port string, config *Config) {
 		Handler: &HTTPHandler{
 			config: config,
 		},
-		ReadTimeout: 3 * time.Second,
+		ReadTimeout:       30 * time.Second,
+		ReadHeaderTimeout: 30 * time.Second,
 	}
 	log.Fatal(server.ListenAndServe())
 }
