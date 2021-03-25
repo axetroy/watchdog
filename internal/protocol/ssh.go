@@ -1,6 +1,7 @@
 package protocol
 
 import (
+	"strings"
 	"time"
 
 	"github.com/mitchellh/mapstructure"
@@ -21,7 +22,7 @@ func PingSSH(addr string, auth interface{}) error {
 
 	config := ssh.ClientConfig{
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-		Timeout:         time.Second * 60,
+		Timeout:         time.Second * 30,
 	}
 
 	if auth != nil {
@@ -47,6 +48,9 @@ func PingSSH(addr string, auth interface{}) error {
 	client, err := ssh.Dial("tcp", addr, &config)
 
 	if err != nil {
+		if auth == nil && strings.HasPrefix(err.Error(), "ssh: handshake failed:") {
+			return nil
+		}
 		return errors.WithStack(err)
 	}
 

@@ -54,7 +54,7 @@ func (s *Scheduling) Start() {
 			}
 
 			if err != nil {
-				log.Printf(`「%s」: %s\n`, service.Name, err.Error())
+				log.Printf(`「%s」: %s`, service.Name, err.Error())
 				serviceStatus.Error = err.Error()
 
 				// 如果报错的话，检查是否应该上报错误
