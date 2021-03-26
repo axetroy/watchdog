@@ -1,6 +1,7 @@
 package protocol
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"log"
@@ -69,13 +70,13 @@ func TestPingSSH(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if tt.listen == true {
 				err := CreateSSHServer(tt.args.addr, func(s *ssh.Server) {
-					err := PingSSH(tt.args.addr, nil)
+					err := PingSSH(context.Background(), tt.args.addr, nil)
 					assert.Equal(t, tt.wantErr, err != nil, tt.name)
 				})
 
 				assert.Equal(t, tt.wantErr, err != nil, tt.name)
 			} else {
-				err := PingSSH(tt.args.addr, nil)
+				err := PingSSH(context.Background(), tt.args.addr, nil)
 				assert.Equal(t, tt.wantErr, err != nil, tt.name)
 			}
 

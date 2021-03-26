@@ -1,6 +1,7 @@
 package protocol
 
 import (
+	"context"
 	"net"
 	"testing"
 
@@ -51,13 +52,13 @@ func TestPingTCP(t *testing.T) {
 			if tt.listen == true {
 				err := CreateTCPServer(tt.args.addr, func(connection net.Listener) {
 					defer connection.Close()
-					err := PingTCP(tt.args.addr)
+					err := PingTCP(context.Background(), tt.args.addr)
 					assert.Equal(t, tt.wantErr, err != nil, tt.name)
 				})
 
 				assert.Equal(t, tt.wantErr, err != nil, tt.name)
 			} else {
-				err := PingTCP(tt.args.addr)
+				err := PingTCP(context.Background(), tt.args.addr)
 				assert.Equal(t, tt.wantErr, err != nil, tt.name)
 			}
 
