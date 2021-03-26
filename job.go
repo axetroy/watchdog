@@ -27,15 +27,28 @@ func (r RunnerJob) GetService() Service {
 }
 
 func (r RunnerJob) Do() error {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second*30)
+	err := make(chan error, 1)
+	timeout := time.Second * 30
+
+	ctx, cancel := context.WithTimeout(context.Background(), timeout)
 
 	defer cancel()
 
-	err := protocol.Ping(r.service.Protocol, r.service.Addr, r.service.Auth, ctx)
+	go func() {
+		e := protocol.Ping(r.service.Protocol, r.service.Addr, r.service.Auth, ctx)
 
-	if err != nil {
-		return errors.WithStack(err)
+		if e != nil {
+			e = errors.WithStack(e)
+			err <- e
+		} else {
+			err <- nil
+		}
+	}()
+
+	select {
+	case e := <-err:
+		return e
+	case <-ctx.Done():
+		return errors.New("Timeout")
 	}
-
-	return nil
 }

@@ -1,6 +1,8 @@
 package protocol
 
 import (
+	"context"
+	"net"
 	"strings"
 	"time"
 
@@ -9,7 +11,24 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-func PingSSH(addr string, auth interface{}) error {
+func dialSSH(ctx context.Context, network, addr string, config *ssh.ClientConfig) (*ssh.Client, error) {
+	d := net.Dialer{Timeout: config.Timeout}
+	conn, err := d.DialContext(ctx, network, addr)
+
+	if err != nil {
+		return nil, err
+	}
+
+	c, chans, reqs, err := ssh.NewClientConn(conn, addr, config)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return ssh.NewClient(c, chans, reqs), nil
+}
+
+func PingSSH(ctx context.Context, addr string, auth interface{}) error {
 	type AuthWithPassword struct {
 		Username string `json:"username"`
 		Password string `json:"password"`
@@ -45,7 +64,7 @@ func PingSSH(addr string, auth interface{}) error {
 		}
 	}
 
-	client, err := ssh.Dial("tcp", addr, &config)
+	client, err := dialSSH(ctx, "tcp", addr, &config)
 
 	if err != nil {
 		if auth == nil && strings.HasPrefix(err.Error(), "ssh: handshake failed:") {
