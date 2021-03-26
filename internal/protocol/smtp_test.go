@@ -64,7 +64,7 @@ func CreateSMTPServer(addr string, cb func(c *smtpd.Server)) error {
 
 func TestPingSMTP(t *testing.T) {
 	type args struct {
-		addr string
+		// addr string
 	}
 	tests := []struct {
 		name   string
@@ -75,11 +75,8 @@ func TestPingSMTP(t *testing.T) {
 		auth   interface{}
 	}{
 		{
-			name: "2525 wrong password",
-			port: "2525",
-			args: args{
-				addr: "localhost:2525",
-			},
+			name:   "2525 wrong password",
+			port:   "2525",
 			error:  "535 5.7.8 Authentication credentials invalid",
 			listen: true,
 			auth: map[string]string{
@@ -88,11 +85,17 @@ func TestPingSMTP(t *testing.T) {
 			},
 		},
 		{
-			name: "2424 port not listen",
-			port: "2424",
-			args: args{
-				addr: "localhost:2424",
+			name:   "2626 right password",
+			port:   "2626",
+			listen: true,
+			auth: map[string]string{
+				"username": "test",
+				"password": "test",
 			},
+		},
+		{
+			name:   "2424 port not listen",
+			port:   "2424",
 			error:  "dial tcp [::1]:2424: connect: connection refused",
 			listen: false,
 		},
@@ -101,52 +104,20 @@ func TestPingSMTP(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if tt.listen == true {
 				assert.Nil(t, CreateSMTPServer("localhost:"+tt.port, func(s *smtpd.Server) {
-					err := PingSMTP(tt.args.addr, tt.auth)
+					err := PingSMTP("localhost:"+tt.port, tt.auth)
+					if err != nil {
+						assert.EqualError(t, err, tt.error, tt.name)
+					} else {
+						assert.Equal(t, tt.error, "", tt.name)
+					}
+				}))
+			} else {
+				err := PingSMTP("localhost:"+tt.port, tt.auth)
+				if err != nil {
 					assert.EqualError(t, err, tt.error, tt.name)
-				}))
-			} else {
-				err := PingSMTP(tt.args.addr, tt.auth)
-				assert.EqualError(t, err, tt.error, tt.name)
-			}
-
-		})
-	}
-}
-
-func TestPingSMTPWitoutError(t *testing.T) {
-	type args struct {
-		addr string
-	}
-	tests := []struct {
-		name   string
-		args   args
-		listen bool
-		port   string
-		auth   interface{}
-	}{
-		{
-			name: "2626 right password",
-			port: "2626",
-			args: args{
-				addr: "localhost:2626",
-			},
-			listen: true,
-			auth: map[string]string{
-				"username": "test",
-				"password": "test",
-			},
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if tt.listen == true {
-				assert.Nil(t, CreateSMTPServer("localhost:"+tt.port, func(s *smtpd.Server) {
-					err := PingSMTP(tt.args.addr, tt.auth)
-					assert.Nil(t, err)
-				}))
-			} else {
-				err := PingSMTP(tt.args.addr, tt.auth)
-				assert.Nil(t, err)
+				} else {
+					assert.Equal(t, tt.error, "", tt.name)
+				}
 			}
 
 		})
