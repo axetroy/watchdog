@@ -11,7 +11,7 @@ func Ping(proto string, addr string, auth interface{}, ctx context.Context) erro
 	case "http":
 		fallthrough
 	case "https":
-		return PingHTTP(addr)
+		return PingHTTP(ctx, addr)
 	case "tcp":
 		return PingTCP(addr)
 	case "udp":
