@@ -12,7 +12,7 @@ func dialTCP(ctx context.Context, network, addr string) (net.Conn, error) {
 	conn, err := d.DialContext(ctx, network, addr)
 
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	return conn, nil

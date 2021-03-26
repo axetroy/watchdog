@@ -16,13 +16,13 @@ func dialSSH(ctx context.Context, network, addr string, config *ssh.ClientConfig
 	conn, err := d.DialContext(ctx, network, addr)
 
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	c, chans, reqs, err := ssh.NewClientConn(conn, addr, config)
 
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	return ssh.NewClient(c, chans, reqs), nil
