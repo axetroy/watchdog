@@ -27,7 +27,7 @@ func Ping(proto string, addr string, auth interface{}, ctx context.Context) erro
 	case "ssh":
 		return PingSSH(ctx, addr, auth)
 	case "smtp":
-		return PingSMTP(addr)
+		return PingSMTP(addr, auth)
 	case "pop3":
 		return PingPOP3(addr)
 	case "smb":

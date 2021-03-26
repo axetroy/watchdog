@@ -13,6 +13,7 @@ require (
 	github.com/gookit/color v1.3.8
 	github.com/gorilla/websocket v1.4.2
 	github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067
+	github.com/mhale/smtpd v0.0.0-20210322105601-438c8edb069c
 	github.com/mitchellh/mapstructure v1.4.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/pkg/errors v0.9.1
