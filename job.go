@@ -49,6 +49,6 @@ func (r RunnerJob) Do() error {
 	case e := <-err:
 		return e
 	case <-ctx.Done():
-		return errors.New("Timeout")
+		return ctx.Err()
 	}
 }
