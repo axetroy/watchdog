@@ -13,7 +13,7 @@ func Ping(proto string, addr string, auth interface{}, ctx context.Context) erro
 	case "https":
 		return PingHTTP(ctx, addr)
 	case "tcp":
-		return PingTCP(addr)
+		return PingTCP(ctx, addr)
 	case "udp":
 		return PingUDP(addr)
 	case "ws":
