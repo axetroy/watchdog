@@ -40,8 +40,14 @@ func main() {
 		noColor     bool
 	)
 
+	defaultPort := os.Getenv("PORT")
+
+	if defaultPort == "" {
+		defaultPort = "9999"
+	}
+
 	flag.StringVar(&configPath, "config", "watchdog.config.json", "The config file path")
-	flag.StringVar(&port, "port", "9999", "Specify the port for HTTP listening")
+	flag.StringVar(&port, "port", defaultPort, "Specify the port for HTTP listening")
 	flag.BoolVar(&showHelp, "help", false, "Print help information")
 	flag.BoolVar(&showVersion, "version", false, "Print version information")
 
