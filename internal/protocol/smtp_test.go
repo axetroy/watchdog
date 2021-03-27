@@ -79,18 +79,18 @@ func TestPingSMTP(t *testing.T) {
 			port:   "2525",
 			error:  "535 5.7.8 Authentication credentials invalid",
 			listen: true,
-			auth: map[string]string{
-				"username": "test",
-				"password": "wrong_password",
+			auth: AuthWithPassword{
+				Username: "test",
+				Password: "wrong_password",
 			},
 		},
 		{
 			name:   "2626 right password",
 			port:   "2626",
 			listen: true,
-			auth: map[string]string{
-				"username": "test",
-				"password": "test",
+			auth: AuthWithPassword{
+				Username: "test",
+				Password: "test",
 			},
 		},
 		{

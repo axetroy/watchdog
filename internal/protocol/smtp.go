@@ -33,11 +33,12 @@ func (a *loginAuth) Next(fromServer []byte, more bool) ([]byte, error) {
 	return nil, nil
 }
 
+type AuthWithPassword struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
 func PingSMTP(addr string, auth interface{}) error {
-	type AuthWithPassword struct {
-		Username string `json:"username"`
-		Password string `json:"password"`
-	}
 
 	client, err := smtp.Dial(addr)
 
