@@ -238,7 +238,6 @@ SSH 支持两种方式进行认证
 | 协议                        | 说明                      |
 | --------------------------- | ------------------------- |
 | [webhook](#Webhook)         | 通过调用 Webhook 进行通知 |
-| [pop3](#POP3)               | 通过 POP3 协议发送邮件    |
 | [smtp](#SMTP)               | 通过 SMTP 协议发送邮件    |
 | [wechat](#wechat)           | 微信的推送                |
 | [wechat-work](#wechat-work) | 企业微信的推送            |
@@ -265,10 +264,6 @@ Webhook 通道即调用 `HTTP` 的 `POST` 方法，请求目标地址，由目�
   ]
 }
 ```
-
-#### POP3
-
-TODO
 
 #### SMTP
 
