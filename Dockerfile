@@ -1,7 +1,16 @@
+# builder for frontend
+FROM node:14-alpine AS node-builder
+
+RUN yarn
+
+RUN yarn build
+
 # builder for backend
 FROM golang:1.16.2-alpine AS go-builder
 
 WORKDIR /app
+
+COPY --from=node-builder /app/dist ./web/dist
 
 COPY job.go alarm.go serve.go stroage.go config.go go.mod go.sum ./
 COPY ./vendor ./vendor
