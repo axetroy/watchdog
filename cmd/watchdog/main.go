@@ -25,8 +25,8 @@ USAGE:
 OPTIONS:
   --help        Print help information.
   --version     Print version information.
-  --config      Specify config file
-  --port        Specify the port for HTTP listening
+  --config      Specify config file. defaults to 'watchdog.config.json'.
+  --port        Specify the port for HTTP listening. defaults to '9999'.
 SOURCE CODE:
   https://github.com/axetroy/watchdog`)
 }
@@ -40,8 +40,8 @@ func main() {
 		noColor     bool
 	)
 
-	flag.StringVar(&configPath, "config", "", "The config file path")
-	flag.StringVar(&port, "port", "", "Specify the port for HTTP listening")
+	flag.StringVar(&configPath, "config", "watchdog.config.json", "The config file path")
+	flag.StringVar(&port, "port", "9999", "Specify the port for HTTP listening")
 	flag.BoolVar(&showHelp, "help", false, "Print help information")
 	flag.BoolVar(&showVersion, "version", false, "Print version information")
 

@@ -16,24 +16,24 @@ import (
 )
 
 type Config struct {
-	Interval uint      `json:"interval" validate:"required"` // 检测间隔时间
-	Service  []Service `json:"service" validate:"required"`  // 检测的服务
+	Interval uint      `json:"interval" validate:"required,gt=0"` // 检测间隔时间，单位秒
+	Service  []Service `json:"service" validate:"required,dive"`  // 检测的服务
 }
 
 type Service struct {
 	Name     string      `json:"name" validate:"required"`                     // 服务名称
 	Protocol string      `json:"protocol" validate:"required,detect_protocol"` // 服务协议, 支持 http/https/ws/wss/tcp/tdp/ssh
 	Addr     string      `json:"addr" validate:"required"`                     // 地址
-	Interval uint        `json:"interval"`                                     // 检测任务的间隔时间
-	Report   []Reporter  `json:"report"`                                       // 通知渠道，支持多个通知渠道
+	Interval uint        `json:"interval" validate:"gt=0"`                     // 检测任务的间隔时间，单位秒
+	Report   []Reporter  `json:"report" validate:"dive"`                       // 通知渠道，支持多个通知渠道
 	Auth     interface{} `json:"auth"`                                         // 身份认证的字段，任意类型，主要是每个协议可能需要的字段不一样
 }
 
 // 消息通知渠道
 type Reporter struct {
-	Protocol string      `json:"protocol"` // 协议，支持 wechat/webhook/smtp
-	Target   []string    `json:"target"`   // 推送的目标，可以是多个目标
-	Payload  interface{} `json:"payload"`  // 额外的数据，根据不同的协议，所带的数据不同
+	Protocol string      `json:"protocol" validate:"required,notify_protocol"` // 协议，支持 wechat/webhook/smtp
+	Target   []string    `json:"target" validate:"required"`                   // 推送的目标，可以是多个目标
+	Payload  interface{} `json:"payload"`                                      // 额外的数据，根据不同的协议，所带的数据不同
 }
 
 var (
