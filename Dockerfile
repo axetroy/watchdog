@@ -3,7 +3,7 @@ FROM golang:1.16.2-alpine AS go-builder
 
 WORKDIR /app
 
-COPY main.go job.go alarm.go server.go storage_memory.go config.go go.mod go.sum ./
+COPY job.go alarm.go server.go storage_memory.go config.go go.mod go.sum ./
 COPY ./vendor ./vendor
 COPY ./internal ./internal
 COPY ./cmd/watchdog/main.go ./cmd/watchdog/main.go
