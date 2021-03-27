@@ -33,7 +33,7 @@ func (a *loginAuth) Next(fromServer []byte, more bool) ([]byte, error) {
 	return nil, nil
 }
 
-type AuthWithPassword struct {
+type SMTPAuthWithPassword struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
@@ -49,7 +49,7 @@ func PingSMTP(addr string, auth interface{}) error {
 	defer client.Close()
 
 	if auth != nil {
-		authPassword := AuthWithPassword{}
+		authPassword := SMTPAuthWithPassword{}
 		if err := mapstructure.Decode(auth, &authPassword); err == nil {
 			client, err := smtp.Dial(addr)
 
