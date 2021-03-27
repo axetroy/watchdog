@@ -272,7 +272,37 @@ TODO
 
 #### SMTP
 
-TODO
+使用 SMTP 协议发送邮件进行通知，需要邮件服务器开启 SMTP 功能
+
+payload 是一个 `key-value` 的字典对象，字段如下：
+
+| 字段     | 类型   | 必填 | 说明                  | 例子             |
+| -------- | ------ | ---- | --------------------- | ---------------- |
+| addr     | string | \*   | 邮件服务器的地址+端口 | `smtp.qq.com:25` |
+| from     | string | \*   | 邮件发送人的邮箱地址  | `example@qq.com` |
+| username | string | \*   | 邮箱认证账号的用户名  | `example@qq.com` |
+| password | string | \*   | 邮箱认证账号的密码    | `password`       |
+| host     | string | \*   | 邮件服务器的主机域名  | `smtp.qq.com`    |
+
+例如
+
+```json
+{
+  "reporter": [
+    {
+      "protocol": "smtp",
+      "target": ["admin-1@example.com", "admin-2@example.com"],
+      "payload": {
+        "addr": "smtp.qq.com:25",
+        "from": "admin@qq.com",
+        "username": "admin@qq.com",
+        "password": "my_password",
+        "host": "smtp.qq.com"
+      }
+    }
+  ]
+}
+```
 
 #### wechat
 
