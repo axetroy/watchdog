@@ -35,9 +35,9 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@vitejs/plugin-vue@^1.2.0":
+"@vitejs/plugin-vue@1.2.0":
   version "1.2.0"
-  resolved "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-1.2.0.tgz#f0a92470b74761f90afc8cda204fa3bec9df09f4"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-1.2.0.tgz#f0a92470b74761f90afc8cda204fa3bec9df09f4"
   integrity sha512-IhSJfJH6IDNEAnhr91+2vhLLe/1SqkA/2BP19jwtn54DGI+cNbZIxiPhHIdKUpdRo0QwErOh6Jy1Maxk2uVo7A==
 
 "@vue/compiler-core@3.0.8":
@@ -59,9 +59,9 @@
     "@vue/compiler-core" "3.0.8"
     "@vue/shared" "3.0.8"
 
-"@vue/compiler-sfc@^3.0.8":
+"@vue/compiler-sfc@3.0.8":
   version "3.0.8"
-  resolved "https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.0.8.tgz#f3515814708895406c5215329c57f30571e39f01"
+  resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.0.8.tgz#f3515814708895406c5215329c57f30571e39f01"
   integrity sha512-KDSvOVopKwwxdVlktkUlCYv2KUvJz/2sgkflb1LmqSSNMwQ1Yso934fNstd4Su0u25JIYl1piqISBIcBnxtFBA==
   dependencies:
     "@babel/parser" "^7.13.9"
@@ -208,9 +208,9 @@ csstype@^2.6.8:
   resolved "https://registry.npmjs.org/csstype/-/csstype-2.6.16.tgz#544d69f547013b85a40d15bff75db38f34fe9c39"
   integrity sha512-61FBWoDHp/gRtsoDkq/B1nWrCUG/ok1E3tUrcNbZjsE9Cxd9yzUirjS3+nAATB8U4cTtaQmAHbNndoFz5L6C9Q==
 
-date-fns@^2.19.0:
+date-fns@2.19.0:
   version "2.19.0"
-  resolved "https://registry.npmjs.org/date-fns/-/date-fns-2.19.0.tgz#65193348635a28d5d916c43ec7ce6fbd145059e1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.19.0.tgz#65193348635a28d5d916c43ec7ce6fbd145059e1"
   integrity sha512-X3bf2iTPgCAQp9wvjOQytnf5vO5rESYRXlPIVcgSbtT5OTScPcsf9eZU+B/YIkKAtYr5WeCii58BgATrNitlWg==
 
 duplexer2@~0.1.4:
@@ -220,9 +220,9 @@ duplexer2@~0.1.4:
   dependencies:
     readable-stream "^2.0.2"
 
-echarts@^5.0.2:
+echarts@5.0.2:
   version "5.0.2"
-  resolved "https://registry.npmjs.org/echarts/-/echarts-5.0.2.tgz#1726d17a57cf05d62cd0567b4325e1201a56baf6"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-5.0.2.tgz#1726d17a57cf05d62cd0567b4325e1201a56baf6"
   integrity sha512-En0VYpc96nw2/2AZoBWPHsGi471zMublttj50kfFpYAeR4geup0Tj9iVgEXh7QYZFPnRiruDJEjcB5PXZ+BYzQ==
   dependencies:
     tslib "2.0.3"
@@ -595,9 +595,9 @@ tslib@2.0.3:
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
   integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
 
-typescript@^4.2.3:
+typescript@4.2.3:
   version "4.2.3"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
   integrity sha512-qOcYwxaByStAWrBf4x0fibwZvMRG+r4cQoTjbPtUlrWjBHbmCAww1i448U0GJ+3cNNEtebDteo/cHOR3xJ4wEw==
 
 uniq@^1.0.1:
@@ -626,9 +626,9 @@ util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
-vite@^2.1.3:
+vite@2.1.3:
   version "2.1.3"
-  resolved "https://registry.npmjs.org/vite/-/vite-2.1.3.tgz#a31a844d26d3846b5a78f06970d1ea1f8a442955"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.1.3.tgz#a31a844d26d3846b5a78f06970d1ea1f8a442955"
   integrity sha512-bUzArZIUwADVJS/3ywCr4KKFn3a7izs4M87ZDlAlY2V34E4g1kH6p3sVNAh8/IXCn/56fwgMh3rRavPUW7qEQQ==
   dependencies:
     esbuild "^0.9.3"
@@ -643,24 +643,24 @@ vue-demi@^0.7.1:
   resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.7.4.tgz#4c6be525788e1f6b3fd5d4f5f9f2148cf6645979"
   integrity sha512-PT0qzI9Rp8R8eUAsTPXADC+KAZdrMufmbZqEMMqvaiesWyjCpgyuuvS5Su8cvBjK9RevLT/YfFiKWxc8YB9/8g==
 
-vue-echarts@^6.0.0-rc.3:
+vue-echarts@6.0.0-rc.3:
   version "6.0.0-rc.3"
-  resolved "https://registry.npmjs.org/vue-echarts/-/vue-echarts-6.0.0-rc.3.tgz#040471fc19025b989c96c901689f6c0d1022d1ff"
+  resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-6.0.0-rc.3.tgz#040471fc19025b989c96c901689f6c0d1022d1ff"
   integrity sha512-B7xfwpHaOeM9+cjallrK3AW893oaeqT9Sjx7tHgwoyGdfPTq6cwDc2Hcdmjgrs/KEp+ZZXMIajXky30Wu4/TDw==
   dependencies:
     resize-detector "^0.3.0"
     vue-demi "^0.7.1"
 
-vue-tsc@^0.0.15:
+vue-tsc@0.0.15:
   version "0.0.15"
-  resolved "https://registry.npmjs.org/vue-tsc/-/vue-tsc-0.0.15.tgz#2951f0479bf0b966c828748927e8ea5b82a15070"
+  resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-0.0.15.tgz#2951f0479bf0b966c828748927e8ea5b82a15070"
   integrity sha512-l7My4ubz11yoOwnxmgfqDV1DH0VgdkDm+AxrTAIAljsG7JrKkJ++AbhmxjzF2viMJvGbKN0rH+0+ErIkatK3oA==
   dependencies:
     unzipper "0.10.11"
 
-vue@^3.0.8:
+vue@3.0.8:
   version "3.0.8"
-  resolved "https://registry.npmjs.org/vue/-/vue-3.0.8.tgz#14fc72a9ab0291f8461c94450bf45b9df82fc45a"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-3.0.8.tgz#14fc72a9ab0291f8461c94450bf45b9df82fc45a"
   integrity sha512-EE6mfGnPkQgTl1A9Vl2Jld9i4cN7KUDYTC0xPSfNRff6mwYDAqjtesdFo+Sk4/BkRfFSPgR1VnzNB7YbMLdrjw==
   dependencies:
     "@vue/compiler-dom" "3.0.8"
