@@ -1,6 +1,10 @@
 # builder for frontend
 FROM node:14-alpine AS node-builder
 
+WORKDIR /app
+
+COPY ./web ./
+
 RUN yarn
 
 RUN yarn build
