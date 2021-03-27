@@ -16,7 +16,7 @@ import (
 	"github.com/yosuke-furukawa/json5/encoding/json5"
 )
 
-type Config struct {
+type Config struct { // 变量集合
 	Interval uint      `json:"interval" validate:"required,gt=0"` // 检测间隔时间，单位秒
 	Service  []Service `json:"service" validate:"required,dive"`  // 检测的服务
 }
@@ -33,7 +33,7 @@ type Service struct {
 // 消息通知渠道
 type Reporter struct {
 	Protocol string      `json:"protocol" validate:"required,notify_protocol"` // 协议，支持 wechat/webhook/smtp
-	Target   []string    `json:"target" validate:"required"`                   // 推送的目标，可以是多个目标
+	Target   []string    `json:"target" validate:"required,unique"`            // 推送的目标，可以是多个目标
 	Payload  interface{} `json:"payload"`                                      // 额外的数据，根据不同的协议，所带的数据不同
 }
 
@@ -111,6 +111,15 @@ func init() {
 			return ut.Add("required", "{0} is required!", true)
 		}, func(ut ut.Translator, fe validator.FieldError) string {
 			t, _ := ut.T("required", fe.StructNamespace())
+			return t
+		}); err != nil {
+			panic(err)
+		}
+
+		if err := validate.RegisterTranslation("unique", trans, func(ut ut.Translator) error {
+			return ut.Add("unique", "{0} target must contain unique values", true)
+		}, func(ut ut.Translator, fe validator.FieldError) string {
+			t, _ := ut.T("unique", fe.StructNamespace())
 			return t
 		}); err != nil {
 			panic(err)
