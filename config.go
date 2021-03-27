@@ -1,6 +1,7 @@
 package watchdog
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"reflect"
@@ -41,43 +42,48 @@ var (
 	trans    ut.Translator
 )
 
+var (
+	DetectProtocolSupported = []string{
+		"http",
+		"https",
+		"ws",
+		"wss",
+		"tcp",
+		"udp",
+		"ftp",
+		"sftp",
+		"ssh",
+		"smtp",
+		// "pop3",
+		// "nfs",
+		// "smb",
+	}
+	NotifyProtocolSupported = []string{
+		"wechat",
+		// "wechat-work",
+		"webhook",
+		"smtp",
+	}
+)
+
 func isValidDetectProtocol(protocol string) bool {
-	supportDetectProtocols := map[string]bool{
-		"http":  true,
-		"https": true,
-		"ws":    true,
-		"wss":   true,
-		"tcp":   true,
-		"udp":   true,
-		"ftp":   true,
-		"sftp":  true,
-		"ssh":   true,
-		"smtp":  true,
-		"pop3":  false,
-		"nfs":   false,
-		"smb":   false,
+	for _, val := range DetectProtocolSupported {
+		if val == protocol {
+			return true
+		}
 	}
 
-	if isSsupport, ok := supportDetectProtocols[protocol]; ok {
-		return isSsupport
-	} else {
-		return false
-	}
+	return false
 }
 
 func isValidNotifyProtocol(protocol string) bool {
-	supportNotifyProtocols := map[string]bool{
-		"wechat":  true,
-		"webhook": true,
-		"smtp":    true,
-		"pop3":    false,
+	for _, val := range NotifyProtocolSupported {
+		if val == protocol {
+			return true
+		}
 	}
 
-	if isSsupport, ok := supportNotifyProtocols[protocol]; ok {
-		return isSsupport
-	} else {
-		return false
-	}
+	return false
 }
 
 func init() {
@@ -99,21 +105,63 @@ func init() {
 		return name
 	})
 
-	if err := validate.RegisterValidation("detect_protocol", func(field validator.FieldLevel) bool {
-		val := field.Field().String()
+	// register transition
+	{
+		if err := validate.RegisterTranslation("required", trans, func(ut ut.Translator) error {
+			return ut.Add("required", "{0} is required!", true)
+		}, func(ut ut.Translator, fe validator.FieldError) string {
+			t, _ := ut.T("required", fe.StructNamespace())
+			return t
+		}); err != nil {
+			panic(err)
+		}
 
-		return isValidDetectProtocol(val)
-	}); err != nil {
-		panic(err)
+		if err := validate.RegisterTranslation("gt", trans, func(ut ut.Translator) error {
+			return ut.Add("gt", "{0} must be greater than {1}", true)
+		}, func(ut ut.Translator, fe validator.FieldError) string {
+			t, _ := ut.T("gt", fe.StructNamespace())
+			return t
+		}); err != nil {
+			panic(err)
+		}
+
+		if err := validate.RegisterTranslation("detect_protocol", trans, func(ut ut.Translator) error {
+			return ut.Add("detect_protocol", fmt.Sprintf("{0} must be one of [%s]", strings.Join(DetectProtocolSupported, ",")), true)
+		}, func(ut ut.Translator, fe validator.FieldError) string {
+			t, _ := ut.T("detect_protocol", fe.StructNamespace(), fe.Param())
+			return t
+		}); err != nil {
+			panic(err)
+		}
+
+		if err := validate.RegisterTranslation("notify_protocol", trans, func(ut ut.Translator) error {
+			return ut.Add("notify_protocol", fmt.Sprintf("{0} must be one of [%s]", strings.Join(NotifyProtocolSupported, ",")), true)
+		}, func(ut ut.Translator, fe validator.FieldError) string {
+			t, _ := ut.T("notify_protocol", fe.StructNamespace(), fe.Param())
+			return t
+		}); err != nil {
+			panic(err)
+		}
 	}
 
-	if err := validate.RegisterValidation("notify_protocol", func(field validator.FieldLevel) bool {
-		val := field.Field().String()
+	// register validation
+	{
+		if err := validate.RegisterValidation("detect_protocol", func(field validator.FieldLevel) bool {
+			val := field.Field().String()
+			return isValidDetectProtocol(val)
+		}); err != nil {
+			panic(err)
+		}
 
-		return isValidNotifyProtocol(val)
-	}); err != nil {
-		panic(err)
+		if err := validate.RegisterValidation("notify_protocol", func(field validator.FieldLevel) bool {
+			val := field.Field().String()
+
+			return isValidNotifyProtocol(val)
+		}); err != nil {
+			panic(err)
+		}
 	}
+
 }
 
 func NewConfig(content []byte) (*Config, error) {

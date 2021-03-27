@@ -68,7 +68,8 @@ func main() {
 	c, err := watchdog.NewConfigFromFile(configPath)
 
 	if err != nil {
-		panic(err)
+		fmt.Printf("%+v\n", err)
+		os.Exit(1)
 	}
 
 	for _, s := range c.Service {
