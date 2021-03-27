@@ -69,6 +69,8 @@ export interface Service {
   duration: number; // 持续时间
 }
 
+const MAX_HISTORY_SIZE = 100; // 最长的消息列表
+
 export default defineComponent({
   components: {
     SpeedLine,
@@ -161,7 +163,10 @@ export default defineComponent({
 
               target.push(payload);
 
-              const newHistory = target.slice(0, 100);
+              const newHistory =
+                target.length < MAX_HISTORY_SIZE
+                  ? target
+                  : target.slice(target.length - MAX_HISTORY_SIZE, target.length);
 
               this.hisgory.set(payload.name, newHistory);
             }
