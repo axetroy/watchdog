@@ -58,7 +58,7 @@ import { format } from "date-fns";
 import SpeedLine from "./components/SpeedLine.vue";
 
 interface Message<T = unknown> {
-  event: string;
+  event: "init" | "update";
   payload: T;
 }
 
