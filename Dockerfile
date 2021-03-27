@@ -8,7 +8,7 @@ COPY ./vendor ./vendor
 COPY ./internal ./internal
 COPY ./cmd/watchdog/main.go ./cmd/watchdog/main.go
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -mod=vendor --trimpath=$GOPATH -asmflags=-trimpath=$GOPATH -ldflags "-s -w" -o ./bin/watchdog ./cmd/watchdog/main.go
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -mod=vendor -trimpath -asmflags=-trimpath=$GOPATH -ldflags "-s -w" -o ./bin/watchdog ./cmd/watchdog/main.go
 
 # target
 FROM alpine:3.13
@@ -19,4 +19,4 @@ ENV PORT=80
 
 EXPOSE 80
 
-CMD ["./watchdog", "--help"]
+CMD ["./watchdog", "./watchdog.config.json"]
