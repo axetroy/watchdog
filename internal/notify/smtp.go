@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-func EmailSMTP(content string, reporter watchdog.Reporter) error {
+func SMTP(content string, reporter watchdog.Reporter) error {
 	type Payload struct {
 		Addr     string `json:"addr" mapstructure:"addr"`         // example: mail.example.com:25
 		From     string `json:"from" mapstructure:"from"`         // example: sender@example.com

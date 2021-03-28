@@ -30,7 +30,7 @@ func NewNotifier(ns []watchdog.Reporter) Notifier {
 
 	notify.use("wechat", Wechat)
 	notify.use("webhook", Webhook)
-	notify.use("smtp", EmailSMTP)
+	notify.use("smtp", SMTP)
 	return notify
 }
 
