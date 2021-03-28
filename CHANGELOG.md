@@ -1,5 +1,5 @@
-Unreleased (2021-03-28)
------------------------
+v0.1.0 (2021-03-28)
+-------------------
 
 ### 🔥 New feature:
 
@@ -34,8 +34,9 @@ Unreleased (2021-03-28)
 -	build for web([`03f0dca`](https://github.com/axetroy/watchdog/commit/03f0dcae72903cc4365b58d8a2d8e132e2d1a579)) (thanks @axetroy)
 -	build([`da9339c`](https://github.com/axetroy/watchdog/commit/da9339c822862b8ee3b5004379885f05075c895e)) (thanks @axetroy)
 
-### 💪 Commits(125):
+### 💪 Commits(126):
 
+-	[`036a3ec`](https://github.com/axetroy/watchdog/commit/036a3ec63a001190820a82a8849f4d13a191eac1) - docs: update changelog
 -	[`5a5c176`](https://github.com/axetroy/watchdog/commit/5a5c176f077218bd53aa68a95eeddd9a0d934fb8) - v0.1.0
 -	[`ebd4d70`](https://github.com/axetroy/watchdog/commit/ebd4d703f146c70eccfb59f3dc5965ba96eddfa1) - chore: remove npm publish
 -	[`4a67f5d`](https://github.com/axetroy/watchdog/commit/4a67f5d168157babf2cb8bedcefaab2b02ab1628) - feat: 输出日志到可切割的文件中
