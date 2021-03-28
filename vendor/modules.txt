@@ -33,8 +33,17 @@ github.com/gorilla/websocket
 # github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067
 ## explicit
 github.com/jlaffaye/ftp
+# github.com/konsorten/go-windows-terminal-sequences v1.0.1
+github.com/konsorten/go-windows-terminal-sequences
 # github.com/leodido/go-urn v1.2.0
 github.com/leodido/go-urn
+# github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
+## explicit
+github.com/lestrrat-go/file-rotatelogs
+github.com/lestrrat-go/file-rotatelogs/internal/option
+# github.com/lestrrat-go/strftime v1.0.4
+## explicit
+github.com/lestrrat-go/strftime
 # github.com/mattn/go-colorable v0.1.8
 github.com/mattn/go-colorable
 # github.com/mattn/go-isatty v0.0.12
@@ -53,6 +62,9 @@ github.com/patrickmn/go-cache
 github.com/pkg/errors
 # github.com/pmezard/go-difflib v1.0.0
 github.com/pmezard/go-difflib/difflib
+# github.com/sirupsen/logrus v1.4.2
+## explicit
+github.com/sirupsen/logrus
 # github.com/stretchr/testify v1.7.0
 ## explicit
 github.com/stretchr/testify/assert

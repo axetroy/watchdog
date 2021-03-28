@@ -2,10 +2,10 @@ package scheduling
 
 import (
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/axetroy/watchdog"
+	"github.com/axetroy/watchdog/internal/log"
 	"github.com/axetroy/watchdog/internal/notify"
 	"github.com/axetroy/watchdog/internal/socket"
 )
@@ -54,7 +54,7 @@ func (s *Scheduling) Start() {
 			}
 
 			if err != nil {
-				log.Printf(`「%s」: %s`, service.Name, err.Error())
+				log.Logger.Printf(`「%s」: %s`, service.Name, err.Error())
 				serviceStatus.Error = err.Error()
 
 				// 如果报错的话，检查是否应该上报错误
@@ -65,8 +65,7 @@ func (s *Scheduling) Start() {
 					msg := fmt.Sprintf(`「watchdog」服务 '%s' 不可用, %s`, service.Name, err.Error())
 
 					if pushErr := pusher.Push(msg); pushErr != nil {
-						// write to log
-						log.Println(pushErr)
+						log.Logger.Println(pushErr)
 					}
 				}
 			}
