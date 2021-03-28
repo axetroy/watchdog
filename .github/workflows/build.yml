@@ -70,6 +70,10 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ^1.16.0
+
       - uses: axetroy/setup-whatchanged@v1
         with:
           version: v0.3.5
