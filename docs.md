@@ -57,9 +57,9 @@
 # 安装最新版本
 curl -fsSL https://raw.githubusercontent.com/axetroy/watchdog/master/install.sh | bash
 # 安装指定版本
-curl -fsSL https://raw.githubusercontent.com/axetroy/watchdog/master/install.sh | bash -s v1.3.0
+curl -fsSL https://raw.githubusercontent.com/axetroy/watchdog/master/install.sh | bash -s v0.1.0
 # 从 gobinaries.com 中安装
-curl -sf https://gobinaries.com/axetroy/watchdog@v1.3.0 | sh
+curl -sf https://gobinaries.com/axetroy/watchdog@v0.1.0 | sh
 ```
 
 或者你可以通过[下载页面](https://github.com/axetroy/watchdog/releases)下载你对应平台的可执行文件
