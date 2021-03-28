@@ -19,7 +19,7 @@ require (
 	github.com/mitchellh/mapstructure v1.4.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/pkg/errors v0.9.1
-	github.com/sirupsen/logrus v1.4.2
+	github.com/sirupsen/logrus v1.8.1
 	github.com/stretchr/testify v1.7.0
 	github.com/wxpusher/wxpusher-sdk-go v1.0.3
 	github.com/yosuke-furukawa/json5 v0.1.1

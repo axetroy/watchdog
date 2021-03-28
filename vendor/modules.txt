@@ -33,8 +33,6 @@ github.com/gorilla/websocket
 # github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067
 ## explicit
 github.com/jlaffaye/ftp
-# github.com/konsorten/go-windows-terminal-sequences v1.0.1
-github.com/konsorten/go-windows-terminal-sequences
 # github.com/leodido/go-urn v1.2.0
 github.com/leodido/go-urn
 # github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
@@ -62,7 +60,7 @@ github.com/patrickmn/go-cache
 github.com/pkg/errors
 # github.com/pmezard/go-difflib v1.0.0
 github.com/pmezard/go-difflib/difflib
-# github.com/sirupsen/logrus v1.4.2
+# github.com/sirupsen/logrus v1.8.1
 ## explicit
 github.com/sirupsen/logrus
 # github.com/stretchr/testify v1.7.0
@@ -98,5 +96,6 @@ golang.org/x/net/websocket
 golang.org/x/sys/cpu
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
+golang.org/x/sys/windows
 # gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
 gopkg.in/yaml.v3
