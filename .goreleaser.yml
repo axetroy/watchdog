@@ -7,14 +7,31 @@ builds:
       - linux
       - openbsd
       - freebsd
+      - netbsd
+      - plan9
+      - solaris
+      - illumos
+      - aix
     goarch:
       - amd64
       - arm
       - arm64
       - 386
+      - s390x
+      - ppc64
+      - ppc64le
+      - riscv64
+      - mips
+      - mips64
+      - mipsle
+      - mips64le
     goarm:
+      - 5
       - 6
       - 7
+    gomips:
+      - hardfloat
+      - softfloat
     env:
       - CGO_ENABLED=0
     flags:
