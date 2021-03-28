@@ -35,7 +35,6 @@
   - [通知渠道](#通知渠道)
     - [微信通知](#微信例子)
     - [Webhook](#Webhook-例子)
-    - [POP3](#POP3-例子)
     - [SMTP](#SMTP-例子)
 
 </td><td width=25% valign=top>
@@ -415,13 +414,33 @@ TODO
 }
 ```
 
-#### POP3-例子
-
-TODO
-
 #### SMTP-例子
 
-TODO
+```json
+{
+  "service": [
+    {
+      "name": "主站点",
+      "protocol": "https",
+      "addr": "https://example.com",
+      "interval": 10
+      "reporter": [
+        {
+          "protocol": "smtp",
+          "target": ["admin@example.com"],
+          "payload": {
+            "from": "tester@example.com",
+            "addr": "mail.example.com:25",
+            "username": "tester@example.com",
+            "password": "password",
+            "host": "smtp.example.com"
+          }
+        }
+      ]
+    },
+  ]
+}
+```
 
 ## 开发
 
