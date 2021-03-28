@@ -23,7 +23,6 @@
 - [服务协议](#服务协议)
 - [通知渠道](#通知渠道)
   - [Webhook](#webhook)
-  - [POP3](#POP3)
   - [SMTP](#SMTP)
   - [微信](#wechat)
   - [企业微信](#wechat-work)
