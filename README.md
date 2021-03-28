@@ -15,7 +15,6 @@
 [![Docker Build Status](https://img.shields.io/docker/cloud/build/axetroy/watchdog)](https://hub.docker.com/r/axetroy/watchdog/builds)
 [![Docker Pulls](https://img.shields.io/docker/pulls/axetroy/watchdog)](https://hub.docker.com/r/axetroy/watchdog/builds)
 ![Latest Version](https://img.shields.io/github/v/release/axetroy/watchdog.svg)
-![License](https://img.shields.io/github/license/axetroy/watchdog.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/axetroy/watchdog.svg)
 
 ![screenshot](./screenshot.png)
