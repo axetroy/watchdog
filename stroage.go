@@ -9,7 +9,7 @@ import (
 var Store Storage
 
 func init() {
-	s := NewStorageMemory()
+	s := NewStorageMemory(time.Minute*30, time.Second*30)
 
 	createStorage(s)
 }
@@ -29,9 +29,9 @@ type StorageMemory struct {
 	c *cache.Cache
 }
 
-func NewStorageMemory() *StorageMemory {
+func NewStorageMemory(defaultExpiration, cleanupInterval time.Duration) *StorageMemory {
 	return &StorageMemory{
-		c: cache.New(5*time.Minute, 10*time.Minute),
+		c: cache.New(defaultExpiration, cleanupInterval),
 	}
 }
 
