@@ -70,14 +70,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Release to Github
-        uses: goreleaser/goreleaser-action@v2
-        with:
-          version: latest
-          args: release --rm-dist --release-notes=./release.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
       - uses: axetroy/setup-whatchanged@v1
         with:
           version: v0.3.5
@@ -87,17 +79,10 @@ jobs:
           whatchanged --tpl=release.tpl --output=release.md
           cat release.md
 
-      - name: Prepare publish
-        env:
-          GITHUB_REF: ${{ github.ref }}
-        run: |
-          cp README.md ./npm/README.md
-          cp release.md ./npm/CHANGELOG.md
-          cp LICENSE ./npm/LICENSE
-          node ./npm/scripts/bump.js
-
-      - name: Publish to NPM
-        uses: JS-DevTools/npm-publish@v1
+      - name: Release to Github
+        uses: goreleaser/goreleaser-action@v2
         with:
-          package: ./npm/package.json
-          token: ${{ secrets.NPM_TOKEN }}
+          version: latest
+          args: release --rm-dist --release-notes=./release.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

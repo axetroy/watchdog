@@ -51,12 +51,6 @@
 
 ## 安装
 
-如果你已安装了 `node.js`，那么可以运行以下命令进行安装
-
-```bash
-npm install @axetroy/watchdog -g
-```
-
 如果你是用 `Linux`/`MacOS` 系统，可以运行以下命令进行安装
 
 ```shell
