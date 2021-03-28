@@ -18,3 +18,4 @@
 dist
 logs
 release.md
+.DS_Store
