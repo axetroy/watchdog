@@ -10,6 +10,7 @@ import (
 	"github.com/axetroy/watchdog/internal/socket"
 )
 
+// skipcq: SCC-compile
 //go:embed web/dist
 var content embed.FS
 
