@@ -12,6 +12,7 @@
 - [介绍](#介绍)
 - [安装](#安装)
 - [快速开始](#快速开始)
+- [Docker](#Docker)
 - [工作原理](#工作原理)
 - [路线图](#路线图)
 - [常见问题](#常见问题)
@@ -94,6 +95,26 @@ watchdog --help
 ```bash
 # 读取配置，然后监听 9999 端口
 watchdog --config=./watchdog.config.json --port=9999
+```
+
+## Docker
+
+确保当前目录下存在 `watchdog.config.json` 文件。
+
+运行以下命令运行 Docker 容器。
+
+[查看更多信息](https://hub.docker.com/r/axetroy/watchdog)
+
+```bash
+# 拉取镜像
+docker pull axetroy/watchdog:v0.1.1
+# 运行镜像
+docker run -p 9999:80 \
+  --mount type=bind,source=./watchdog.config.json,target=/app/watchdog.config.json \
+  -v ./logs:/app/logs \
+  axetroy/watchdog:v0.1.1 \
+  --port=80 \
+  --config=/app/config/watchdog.config.json
 ```
 
 服务启动成功，用浏览器打开 `http://localhost:9999` 页面查看监控状态
