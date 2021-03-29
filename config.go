@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"reflect"
+	"sort"
 	"strings"
 
 	"github.com/fatih/color"
@@ -16,7 +17,7 @@ import (
 	"github.com/yosuke-furukawa/json5/encoding/json5"
 )
 
-type Config struct { // 变量集合
+type Config struct {
 	Interval uint      `json:"interval" validate:"required,gt=0"` // 检测间隔时间，单位秒
 	Service  []Service `json:"service" validate:"required,dive"`  // 检测的服务
 }
@@ -110,7 +111,7 @@ func init() {
 		if err := validate.RegisterTranslation("required", trans, func(ut ut.Translator) error {
 			return ut.Add("required", "{0} is required!", true)
 		}, func(ut ut.Translator, fe validator.FieldError) string {
-			t, _ := ut.T("required", fe.StructNamespace())
+			t, _ := ut.T("required", fe.StructNamespace(), fe.Param())
 			return t
 		}); err != nil {
 			panic(err)
@@ -119,7 +120,7 @@ func init() {
 		if err := validate.RegisterTranslation("unique", trans, func(ut ut.Translator) error {
 			return ut.Add("unique", "{0} target must contain unique values", true)
 		}, func(ut ut.Translator, fe validator.FieldError) string {
-			t, _ := ut.T("unique", fe.StructNamespace())
+			t, _ := ut.T("unique", fe.StructNamespace(), fe.Param())
 			return t
 		}); err != nil {
 			panic(err)
@@ -128,7 +129,7 @@ func init() {
 		if err := validate.RegisterTranslation("gt", trans, func(ut ut.Translator) error {
 			return ut.Add("gt", "{0} must be greater than {1}", true)
 		}, func(ut ut.Translator, fe validator.FieldError) string {
-			t, _ := ut.T("gt", fe.StructNamespace())
+			t, _ := ut.T("gt", fe.StructNamespace(), fe.Param())
 			return t
 		}); err != nil {
 			panic(err)
@@ -173,17 +174,8 @@ func init() {
 
 }
 
-func NewConfig(content []byte) (*Config, error) {
-	var (
-		config = Config{}
-		err    error
-	)
-
-	if err = json5.Unmarshal(content, &config); err != nil {
-		return nil, errors.WithStack(err)
-	}
-
-	err = validate.Struct(config)
+func (c *Config) Validate() error {
+	err := validate.Struct(c)
 
 	if err != nil {
 		// translate all error at once
@@ -194,10 +186,29 @@ func NewConfig(content []byte) (*Config, error) {
 		msg := []string{}
 
 		for _, e := range errorsMap {
-			msg = append(msg, color.RedString("[config]: "+e))
+			msg = append(msg, color.RedString(e))
 		}
 
-		return nil, errors.New(strings.Join(msg, "\n"))
+		sort.Strings(msg)
+
+		return errors.New(strings.Join(msg, "\n"))
+	}
+
+	return nil
+}
+
+func NewConfig(content []byte) (*Config, error) {
+	var (
+		config = Config{}
+		err    error
+	)
+
+	if err = json5.Unmarshal(content, &config); err != nil {
+		return nil, errors.WithStack(err)
+	}
+
+	if err = config.Validate(); err != nil {
+		return nil, err
 	}
 
 	return &config, nil
