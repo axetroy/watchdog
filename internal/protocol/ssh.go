@@ -38,9 +38,9 @@ func PingSSH(ctx context.Context, addr string, auth interface{}) error {
 	}
 
 	type AuthWithPrivateKey struct {
-		Username       string  `json:"username"`             // 用户名
-		PrivateKey     string  `json:"private_key"`          // 私钥
-		KnownHostsFile *string `json:"known_hosts_filepath"` // KnownHosts 文件路径
+		Username           string  `json:"username"`             // 用户名
+		PrivateKey         string  `json:"private_key"`          // 私钥
+		KnownHostsFilepath *string `json:"known_hosts_filepath"` // KnownHosts 文件路径
 	}
 
 	config := ssh.ClientConfig{
@@ -54,6 +54,7 @@ func PingSSH(ctx context.Context, addr string, auth interface{}) error {
 			// 用户名 + 密码
 			config.User = authPassword.Username
 			config.Auth = []ssh.AuthMethod{ssh.Password(authPassword.Password)}
+			config.HostKeyCallback = ssh.InsecureIgnoreHostKey()
 		} else if err := mapstructure.Decode(auth, &authPrivateKey); err == nil {
 			// 用户名 + 私钥
 			signer, err := ssh.ParsePrivateKey([]byte(authPrivateKey.PrivateKey))
@@ -68,7 +69,7 @@ func PingSSH(ctx context.Context, addr string, auth interface{}) error {
 				return errors.WithStack(err)
 			}
 
-			if authPrivateKey.KnownHostsFile == nil {
+			if authPrivateKey.KnownHostsFilepath == nil {
 				knownHostsFilepath := filepath.Join(homeDir, ".ssh", "known_hosts")
 
 				if _, err = os.Stat(knownHostsFilepath); err == nil {
@@ -86,7 +87,7 @@ func PingSSH(ctx context.Context, addr string, auth interface{}) error {
 					return errors.WithStack(err)
 				}
 			} else {
-				hostKeyCallback, err := knownhosts.New(*authPrivateKey.KnownHostsFile)
+				hostKeyCallback, err := knownhosts.New(*authPrivateKey.KnownHostsFilepath)
 
 				if err != nil {
 					return errors.WithStack(err)
@@ -97,7 +98,11 @@ func PingSSH(ctx context.Context, addr string, auth interface{}) error {
 
 			config.User = authPrivateKey.Username
 			config.Auth = []ssh.AuthMethod{ssh.PublicKeys(signer)}
+		} else {
+			return errors.New("invalid auth for ssh protocol")
 		}
+	} else {
+		config.HostKeyCallback = ssh.InsecureIgnoreHostKey()
 	}
 
 	client, err := dialSSH(ctx, "tcp", addr, &config)
