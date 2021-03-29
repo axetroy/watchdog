@@ -9,7 +9,7 @@ import (
 func Ping(ctx context.Context, proto string, addr string, auth interface{}) error {
 	switch proto {
 	case "http":
-		fallthrough
+		return PingHTTP(ctx, addr)
 	case "https":
 		return PingHTTP(ctx, addr)
 	case "tcp":
@@ -17,11 +17,11 @@ func Ping(ctx context.Context, proto string, addr string, auth interface{}) erro
 	case "udp":
 		return PingUDP(addr)
 	case "ws":
-		fallthrough
+		return PingWebsocket(addr)
 	case "wss":
 		return PingWebsocket(addr)
 	case "ftp":
-		fallthrough
+		return PingFTP(addr)
 	case "sftp":
 		return PingFTP(addr)
 	case "ssh":
