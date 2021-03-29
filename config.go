@@ -106,70 +106,66 @@ func init() {
 		return name
 	})
 
-	// register transition
-	{
-		if err := validate.RegisterTranslation("required", trans, func(ut ut.Translator) error {
-			return ut.Add("required", "{0} is required!", true)
-		}, func(ut ut.Translator, fe validator.FieldError) string {
-			t, _ := ut.T("required", fe.StructNamespace(), fe.Param())
-			return t
-		}); err != nil {
-			panic(err)
-		}
-
-		if err := validate.RegisterTranslation("unique", trans, func(ut ut.Translator) error {
-			return ut.Add("unique", "{0} target must contain unique values", true)
-		}, func(ut ut.Translator, fe validator.FieldError) string {
-			t, _ := ut.T("unique", fe.StructNamespace(), fe.Param())
-			return t
-		}); err != nil {
-			panic(err)
-		}
-
-		if err := validate.RegisterTranslation("gt", trans, func(ut ut.Translator) error {
-			return ut.Add("gt", "{0} must be greater than {1}", true)
-		}, func(ut ut.Translator, fe validator.FieldError) string {
-			t, _ := ut.T("gt", fe.StructNamespace(), fe.Param())
-			return t
-		}); err != nil {
-			panic(err)
-		}
-
-		if err := validate.RegisterTranslation("detect_protocol", trans, func(ut ut.Translator) error {
-			return ut.Add("detect_protocol", fmt.Sprintf("{0} must be one of [%s]", strings.Join(DetectProtocolSupported, ",")), true)
-		}, func(ut ut.Translator, fe validator.FieldError) string {
-			t, _ := ut.T("detect_protocol", fe.StructNamespace(), fe.Param())
-			return t
-		}); err != nil {
-			panic(err)
-		}
-
-		if err := validate.RegisterTranslation("notify_protocol", trans, func(ut ut.Translator) error {
-			return ut.Add("notify_protocol", fmt.Sprintf("{0} must be one of [%s]", strings.Join(NotifyProtocolSupported, ",")), true)
-		}, func(ut ut.Translator, fe validator.FieldError) string {
-			t, _ := ut.T("notify_protocol", fe.StructNamespace(), fe.Param())
-			return t
-		}); err != nil {
-			panic(err)
-		}
+	// ==== register transition ====
+	if err := validate.RegisterTranslation("required", trans, func(ut ut.Translator) error {
+		return ut.Add("required", "{0} is required!", true)
+	}, func(ut ut.Translator, fe validator.FieldError) string {
+		t, _ := ut.T("required", fe.StructNamespace(), fe.Param())
+		return t
+	}); err != nil {
+		panic(err)
 	}
 
-	// register validation
-	{
-		if err := validate.RegisterValidation("detect_protocol", func(field validator.FieldLevel) bool {
-			val := field.Field().String()
-			return isValidDetectProtocol(val)
-		}); err != nil {
-			panic(err)
-		}
+	if err := validate.RegisterTranslation("unique", trans, func(ut ut.Translator) error {
+		return ut.Add("unique", "{0} target must contain unique values", true)
+	}, func(ut ut.Translator, fe validator.FieldError) string {
+		t, _ := ut.T("unique", fe.StructNamespace(), fe.Param())
+		return t
+	}); err != nil {
+		panic(err)
+	}
 
-		if err := validate.RegisterValidation("notify_protocol", func(field validator.FieldLevel) bool {
-			val := field.Field().String()
+	if err := validate.RegisterTranslation("gt", trans, func(ut ut.Translator) error {
+		return ut.Add("gt", "{0} must be greater than {1}", true)
+	}, func(ut ut.Translator, fe validator.FieldError) string {
+		t, _ := ut.T("gt", fe.StructNamespace(), fe.Param())
+		return t
+	}); err != nil {
+		panic(err)
+	}
 
-			return isValidNotifyProtocol(val)
-		}); err != nil {
-			panic(err)
-		}
+	if err := validate.RegisterTranslation("detect_protocol", trans, func(ut ut.Translator) error {
+		return ut.Add("detect_protocol", fmt.Sprintf("{0} must be one of [%s]", strings.Join(DetectProtocolSupported, ",")), true)
+	}, func(ut ut.Translator, fe validator.FieldError) string {
+		t, _ := ut.T("detect_protocol", fe.StructNamespace(), fe.Param())
+		return t
+	}); err != nil {
+		panic(err)
+	}
+
+	if err := validate.RegisterTranslation("notify_protocol", trans, func(ut ut.Translator) error {
+		return ut.Add("notify_protocol", fmt.Sprintf("{0} must be one of [%s]", strings.Join(NotifyProtocolSupported, ",")), true)
+	}, func(ut ut.Translator, fe validator.FieldError) string {
+		t, _ := ut.T("notify_protocol", fe.StructNamespace(), fe.Param())
+		return t
+	}); err != nil {
+		panic(err)
+	}
+
+	// ==== register validation ====
+	if err := validate.RegisterValidation("detect_protocol", func(field validator.FieldLevel) bool {
+		val := field.Field().String()
+		return isValidDetectProtocol(val)
+	}); err != nil {
+		panic(err)
+	}
+
+	if err := validate.RegisterValidation("notify_protocol", func(field validator.FieldLevel) bool {
+		val := field.Field().String()
+
+		return isValidNotifyProtocol(val)
+	}); err != nil {
+		panic(err)
 	}
 
 }
