@@ -3,12 +3,15 @@ package protocol
 import (
 	"context"
 	"net"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
 	"github.com/mitchellh/mapstructure"
 	"github.com/pkg/errors"
 	"golang.org/x/crypto/ssh"
+	knownhosts "golang.org/x/crypto/ssh/knownhosts"
 )
 
 func dialSSH(ctx context.Context, network, addr string, config *ssh.ClientConfig) (*ssh.Client, error) {
@@ -30,18 +33,18 @@ func dialSSH(ctx context.Context, network, addr string, config *ssh.ClientConfig
 
 func PingSSH(ctx context.Context, addr string, auth interface{}) error {
 	type AuthWithPassword struct {
-		Username string `json:"username"`
-		Password string `json:"password"`
+		Username string `json:"username"` // 用户名
+		Password string `json:"password"` // 密码
 	}
 
 	type AuthWithPrivateKey struct {
-		Username   string `json:"username"`
-		PrivateKey string `json:"private_key"`
+		Username       string  `json:"username"`             // 用户名
+		PrivateKey     string  `json:"private_key"`          // 私钥
+		KnownHostsFile *string `json:"known_hosts_filepath"` // KnownHosts 文件路径
 	}
 
 	config := ssh.ClientConfig{
-		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-		Timeout:         time.Second * 30,
+		Timeout: time.Second * 30,
 	}
 
 	if auth != nil {
@@ -57,6 +60,39 @@ func PingSSH(ctx context.Context, addr string, auth interface{}) error {
 
 			if err != nil {
 				return errors.WithStack(err)
+			}
+
+			homeDir, err := os.UserHomeDir()
+
+			if err != nil {
+				return errors.WithStack(err)
+			}
+
+			if authPrivateKey.KnownHostsFile == nil {
+				knownHostsFilepath := filepath.Join(homeDir, ".ssh", "known_hosts")
+
+				if _, err = os.Stat(knownHostsFilepath); err == nil {
+					hostKeyCallback, err := knownhosts.New(knownHostsFilepath)
+
+					if err != nil {
+						return errors.WithStack(err)
+					}
+
+					config.HostKeyCallback = hostKeyCallback
+
+				} else if os.IsNotExist(err) {
+					// do nothing
+				} else {
+					return errors.WithStack(err)
+				}
+			} else {
+				hostKeyCallback, err := knownhosts.New(*authPrivateKey.KnownHostsFile)
+
+				if err != nil {
+					return errors.WithStack(err)
+				}
+
+				config.HostKeyCallback = hostKeyCallback
 			}
 
 			config.User = authPrivateKey.Username
