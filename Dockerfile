@@ -32,4 +32,6 @@ ENV PORT=80
 
 EXPOSE 80
 
+ENV PORT=80
+
 CMD ["./watchdog"]
