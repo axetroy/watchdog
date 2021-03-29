@@ -48,7 +48,7 @@ no/19/urn:UrN:NSS__________________________________/-4      20000000      399 ns
 
 ---
 
-* <a name="mymachine">[1]</a>: Intel Core i7-7600U CPU @ 2.80GHz
+- <a name="mymachine">[1]</a>: Intel Core i7-7600U CPU @ 2.80GHz
 
 ---
 

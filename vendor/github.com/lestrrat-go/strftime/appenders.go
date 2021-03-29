@@ -322,7 +322,7 @@ func (v hmsWAMPM) Append(b []byte, t time.Time) []byte {
 		case h == 12:
 			// no op
 		case h > 12:
-			h = h -12
+			h = h - 12
 		default:
 			am = true
 		}
@@ -343,4 +343,3 @@ func (v hmsWAMPM) Append(b []byte, t time.Time) []byte {
 
 	return b
 }
-

@@ -1,164 +1,163 @@
-v0.1.0 (2021-03-28)
--------------------
+## v0.1.0 (2021-03-28)
 
 ### 🔥 New feature:
 
--	输出日志到可切割的文件中([`4a67f5d`](https://github.com/axetroy/watchdog/commit/4a67f5d168157babf2cb8bedcefaab2b02ab1628)) (thanks @axetroy)
--	read PORT for env([`0591180`](https://github.com/axetroy/watchdog/commit/05911808a9d7b496db4b349e00a0693789e29486)) (thanks @axetroy)
--	支持 smtp 的通知协议([`334e0c7`](https://github.com/axetroy/watchdog/commit/334e0c7d87fe3a68af1a93eacb0ef4f6a92c1ef1)) (thanks @axetroy)
--	支持 SMTP 协议([`274be47`](https://github.com/axetroy/watchdog/commit/274be47589e284f9a04830b86ca830cf00a3b066)) (thanks @axetroy)
--	TCP 协议支持超时([`c47dc58`](https://github.com/axetroy/watchdog/commit/c47dc583797df22ae728a747696583711fe78fd9)) (thanks @axetroy)
--	HTTP 协议添加超时取消([`f754503`](https://github.com/axetroy/watchdog/commit/f7545038e4bcd223aa61bf94b4205f1775f0b1a9)) (thanks @axetroy)
--	添加超时 context([`825fb9d`](https://github.com/axetroy/watchdog/commit/825fb9d10f2c30422a09fb756d9e7a257da174bf)) (thanks @axetroy)
--	SSH 协议用户名和密码不必填，可选项([`e7397ab`](https://github.com/axetroy/watchdog/commit/e7397abc01fe19d107969dfb991b3993e708eb67)) (thanks @axetroy)
--	支持 SSH 协议([`846c093`](https://github.com/axetroy/watchdog/commit/846c093c0a12c39f48162215cb4c81e5aeebb706)) (thanks @axetroy)
--	支持 ftp/sftp 协议([`a6c4126`](https://github.com/axetroy/watchdog/commit/a6c41263615895bf1a99f2cb253b02137472e6ca)) (thanks @axetroy)
--	添加服务的速度曲线([`a5dddc5`](https://github.com/axetroy/watchdog/commit/a5dddc521f2919ff232074b795f12dccb0f81305)) (thanks @axetroy)
--	添加持续时间([`1764373`](https://github.com/axetroy/watchdog/commit/17643739ad94b03e1badc3f83304c230a2e7de49)) (thanks @axetroy)
--	support webhook([`4e2a7e4`](https://github.com/axetroy/watchdog/commit/4e2a7e482e2749293f292ea8f90b7192b456bfc3)) (thanks @axetroy)
--	socket 推送([`ad7bc9e`](https://github.com/axetroy/watchdog/commit/ad7bc9e3a084a5da0a8d1bab98c516f1a9cc4107)) (thanks @axetroy)
--	添加 Websocket([`5e8a3c9`](https://github.com/axetroy/watchdog/commit/5e8a3c9da373e7c51b9447c359be06d9e1c9da14)) (thanks @axetroy)
+- 输出日志到可切割的文件中([`4a67f5d`](https://github.com/axetroy/watchdog/commit/4a67f5d168157babf2cb8bedcefaab2b02ab1628)) (thanks @axetroy)
+- read PORT for env([`0591180`](https://github.com/axetroy/watchdog/commit/05911808a9d7b496db4b349e00a0693789e29486)) (thanks @axetroy)
+- 支持 smtp 的通知协议([`334e0c7`](https://github.com/axetroy/watchdog/commit/334e0c7d87fe3a68af1a93eacb0ef4f6a92c1ef1)) (thanks @axetroy)
+- 支持 SMTP 协议([`274be47`](https://github.com/axetroy/watchdog/commit/274be47589e284f9a04830b86ca830cf00a3b066)) (thanks @axetroy)
+- TCP 协议支持超时([`c47dc58`](https://github.com/axetroy/watchdog/commit/c47dc583797df22ae728a747696583711fe78fd9)) (thanks @axetroy)
+- HTTP 协议添加超时取消([`f754503`](https://github.com/axetroy/watchdog/commit/f7545038e4bcd223aa61bf94b4205f1775f0b1a9)) (thanks @axetroy)
+- 添加超时 context([`825fb9d`](https://github.com/axetroy/watchdog/commit/825fb9d10f2c30422a09fb756d9e7a257da174bf)) (thanks @axetroy)
+- SSH 协议用户名和密码不必填，可选项([`e7397ab`](https://github.com/axetroy/watchdog/commit/e7397abc01fe19d107969dfb991b3993e708eb67)) (thanks @axetroy)
+- 支持 SSH 协议([`846c093`](https://github.com/axetroy/watchdog/commit/846c093c0a12c39f48162215cb4c81e5aeebb706)) (thanks @axetroy)
+- 支持 ftp/sftp 协议([`a6c4126`](https://github.com/axetroy/watchdog/commit/a6c41263615895bf1a99f2cb253b02137472e6ca)) (thanks @axetroy)
+- 添加服务的速度曲线([`a5dddc5`](https://github.com/axetroy/watchdog/commit/a5dddc521f2919ff232074b795f12dccb0f81305)) (thanks @axetroy)
+- 添加持续时间([`1764373`](https://github.com/axetroy/watchdog/commit/17643739ad94b03e1badc3f83304c230a2e7de49)) (thanks @axetroy)
+- support webhook([`4e2a7e4`](https://github.com/axetroy/watchdog/commit/4e2a7e482e2749293f292ea8f90b7192b456bfc3)) (thanks @axetroy)
+- socket 推送([`ad7bc9e`](https://github.com/axetroy/watchdog/commit/ad7bc9e3a084a5da0a8d1bab98c516f1a9cc4107)) (thanks @axetroy)
+- 添加 Websocket([`5e8a3c9`](https://github.com/axetroy/watchdog/commit/5e8a3c9da373e7c51b9447c359be06d9e1c9da14)) (thanks @axetroy)
 
 ### 🐛 Bugs fixed:
 
--	完善配置文件的校验([`b54b862`](https://github.com/axetroy/watchdog/commit/b54b862a74d05ff70a12d9529b70eb0e0d5818f2)) (thanks @axetroy)
--	完善配置文件的校验([`981c4ee`](https://github.com/axetroy/watchdog/commit/981c4ee96252139624454ed2d2945abe387aa044)) (thanks @axetroy)
--	完善配置文件的校验([`e26ac11`](https://github.com/axetroy/watchdog/commit/e26ac11e1e6d433ffd6eefaf61539df93f811a39)) (thanks @axetroy)
--	**deps**: update golang.org/x/net commit hash to 61e0566([`c71b559`](https://github.com/axetroy/watchdog/commit/c71b559ddd3e497cb66ed74f66a035fe473a887c)) (thanks @Renovate Bot)
--	webhook test([`c6d96cf`](https://github.com/axetroy/watchdog/commit/c6d96cf8cc8117b89fef149d20a1808bceb5d99e)) (thanks @axetroy)
--	web([`46f7946`](https://github.com/axetroy/watchdog/commit/46f7946c47053d1f71e5b668bae90ed3724ef600)) (thanks @axetroy)
--	**deps**: update golang.org/x/crypto commit hash to 0c34fe9([`34446b2`](https://github.com/axetroy/watchdog/commit/34446b2ed9b67ad914dfc97b621bcd99bb0a309b)) (thanks @Renovate Bot)
--	test([`b8b0b0e`](https://github.com/axetroy/watchdog/commit/b8b0b0ee0bc7d7e31534853cf8a0bd8f9aafcecf)) (thanks @axetroy)
--	修复 SSH 协议解析认证信息不正确([`07e1ab4`](https://github.com/axetroy/watchdog/commit/07e1ab4f590ae34e8616b59171ad877c0165b947)) (thanks @axetroy)
--	test([`efd8cdd`](https://github.com/axetroy/watchdog/commit/efd8cddbf2a1fc050b2975264f70962164758070)) (thanks @axetroy)
--	build for web([`03f0dca`](https://github.com/axetroy/watchdog/commit/03f0dcae72903cc4365b58d8a2d8e132e2d1a579)) (thanks @axetroy)
--	build([`da9339c`](https://github.com/axetroy/watchdog/commit/da9339c822862b8ee3b5004379885f05075c895e)) (thanks @axetroy)
+- 完善配置文件的校验([`b54b862`](https://github.com/axetroy/watchdog/commit/b54b862a74d05ff70a12d9529b70eb0e0d5818f2)) (thanks @axetroy)
+- 完善配置文件的校验([`981c4ee`](https://github.com/axetroy/watchdog/commit/981c4ee96252139624454ed2d2945abe387aa044)) (thanks @axetroy)
+- 完善配置文件的校验([`e26ac11`](https://github.com/axetroy/watchdog/commit/e26ac11e1e6d433ffd6eefaf61539df93f811a39)) (thanks @axetroy)
+- **deps**: update golang.org/x/net commit hash to 61e0566([`c71b559`](https://github.com/axetroy/watchdog/commit/c71b559ddd3e497cb66ed74f66a035fe473a887c)) (thanks @Renovate Bot)
+- webhook test([`c6d96cf`](https://github.com/axetroy/watchdog/commit/c6d96cf8cc8117b89fef149d20a1808bceb5d99e)) (thanks @axetroy)
+- web([`46f7946`](https://github.com/axetroy/watchdog/commit/46f7946c47053d1f71e5b668bae90ed3724ef600)) (thanks @axetroy)
+- **deps**: update golang.org/x/crypto commit hash to 0c34fe9([`34446b2`](https://github.com/axetroy/watchdog/commit/34446b2ed9b67ad914dfc97b621bcd99bb0a309b)) (thanks @Renovate Bot)
+- test([`b8b0b0e`](https://github.com/axetroy/watchdog/commit/b8b0b0ee0bc7d7e31534853cf8a0bd8f9aafcecf)) (thanks @axetroy)
+- 修复 SSH 协议解析认证信息不正确([`07e1ab4`](https://github.com/axetroy/watchdog/commit/07e1ab4f590ae34e8616b59171ad877c0165b947)) (thanks @axetroy)
+- test([`efd8cdd`](https://github.com/axetroy/watchdog/commit/efd8cddbf2a1fc050b2975264f70962164758070)) (thanks @axetroy)
+- build for web([`03f0dca`](https://github.com/axetroy/watchdog/commit/03f0dcae72903cc4365b58d8a2d8e132e2d1a579)) (thanks @axetroy)
+- build([`da9339c`](https://github.com/axetroy/watchdog/commit/da9339c822862b8ee3b5004379885f05075c895e)) (thanks @axetroy)
 
 ### 💪 Commits(126):
 
--	[`036a3ec`](https://github.com/axetroy/watchdog/commit/036a3ec63a001190820a82a8849f4d13a191eac1) - docs: update changelog
--	[`5a5c176`](https://github.com/axetroy/watchdog/commit/5a5c176f077218bd53aa68a95eeddd9a0d934fb8) - v0.1.0
--	[`ebd4d70`](https://github.com/axetroy/watchdog/commit/ebd4d703f146c70eccfb59f3dc5965ba96eddfa1) - chore: remove npm publish
--	[`4a67f5d`](https://github.com/axetroy/watchdog/commit/4a67f5d168157babf2cb8bedcefaab2b02ab1628) - feat: 输出日志到可切割的文件中
--	[`4a7e4b2`](https://github.com/axetroy/watchdog/commit/4a7e4b2cc1bcef243d203aed6ca8057a1dbd4d11) - refactor: rename the file
--	[`112a68b`](https://github.com/axetroy/watchdog/commit/112a68bd14949ead10997cecbf5bb14f399b1f34) - docs: update
--	[`5b51bf4`](https://github.com/axetroy/watchdog/commit/5b51bf4152aa7385cd7efc244195fd69b8437205) - docs: update
--	[`828412c`](https://github.com/axetroy/watchdog/commit/828412c5e8b9177986f3b98b5621ebd8f304cf66) - chore(deps): update vue monorepo to v3.0.9
--	[`2816c6e`](https://github.com/axetroy/watchdog/commit/2816c6eeb85199ada8d7ad97e379325cad21c362) - chore(deps): update dependency vue-tsc to v0.0.16
--	[`0591180`](https://github.com/axetroy/watchdog/commit/05911808a9d7b496db4b349e00a0693789e29486) - feat: read PORT for env
--	[`a74de40`](https://github.com/axetroy/watchdog/commit/a74de4028ec7f67718b5293650d09386528072dd) - chore: update Dockerfile
--	[`85b1995`](https://github.com/axetroy/watchdog/commit/85b19950a0a36fd8173e6d38c48bcd1b49670233) - chore(docker): build for frontend
--	[`2c59527`](https://github.com/axetroy/watchdog/commit/2c5952749e29703366efaf73de4d7922ba958569) - chore(docker): build for frontend
--	[`8b8cb76`](https://github.com/axetroy/watchdog/commit/8b8cb76e3703084302cbf9fca82597ece06e325f) - fix dockerfile
--	[`bb548cc`](https://github.com/axetroy/watchdog/commit/bb548cc6c05f9f029fd17f51743b2827c64df88e) - docs: update readme
--	[`3c44efa`](https://github.com/axetroy/watchdog/commit/3c44efa9b1cf81a3a2851681636cd7e9933b4609) - update
--	[`04b38c8`](https://github.com/axetroy/watchdog/commit/04b38c8f612619e722d874ceab5115004c933ecc) - chore: update Dockerfile
--	[`02bdf46`](https://github.com/axetroy/watchdog/commit/02bdf46879e8e4d3dea6e98327b181022ba08bf8) - chore: update Dockerfile
--	[`f993396`](https://github.com/axetroy/watchdog/commit/f99339641c55f65e7de9778b0eb8852c6606c148) - ci: trigger bulid
--	[`74c0f5a`](https://github.com/axetroy/watchdog/commit/74c0f5a9f65ea604fd1da035bbe7483131905775) - chore: add Dockerfile
--	[`b54b862`](https://github.com/axetroy/watchdog/commit/b54b862a74d05ff70a12d9529b70eb0e0d5818f2) - fix: 完善配置文件的校验
--	[`e8f6900`](https://github.com/axetroy/watchdog/commit/e8f690022c189f766db2b1e0237b519531839fa2) - docs: update
--	[`981c4ee`](https://github.com/axetroy/watchdog/commit/981c4ee96252139624454ed2d2945abe387aa044) - fix: 完善配置文件的校验
--	[`e26ac11`](https://github.com/axetroy/watchdog/commit/e26ac11e1e6d433ffd6eefaf61539df93f811a39) - fix: 完善配置文件的校验
--	[`334e0c7`](https://github.com/axetroy/watchdog/commit/334e0c7d87fe3a68af1a93eacb0ef4f6a92c1ef1) - feat: 支持 smtp 的通知协议
--	[`c71b559`](https://github.com/axetroy/watchdog/commit/c71b559ddd3e497cb66ed74f66a035fe473a887c) - fix(deps): update golang.org/x/net commit hash to 61e0566
--	[`c6d96cf`](https://github.com/axetroy/watchdog/commit/c6d96cf8cc8117b89fef149d20a1808bceb5d99e) - fix: webhook test
--	[`8324e6f`](https://github.com/axetroy/watchdog/commit/8324e6f38c0efaa6a8a37c4683f3e71e9c8206f4) - chore(deps): pin dependencies
--	[`279292b`](https://github.com/axetroy/watchdog/commit/279292beb1a484f72dc2d4a2d3bf569c8b3b418c) - test: 添加 webhook 的测试用例
--	[`ae831a7`](https://github.com/axetroy/watchdog/commit/ae831a7e065e40dc6a2db542bb0de17112ac4c15) - test: add wechat test case
--	[`db22e9c`](https://github.com/axetroy/watchdog/commit/db22e9c3ff816c3859f58fa0538ab9b1bdcf937e) - refactor: web
--	[`46f7946`](https://github.com/axetroy/watchdog/commit/46f7946c47053d1f71e5b668bae90ed3724ef600) - fix: web
--	[`34446b2`](https://github.com/axetroy/watchdog/commit/34446b2ed9b67ad914dfc97b621bcd99bb0a309b) - fix(deps): update golang.org/x/crypto commit hash to 0c34fe9
--	[`eae47c7`](https://github.com/axetroy/watchdog/commit/eae47c72893da77c753c195c0233b7842b09b091) - Add renovate.json
--	[`5020d95`](https://github.com/axetroy/watchdog/commit/5020d95d13a7f2202c07bd6e85c8e646c4802dcf) - test: improve test
--	[`a6b36d2`](https://github.com/axetroy/watchdog/commit/a6b36d257e64d966f53a86f3b4228f5465b4c0d7) - test: improve test
--	[`606cde7`](https://github.com/axetroy/watchdog/commit/606cde74f40394963c3d6eadf92dae7cda2350e3) - test: improve test
--	[`274be47`](https://github.com/axetroy/watchdog/commit/274be47589e284f9a04830b86ca830cf00a3b066) - feat: 支持 SMTP 协议
--	[`616cef7`](https://github.com/axetroy/watchdog/commit/616cef70ee377d316f3068950e6ca1d799cddfa8) - refactor: improve error
--	[`25afe1c`](https://github.com/axetroy/watchdog/commit/25afe1c9e283293f11c5beb0ef311f5f89f36790) - refactor: improve error message
--	[`b8b0b0e`](https://github.com/axetroy/watchdog/commit/b8b0b0ee0bc7d7e31534853cf8a0bd8f9aafcecf) - fix: test
--	[`c47dc58`](https://github.com/axetroy/watchdog/commit/c47dc583797df22ae728a747696583711fe78fd9) - feat: TCP 协议支持超时
--	[`f754503`](https://github.com/axetroy/watchdog/commit/f7545038e4bcd223aa61bf94b4205f1775f0b1a9) - feat: HTTP 协议添加超时取消
--	[`825fb9d`](https://github.com/axetroy/watchdog/commit/825fb9d10f2c30422a09fb756d9e7a257da174bf) - feat: 添加超时 context
--	[`e7397ab`](https://github.com/axetroy/watchdog/commit/e7397abc01fe19d107969dfb991b3993e708eb67) - feat: SSH 协议用户名和密码不必填，可选项
--	[`91a47dc`](https://github.com/axetroy/watchdog/commit/91a47dc8d0a3b151e105ae9179e41e62666e1708) - docs: update
--	[`07e1ab4`](https://github.com/axetroy/watchdog/commit/07e1ab4f590ae34e8616b59171ad877c0165b947) - fix: 修复 SSH 协议解析认证信息不正确
--	[`846c093`](https://github.com/axetroy/watchdog/commit/846c093c0a12c39f48162215cb4c81e5aeebb706) - feat: 支持 SSH 协议
--	[`20cf4ce`](https://github.com/axetroy/watchdog/commit/20cf4ceef8eece75fff57bb5d281d9aacae7f0a2) - docs: update
--	[`991b40f`](https://github.com/axetroy/watchdog/commit/991b40f02d9c239be1ca5f025857ea07dbcace69) - refactor: update timeout
--	[`efd8cdd`](https://github.com/axetroy/watchdog/commit/efd8cddbf2a1fc050b2975264f70962164758070) - fix: test
--	[`a6c4126`](https://github.com/axetroy/watchdog/commit/a6c41263615895bf1a99f2cb253b02137472e6ca) - feat: 支持 ftp/sftp 协议
--	[`f6b09ba`](https://github.com/axetroy/watchdog/commit/f6b09ba866fee444192b51147ab181a7a1fc7d09) - refactor: rename config file name
--	[`647fcec`](https://github.com/axetroy/watchdog/commit/647fcec07c424b6c9b384e269b44cd71edc6c554) - docs: update
--	[`0c96b84`](https://github.com/axetroy/watchdog/commit/0c96b84fad62743c3414889e729ba30782d642b4) - docs: update
--	[`6742fa1`](https://github.com/axetroy/watchdog/commit/6742fa1ac0f04e17b1f80f3f2ae8e7a44cebd3e8) - 更新开源协议
--	[`20a4da2`](https://github.com/axetroy/watchdog/commit/20a4da2c9e05b308f7f760533523ec72abc7c239) - docs: update
--	[`2c1130b`](https://github.com/axetroy/watchdog/commit/2c1130be5be5db1143e7c010a2c00d78bd972db8) - docs: update
--	[`03f0dca`](https://github.com/axetroy/watchdog/commit/03f0dcae72903cc4365b58d8a2d8e132e2d1a579) - fix: build for web
--	[`b739834`](https://github.com/axetroy/watchdog/commit/b739834bb4202ef2d15c275cf7a428141f8b8cc8) - docs: 更新截图
--	[`a5dddc5`](https://github.com/axetroy/watchdog/commit/a5dddc521f2919ff232074b795f12dccb0f81305) - feat: 添加服务的速度曲线
--	[`5c38a27`](https://github.com/axetroy/watchdog/commit/5c38a27ad8587033a4739f442ff1eb42356a0f2a) - docs: 添加屏幕截屏
--	[`1764373`](https://github.com/axetroy/watchdog/commit/17643739ad94b03e1badc3f83304c230a2e7de49) - feat: 添加持续时间
--	[`9596af2`](https://github.com/axetroy/watchdog/commit/9596af28fe0231154ac378c91c74942f261dfbbe) - docs: add changelog
--	[`fefb7e2`](https://github.com/axetroy/watchdog/commit/fefb7e219c003826f26f67c632488cc42f7b6d87) - docs: update
--	[`0cac24b`](https://github.com/axetroy/watchdog/commit/0cac24b4976bb3cf18deee45b8785da2e3cdd437) - docs: update
--	[`4d4445a`](https://github.com/axetroy/watchdog/commit/4d4445a8f4de1310d15968b9a0dfbab290f66dc3) - docs: update
--	[`502f964`](https://github.com/axetroy/watchdog/commit/502f9641183b16a3c00a544c1bfa32b859868ef5) - docs: update
--	[`f3ae9ec`](https://github.com/axetroy/watchdog/commit/f3ae9ec6a1184e871663aa8165829c0b33acf7c7) - docs: update
--	[`f71c4fd`](https://github.com/axetroy/watchdog/commit/f71c4fdf9ccd58469c8f7c80dd300feef1c19e31) - docs: update
--	[`bf76e88`](https://github.com/axetroy/watchdog/commit/bf76e8849f530d0042f2044e1ca6cd7b96baa78b) - docs: update
--	[`32d81d3`](https://github.com/axetroy/watchdog/commit/32d81d33e1267c8bbc25c6792ee8f3139cf99ca7) - docs: update
--	[`aef4617`](https://github.com/axetroy/watchdog/commit/aef4617b404b5570d7560589c2b26870029c6fc2) - update docs
--	[`dca47be`](https://github.com/axetroy/watchdog/commit/dca47beff25e62799eaa16437ebd93d9083b9d4a) - update
--	[`659186b`](https://github.com/axetroy/watchdog/commit/659186bf8f7f495b200917a7fe85722064709e21) - update
--	[`3f13015`](https://github.com/axetroy/watchdog/commit/3f13015119ce6dcf210a6e1f1345fe99f359bb30) - fix
--	[`57106f3`](https://github.com/axetroy/watchdog/commit/57106f38066e257a3a80bbc21781f1fc77e5547c) - update
--	[`0469316`](https://github.com/axetroy/watchdog/commit/0469316728727f79971e6e7630eaf47fd19e22cd) - ci: increase timeout for lint
--	[`348feac`](https://github.com/axetroy/watchdog/commit/348feacf764e62a1654253b870840c317a2875db) - faet: 存储历史的状态记录
--	[`bb0b0f5`](https://github.com/axetroy/watchdog/commit/bb0b0f5a7044917f2c29b67b9093816f6bda042b) - refactor: update
--	[`3b669ae`](https://github.com/axetroy/watchdog/commit/3b669ae85eb916c95e147cb36426b6cc3fb76a4a) - add logo to reade
--	[`6e4753f`](https://github.com/axetroy/watchdog/commit/6e4753ff5b2985fed93dbd1e7b08c9f34252e5f9) - update logo
--	[`c8c7d13`](https://github.com/axetroy/watchdog/commit/c8c7d1378804f9084c3066e7a299610c1bad4e3e) - update
--	[`b5306c7`](https://github.com/axetroy/watchdog/commit/b5306c76e5dde08cf72d2bafabd0a0f4d33e01ce) - update
--	[`96b9cbf`](https://github.com/axetroy/watchdog/commit/96b9cbf4a9d72dba12d664ac0a6afc50b5590b80) - update format script
--	[`da9339c`](https://github.com/axetroy/watchdog/commit/da9339c822862b8ee3b5004379885f05075c895e) - fix: build
--	[`4d7d1bb`](https://github.com/axetroy/watchdog/commit/4d7d1bb4e960d13be43200034923e779eb796a49) - update ci
--	[`78649b1`](https://github.com/axetroy/watchdog/commit/78649b1f628b8bd1b342b0519674611e420a0840) - refactor: improve code
--	[`4e2a7e4`](https://github.com/axetroy/watchdog/commit/4e2a7e482e2749293f292ea8f90b7192b456bfc3) - feat: support webhook
--	[`f2e16b8`](https://github.com/axetroy/watchdog/commit/f2e16b899a0b67695dca8c74dc4b09e39ef8cfc8) - update docs
--	[`a441f66`](https://github.com/axetroy/watchdog/commit/a441f66a95bb46d8eae4ee69178d3af09891a3cb) - update
--	[`479fa7f`](https://github.com/axetroy/watchdog/commit/479fa7f82445491845197c9f0f50bf3ec76d53c2) - refactor
--	[`ad7bc9e`](https://github.com/axetroy/watchdog/commit/ad7bc9e3a084a5da0a8d1bab98c516f1a9cc4107) - feat: socket 推送
--	[`5e8a3c9`](https://github.com/axetroy/watchdog/commit/5e8a3c9da373e7c51b9447c359be06d9e1c9da14) - feat: 添加 Websocket
--	[`4f57ff5`](https://github.com/axetroy/watchdog/commit/4f57ff52d7d5028571715405151b2567ecf685f6) - fix test
--	[`41daa94`](https://github.com/axetroy/watchdog/commit/41daa94afac9972f41e64d6f48a54a7505aa7263) - add web
--	[`574c8f0`](https://github.com/axetroy/watchdog/commit/574c8f0101e560be9c5e33bdff25ca039963d18c) - update docs
--	[`f6bf805`](https://github.com/axetroy/watchdog/commit/f6bf805fae2c602b763bdb45d4c34fd904dd9593) - refactor
--	[`2e835a6`](https://github.com/axetroy/watchdog/commit/2e835a68bc26c1a62f989bbca0552d0530fd2c73) - update
--	[`4a35e8c`](https://github.com/axetroy/watchdog/commit/4a35e8c4121f16ee9e9a37b2810988d8bd8cd942) - fix
--	[`852f457`](https://github.com/axetroy/watchdog/commit/852f4572d99ac9cdda434823bbd18cfd31102226) - update
--	[`0e36b96`](https://github.com/axetroy/watchdog/commit/0e36b966b41be817c33c344f0ccc56e98d7c24fa) - fix
--	[`a63c9f6`](https://github.com/axetroy/watchdog/commit/a63c9f67de454fe92fd4e9e88d75895c3a488f35) - update
--	[`8904ff4`](https://github.com/axetroy/watchdog/commit/8904ff48c5979e6c9a78d1826e808d7cb938d4ca) - fix test
--	[`9ced3f2`](https://github.com/axetroy/watchdog/commit/9ced3f26629d521160090971d1fb7a269972d7e8) - update
--	[`b198803`](https://github.com/axetroy/watchdog/commit/b1988036af7ba21d271bc348111291d108f9c76c) - update
--	[`47600dd`](https://github.com/axetroy/watchdog/commit/47600dd9341e5ff6a72754ea539f8e02ee3baa43) - update
--	[`5076524`](https://github.com/axetroy/watchdog/commit/5076524c328b8bf4002014e5713c56581c04ee33) - support ws/wss
--	[`5afd6b6`](https://github.com/axetroy/watchdog/commit/5afd6b6c2c7692c995f37a5bde953da9aa323c55) - update
--	[`2634f6d`](https://github.com/axetroy/watchdog/commit/2634f6d0066236c0c7bf9834c7a870f2c7744bb4) - update
--	[`a52329f`](https://github.com/axetroy/watchdog/commit/a52329f851a9880619ef7d4bfed099f05f656fcf) - fix
--	[`0721f1a`](https://github.com/axetroy/watchdog/commit/0721f1a4aa7795ab33902fe929762fc2b2df2e73) - fix ci
--	[`e182192`](https://github.com/axetroy/watchdog/commit/e182192482bca02c40205d335a6f42af8e2b0f10) - update ci
--	[`cba6cd0`](https://github.com/axetroy/watchdog/commit/cba6cd0326bd6ff5f997a2f997ffccaef5c5c2c7) - 警告策略
--	[`64b0525`](https://github.com/axetroy/watchdog/commit/64b05254913c8cb09b7e6e0bad9c581929dfa2ee) - update
--	[`7ebf6db`](https://github.com/axetroy/watchdog/commit/7ebf6dbda36e45935ef6b666a602db1774a7381c) - update
--	[`619978e`](https://github.com/axetroy/watchdog/commit/619978e996e049719d2716ee9ae082b79e316624) - update
--	[`bd532f3`](https://github.com/axetroy/watchdog/commit/bd532f3c45554d7472281b4fe09ebf7da25ec520) - update
--	[`0dd05bd`](https://github.com/axetroy/watchdog/commit/0dd05bd781a7d3f2c8f88424ae96595e0748c137) - update
--	[`511ef26`](https://github.com/axetroy/watchdog/commit/511ef2684952d0be2e14006b3f00d9252dc76dd0) - update
--	[`52f3fb2`](https://github.com/axetroy/watchdog/commit/52f3fb2ab80fb4e5581882018162ac40619cbf64) - fix lint
--	[`55ed3d5`](https://github.com/axetroy/watchdog/commit/55ed3d5bef8ca78022fa3806115ef47c657dcf53) - update
--	[`233ffd0`](https://github.com/axetroy/watchdog/commit/233ffd0d6cff9a88f2e2dd4fb313ac03dccc430f) - update
--	[`8da7c8a`](https://github.com/axetroy/watchdog/commit/8da7c8ae0bdbf37a2b38da9a3540a160a7e1fc1b) - update
--	[`d8d7cc3`](https://github.com/axetroy/watchdog/commit/d8d7cc3658233ea8d1b3bee813888264d3cc8ed7) - init
--	[`9ac5e7e`](https://github.com/axetroy/watchdog/commit/9ac5e7ec098a4980236baa0c53223acfd07f91da) - Initial commit
+- [`036a3ec`](https://github.com/axetroy/watchdog/commit/036a3ec63a001190820a82a8849f4d13a191eac1) - docs: update changelog
+- [`5a5c176`](https://github.com/axetroy/watchdog/commit/5a5c176f077218bd53aa68a95eeddd9a0d934fb8) - v0.1.0
+- [`ebd4d70`](https://github.com/axetroy/watchdog/commit/ebd4d703f146c70eccfb59f3dc5965ba96eddfa1) - chore: remove npm publish
+- [`4a67f5d`](https://github.com/axetroy/watchdog/commit/4a67f5d168157babf2cb8bedcefaab2b02ab1628) - feat: 输出日志到可切割的文件中
+- [`4a7e4b2`](https://github.com/axetroy/watchdog/commit/4a7e4b2cc1bcef243d203aed6ca8057a1dbd4d11) - refactor: rename the file
+- [`112a68b`](https://github.com/axetroy/watchdog/commit/112a68bd14949ead10997cecbf5bb14f399b1f34) - docs: update
+- [`5b51bf4`](https://github.com/axetroy/watchdog/commit/5b51bf4152aa7385cd7efc244195fd69b8437205) - docs: update
+- [`828412c`](https://github.com/axetroy/watchdog/commit/828412c5e8b9177986f3b98b5621ebd8f304cf66) - chore(deps): update vue monorepo to v3.0.9
+- [`2816c6e`](https://github.com/axetroy/watchdog/commit/2816c6eeb85199ada8d7ad97e379325cad21c362) - chore(deps): update dependency vue-tsc to v0.0.16
+- [`0591180`](https://github.com/axetroy/watchdog/commit/05911808a9d7b496db4b349e00a0693789e29486) - feat: read PORT for env
+- [`a74de40`](https://github.com/axetroy/watchdog/commit/a74de4028ec7f67718b5293650d09386528072dd) - chore: update Dockerfile
+- [`85b1995`](https://github.com/axetroy/watchdog/commit/85b19950a0a36fd8173e6d38c48bcd1b49670233) - chore(docker): build for frontend
+- [`2c59527`](https://github.com/axetroy/watchdog/commit/2c5952749e29703366efaf73de4d7922ba958569) - chore(docker): build for frontend
+- [`8b8cb76`](https://github.com/axetroy/watchdog/commit/8b8cb76e3703084302cbf9fca82597ece06e325f) - fix dockerfile
+- [`bb548cc`](https://github.com/axetroy/watchdog/commit/bb548cc6c05f9f029fd17f51743b2827c64df88e) - docs: update readme
+- [`3c44efa`](https://github.com/axetroy/watchdog/commit/3c44efa9b1cf81a3a2851681636cd7e9933b4609) - update
+- [`04b38c8`](https://github.com/axetroy/watchdog/commit/04b38c8f612619e722d874ceab5115004c933ecc) - chore: update Dockerfile
+- [`02bdf46`](https://github.com/axetroy/watchdog/commit/02bdf46879e8e4d3dea6e98327b181022ba08bf8) - chore: update Dockerfile
+- [`f993396`](https://github.com/axetroy/watchdog/commit/f99339641c55f65e7de9778b0eb8852c6606c148) - ci: trigger bulid
+- [`74c0f5a`](https://github.com/axetroy/watchdog/commit/74c0f5a9f65ea604fd1da035bbe7483131905775) - chore: add Dockerfile
+- [`b54b862`](https://github.com/axetroy/watchdog/commit/b54b862a74d05ff70a12d9529b70eb0e0d5818f2) - fix: 完善配置文件的校验
+- [`e8f6900`](https://github.com/axetroy/watchdog/commit/e8f690022c189f766db2b1e0237b519531839fa2) - docs: update
+- [`981c4ee`](https://github.com/axetroy/watchdog/commit/981c4ee96252139624454ed2d2945abe387aa044) - fix: 完善配置文件的校验
+- [`e26ac11`](https://github.com/axetroy/watchdog/commit/e26ac11e1e6d433ffd6eefaf61539df93f811a39) - fix: 完善配置文件的校验
+- [`334e0c7`](https://github.com/axetroy/watchdog/commit/334e0c7d87fe3a68af1a93eacb0ef4f6a92c1ef1) - feat: 支持 smtp 的通知协议
+- [`c71b559`](https://github.com/axetroy/watchdog/commit/c71b559ddd3e497cb66ed74f66a035fe473a887c) - fix(deps): update golang.org/x/net commit hash to 61e0566
+- [`c6d96cf`](https://github.com/axetroy/watchdog/commit/c6d96cf8cc8117b89fef149d20a1808bceb5d99e) - fix: webhook test
+- [`8324e6f`](https://github.com/axetroy/watchdog/commit/8324e6f38c0efaa6a8a37c4683f3e71e9c8206f4) - chore(deps): pin dependencies
+- [`279292b`](https://github.com/axetroy/watchdog/commit/279292beb1a484f72dc2d4a2d3bf569c8b3b418c) - test: 添加 webhook 的测试用例
+- [`ae831a7`](https://github.com/axetroy/watchdog/commit/ae831a7e065e40dc6a2db542bb0de17112ac4c15) - test: add wechat test case
+- [`db22e9c`](https://github.com/axetroy/watchdog/commit/db22e9c3ff816c3859f58fa0538ab9b1bdcf937e) - refactor: web
+- [`46f7946`](https://github.com/axetroy/watchdog/commit/46f7946c47053d1f71e5b668bae90ed3724ef600) - fix: web
+- [`34446b2`](https://github.com/axetroy/watchdog/commit/34446b2ed9b67ad914dfc97b621bcd99bb0a309b) - fix(deps): update golang.org/x/crypto commit hash to 0c34fe9
+- [`eae47c7`](https://github.com/axetroy/watchdog/commit/eae47c72893da77c753c195c0233b7842b09b091) - Add renovate.json
+- [`5020d95`](https://github.com/axetroy/watchdog/commit/5020d95d13a7f2202c07bd6e85c8e646c4802dcf) - test: improve test
+- [`a6b36d2`](https://github.com/axetroy/watchdog/commit/a6b36d257e64d966f53a86f3b4228f5465b4c0d7) - test: improve test
+- [`606cde7`](https://github.com/axetroy/watchdog/commit/606cde74f40394963c3d6eadf92dae7cda2350e3) - test: improve test
+- [`274be47`](https://github.com/axetroy/watchdog/commit/274be47589e284f9a04830b86ca830cf00a3b066) - feat: 支持 SMTP 协议
+- [`616cef7`](https://github.com/axetroy/watchdog/commit/616cef70ee377d316f3068950e6ca1d799cddfa8) - refactor: improve error
+- [`25afe1c`](https://github.com/axetroy/watchdog/commit/25afe1c9e283293f11c5beb0ef311f5f89f36790) - refactor: improve error message
+- [`b8b0b0e`](https://github.com/axetroy/watchdog/commit/b8b0b0ee0bc7d7e31534853cf8a0bd8f9aafcecf) - fix: test
+- [`c47dc58`](https://github.com/axetroy/watchdog/commit/c47dc583797df22ae728a747696583711fe78fd9) - feat: TCP 协议支持超时
+- [`f754503`](https://github.com/axetroy/watchdog/commit/f7545038e4bcd223aa61bf94b4205f1775f0b1a9) - feat: HTTP 协议添加超时取消
+- [`825fb9d`](https://github.com/axetroy/watchdog/commit/825fb9d10f2c30422a09fb756d9e7a257da174bf) - feat: 添加超时 context
+- [`e7397ab`](https://github.com/axetroy/watchdog/commit/e7397abc01fe19d107969dfb991b3993e708eb67) - feat: SSH 协议用户名和密码不必填，可选项
+- [`91a47dc`](https://github.com/axetroy/watchdog/commit/91a47dc8d0a3b151e105ae9179e41e62666e1708) - docs: update
+- [`07e1ab4`](https://github.com/axetroy/watchdog/commit/07e1ab4f590ae34e8616b59171ad877c0165b947) - fix: 修复 SSH 协议解析认证信息不正确
+- [`846c093`](https://github.com/axetroy/watchdog/commit/846c093c0a12c39f48162215cb4c81e5aeebb706) - feat: 支持 SSH 协议
+- [`20cf4ce`](https://github.com/axetroy/watchdog/commit/20cf4ceef8eece75fff57bb5d281d9aacae7f0a2) - docs: update
+- [`991b40f`](https://github.com/axetroy/watchdog/commit/991b40f02d9c239be1ca5f025857ea07dbcace69) - refactor: update timeout
+- [`efd8cdd`](https://github.com/axetroy/watchdog/commit/efd8cddbf2a1fc050b2975264f70962164758070) - fix: test
+- [`a6c4126`](https://github.com/axetroy/watchdog/commit/a6c41263615895bf1a99f2cb253b02137472e6ca) - feat: 支持 ftp/sftp 协议
+- [`f6b09ba`](https://github.com/axetroy/watchdog/commit/f6b09ba866fee444192b51147ab181a7a1fc7d09) - refactor: rename config file name
+- [`647fcec`](https://github.com/axetroy/watchdog/commit/647fcec07c424b6c9b384e269b44cd71edc6c554) - docs: update
+- [`0c96b84`](https://github.com/axetroy/watchdog/commit/0c96b84fad62743c3414889e729ba30782d642b4) - docs: update
+- [`6742fa1`](https://github.com/axetroy/watchdog/commit/6742fa1ac0f04e17b1f80f3f2ae8e7a44cebd3e8) - 更新开源协议
+- [`20a4da2`](https://github.com/axetroy/watchdog/commit/20a4da2c9e05b308f7f760533523ec72abc7c239) - docs: update
+- [`2c1130b`](https://github.com/axetroy/watchdog/commit/2c1130be5be5db1143e7c010a2c00d78bd972db8) - docs: update
+- [`03f0dca`](https://github.com/axetroy/watchdog/commit/03f0dcae72903cc4365b58d8a2d8e132e2d1a579) - fix: build for web
+- [`b739834`](https://github.com/axetroy/watchdog/commit/b739834bb4202ef2d15c275cf7a428141f8b8cc8) - docs: 更新截图
+- [`a5dddc5`](https://github.com/axetroy/watchdog/commit/a5dddc521f2919ff232074b795f12dccb0f81305) - feat: 添加服务的速度曲线
+- [`5c38a27`](https://github.com/axetroy/watchdog/commit/5c38a27ad8587033a4739f442ff1eb42356a0f2a) - docs: 添加屏幕截屏
+- [`1764373`](https://github.com/axetroy/watchdog/commit/17643739ad94b03e1badc3f83304c230a2e7de49) - feat: 添加持续时间
+- [`9596af2`](https://github.com/axetroy/watchdog/commit/9596af28fe0231154ac378c91c74942f261dfbbe) - docs: add changelog
+- [`fefb7e2`](https://github.com/axetroy/watchdog/commit/fefb7e219c003826f26f67c632488cc42f7b6d87) - docs: update
+- [`0cac24b`](https://github.com/axetroy/watchdog/commit/0cac24b4976bb3cf18deee45b8785da2e3cdd437) - docs: update
+- [`4d4445a`](https://github.com/axetroy/watchdog/commit/4d4445a8f4de1310d15968b9a0dfbab290f66dc3) - docs: update
+- [`502f964`](https://github.com/axetroy/watchdog/commit/502f9641183b16a3c00a544c1bfa32b859868ef5) - docs: update
+- [`f3ae9ec`](https://github.com/axetroy/watchdog/commit/f3ae9ec6a1184e871663aa8165829c0b33acf7c7) - docs: update
+- [`f71c4fd`](https://github.com/axetroy/watchdog/commit/f71c4fdf9ccd58469c8f7c80dd300feef1c19e31) - docs: update
+- [`bf76e88`](https://github.com/axetroy/watchdog/commit/bf76e8849f530d0042f2044e1ca6cd7b96baa78b) - docs: update
+- [`32d81d3`](https://github.com/axetroy/watchdog/commit/32d81d33e1267c8bbc25c6792ee8f3139cf99ca7) - docs: update
+- [`aef4617`](https://github.com/axetroy/watchdog/commit/aef4617b404b5570d7560589c2b26870029c6fc2) - update docs
+- [`dca47be`](https://github.com/axetroy/watchdog/commit/dca47beff25e62799eaa16437ebd93d9083b9d4a) - update
+- [`659186b`](https://github.com/axetroy/watchdog/commit/659186bf8f7f495b200917a7fe85722064709e21) - update
+- [`3f13015`](https://github.com/axetroy/watchdog/commit/3f13015119ce6dcf210a6e1f1345fe99f359bb30) - fix
+- [`57106f3`](https://github.com/axetroy/watchdog/commit/57106f38066e257a3a80bbc21781f1fc77e5547c) - update
+- [`0469316`](https://github.com/axetroy/watchdog/commit/0469316728727f79971e6e7630eaf47fd19e22cd) - ci: increase timeout for lint
+- [`348feac`](https://github.com/axetroy/watchdog/commit/348feacf764e62a1654253b870840c317a2875db) - faet: 存储历史的状态记录
+- [`bb0b0f5`](https://github.com/axetroy/watchdog/commit/bb0b0f5a7044917f2c29b67b9093816f6bda042b) - refactor: update
+- [`3b669ae`](https://github.com/axetroy/watchdog/commit/3b669ae85eb916c95e147cb36426b6cc3fb76a4a) - add logo to reade
+- [`6e4753f`](https://github.com/axetroy/watchdog/commit/6e4753ff5b2985fed93dbd1e7b08c9f34252e5f9) - update logo
+- [`c8c7d13`](https://github.com/axetroy/watchdog/commit/c8c7d1378804f9084c3066e7a299610c1bad4e3e) - update
+- [`b5306c7`](https://github.com/axetroy/watchdog/commit/b5306c76e5dde08cf72d2bafabd0a0f4d33e01ce) - update
+- [`96b9cbf`](https://github.com/axetroy/watchdog/commit/96b9cbf4a9d72dba12d664ac0a6afc50b5590b80) - update format script
+- [`da9339c`](https://github.com/axetroy/watchdog/commit/da9339c822862b8ee3b5004379885f05075c895e) - fix: build
+- [`4d7d1bb`](https://github.com/axetroy/watchdog/commit/4d7d1bb4e960d13be43200034923e779eb796a49) - update ci
+- [`78649b1`](https://github.com/axetroy/watchdog/commit/78649b1f628b8bd1b342b0519674611e420a0840) - refactor: improve code
+- [`4e2a7e4`](https://github.com/axetroy/watchdog/commit/4e2a7e482e2749293f292ea8f90b7192b456bfc3) - feat: support webhook
+- [`f2e16b8`](https://github.com/axetroy/watchdog/commit/f2e16b899a0b67695dca8c74dc4b09e39ef8cfc8) - update docs
+- [`a441f66`](https://github.com/axetroy/watchdog/commit/a441f66a95bb46d8eae4ee69178d3af09891a3cb) - update
+- [`479fa7f`](https://github.com/axetroy/watchdog/commit/479fa7f82445491845197c9f0f50bf3ec76d53c2) - refactor
+- [`ad7bc9e`](https://github.com/axetroy/watchdog/commit/ad7bc9e3a084a5da0a8d1bab98c516f1a9cc4107) - feat: socket 推送
+- [`5e8a3c9`](https://github.com/axetroy/watchdog/commit/5e8a3c9da373e7c51b9447c359be06d9e1c9da14) - feat: 添加 Websocket
+- [`4f57ff5`](https://github.com/axetroy/watchdog/commit/4f57ff52d7d5028571715405151b2567ecf685f6) - fix test
+- [`41daa94`](https://github.com/axetroy/watchdog/commit/41daa94afac9972f41e64d6f48a54a7505aa7263) - add web
+- [`574c8f0`](https://github.com/axetroy/watchdog/commit/574c8f0101e560be9c5e33bdff25ca039963d18c) - update docs
+- [`f6bf805`](https://github.com/axetroy/watchdog/commit/f6bf805fae2c602b763bdb45d4c34fd904dd9593) - refactor
+- [`2e835a6`](https://github.com/axetroy/watchdog/commit/2e835a68bc26c1a62f989bbca0552d0530fd2c73) - update
+- [`4a35e8c`](https://github.com/axetroy/watchdog/commit/4a35e8c4121f16ee9e9a37b2810988d8bd8cd942) - fix
+- [`852f457`](https://github.com/axetroy/watchdog/commit/852f4572d99ac9cdda434823bbd18cfd31102226) - update
+- [`0e36b96`](https://github.com/axetroy/watchdog/commit/0e36b966b41be817c33c344f0ccc56e98d7c24fa) - fix
+- [`a63c9f6`](https://github.com/axetroy/watchdog/commit/a63c9f67de454fe92fd4e9e88d75895c3a488f35) - update
+- [`8904ff4`](https://github.com/axetroy/watchdog/commit/8904ff48c5979e6c9a78d1826e808d7cb938d4ca) - fix test
+- [`9ced3f2`](https://github.com/axetroy/watchdog/commit/9ced3f26629d521160090971d1fb7a269972d7e8) - update
+- [`b198803`](https://github.com/axetroy/watchdog/commit/b1988036af7ba21d271bc348111291d108f9c76c) - update
+- [`47600dd`](https://github.com/axetroy/watchdog/commit/47600dd9341e5ff6a72754ea539f8e02ee3baa43) - update
+- [`5076524`](https://github.com/axetroy/watchdog/commit/5076524c328b8bf4002014e5713c56581c04ee33) - support ws/wss
+- [`5afd6b6`](https://github.com/axetroy/watchdog/commit/5afd6b6c2c7692c995f37a5bde953da9aa323c55) - update
+- [`2634f6d`](https://github.com/axetroy/watchdog/commit/2634f6d0066236c0c7bf9834c7a870f2c7744bb4) - update
+- [`a52329f`](https://github.com/axetroy/watchdog/commit/a52329f851a9880619ef7d4bfed099f05f656fcf) - fix
+- [`0721f1a`](https://github.com/axetroy/watchdog/commit/0721f1a4aa7795ab33902fe929762fc2b2df2e73) - fix ci
+- [`e182192`](https://github.com/axetroy/watchdog/commit/e182192482bca02c40205d335a6f42af8e2b0f10) - update ci
+- [`cba6cd0`](https://github.com/axetroy/watchdog/commit/cba6cd0326bd6ff5f997a2f997ffccaef5c5c2c7) - 警告策略
+- [`64b0525`](https://github.com/axetroy/watchdog/commit/64b05254913c8cb09b7e6e0bad9c581929dfa2ee) - update
+- [`7ebf6db`](https://github.com/axetroy/watchdog/commit/7ebf6dbda36e45935ef6b666a602db1774a7381c) - update
+- [`619978e`](https://github.com/axetroy/watchdog/commit/619978e996e049719d2716ee9ae082b79e316624) - update
+- [`bd532f3`](https://github.com/axetroy/watchdog/commit/bd532f3c45554d7472281b4fe09ebf7da25ec520) - update
+- [`0dd05bd`](https://github.com/axetroy/watchdog/commit/0dd05bd781a7d3f2c8f88424ae96595e0748c137) - update
+- [`511ef26`](https://github.com/axetroy/watchdog/commit/511ef2684952d0be2e14006b3f00d9252dc76dd0) - update
+- [`52f3fb2`](https://github.com/axetroy/watchdog/commit/52f3fb2ab80fb4e5581882018162ac40619cbf64) - fix lint
+- [`55ed3d5`](https://github.com/axetroy/watchdog/commit/55ed3d5bef8ca78022fa3806115ef47c657dcf53) - update
+- [`233ffd0`](https://github.com/axetroy/watchdog/commit/233ffd0d6cff9a88f2e2dd4fb313ac03dccc430f) - update
+- [`8da7c8a`](https://github.com/axetroy/watchdog/commit/8da7c8ae0bdbf37a2b38da9a3540a160a7e1fc1b) - update
+- [`d8d7cc3`](https://github.com/axetroy/watchdog/commit/d8d7cc3658233ea8d1b3bee813888264d3cc8ed7) - init
+- [`9ac5e7e`](https://github.com/axetroy/watchdog/commit/9ac5e7ec098a4980236baa0c53223acfd07f91da) - Initial commit

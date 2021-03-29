@@ -1,12 +1,10 @@
-file-rotatelogs
-==================
+# file-rotatelogs
 
 Provide an `io.Writer` that periodically rotates log files from within the application. Port of [File::RotateLogs](https://metacpan.org/release/File-RotateLogs) from Perl to Go.
 
 [![Build Status](https://travis-ci.org/lestrrat-go/file-rotatelogs.png?branch=master)](https://travis-ci.org/lestrrat-go/file-rotatelogs)
 
 [![GoDoc](https://godoc.org/github.com/lestrrat-go/file-rotatelogs?status.svg)](https://godoc.org/github.com/lestrrat-go/file-rotatelogs)
-
 
 # SYNOPSIS
 
@@ -62,7 +60,7 @@ import(
   "log"
   "github.com/lestrrat-go/file-rotatelogs"
 )
-  
+
 func main() {
   rl, _ := rotatelogs.New("/path/to/access_log.%Y%m%d%H%M")
 
@@ -73,8 +71,7 @@ func main() {
 }
 ```
 
-OPTIONS
-====
+# OPTIONS
 
 ## Pattern (Required)
 
@@ -108,7 +105,7 @@ the rotatelog to respect it.
 
 ## LinkName (default: "")
 
-Path where a symlink for the actual log file is placed. This allows you to 
+Path where a symlink for the actual log file is placed. This allows you to
 always check at the same location for log files even if the logs were rotated
 
 ```go
@@ -124,10 +121,10 @@ always check at the same location for log files even if the logs were rotated
 ```
 
 Links that share the same parent directory with the main log path will get a
-special treatment: namely, linked paths will be *RELATIVE* to the main log file.
+special treatment: namely, linked paths will be _RELATIVE_ to the main log file.
 
 | Main log file name  | Link name           | Linked path           |
-|---------------------|---------------------|-----------------------|
+| ------------------- | ------------------- | --------------------- |
 | /path/to/log.%Y%m%d | /path/to/log        | log.YYYYMMDD          |
 | /path/to/log.%Y%m%d | /path/to/nested/log | ../log.YYYYMMDD       |
 | /path/to/log.%Y%m%d | /foo/bar/baz/log    | /path/to/log.YYYYMMDD |
