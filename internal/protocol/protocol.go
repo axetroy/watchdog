@@ -6,7 +6,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-func Ping(proto string, addr string, auth interface{}, ctx context.Context) error {
+func Ping(ctx context.Context, proto string, addr string, auth interface{}) error {
 	switch proto {
 	case "http":
 		fallthrough

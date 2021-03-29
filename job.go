@@ -35,7 +35,7 @@ func (r RunnerJob) Do() error {
 	defer cancel()
 
 	go func() {
-		e := protocol.Ping(r.service.Protocol, r.service.Addr, r.service.Auth, ctx)
+		e := protocol.Ping(ctx, r.service.Protocol, r.service.Addr, r.service.Auth)
 
 		if e != nil {
 			e = errors.WithStack(e)
