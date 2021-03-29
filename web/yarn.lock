@@ -638,18 +638,18 @@ vite@2.1.3:
   optionalDependencies:
     fsevents "~2.3.1"
 
-vue-demi@^0.7.1:
+vue-demi@^0.7.4:
   version "0.7.4"
-  resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.7.4.tgz#4c6be525788e1f6b3fd5d4f5f9f2148cf6645979"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.7.4.tgz#4c6be525788e1f6b3fd5d4f5f9f2148cf6645979"
   integrity sha512-PT0qzI9Rp8R8eUAsTPXADC+KAZdrMufmbZqEMMqvaiesWyjCpgyuuvS5Su8cvBjK9RevLT/YfFiKWxc8YB9/8g==
 
-vue-echarts@6.0.0-rc.3:
-  version "6.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-6.0.0-rc.3.tgz#040471fc19025b989c96c901689f6c0d1022d1ff"
-  integrity sha512-B7xfwpHaOeM9+cjallrK3AW893oaeqT9Sjx7tHgwoyGdfPTq6cwDc2Hcdmjgrs/KEp+ZZXMIajXky30Wu4/TDw==
+vue-echarts@6.0.0-rc.4:
+  version "6.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-6.0.0-rc.4.tgz#e7d25304136db7d959f9710172c4d36f62f620e4"
+  integrity sha512-kkpBkAFIh7aHw2/0FEm9UktQ16LDP5EmATaCqq+CtnSKzd+vuZI6UxrfTLnOQNMCR5eKX8FoonggoKHpcjNGQg==
   dependencies:
     resize-detector "^0.3.0"
-    vue-demi "^0.7.1"
+    vue-demi "^0.7.4"
 
 vue-tsc@0.0.16:
   version "0.0.16"
