@@ -24,7 +24,7 @@ github.com/go-playground/validator/v10/translations/en
 # github.com/google/uuid v1.2.0
 ## explicit
 github.com/google/uuid
-# github.com/gookit/color v1.3.8
+# github.com/gookit/color v1.4.0
 ## explicit
 github.com/gookit/color
 # github.com/gorilla/websocket v1.4.2
@@ -70,6 +70,8 @@ github.com/stretchr/testify/assert
 ## explicit
 github.com/wxpusher/wxpusher-sdk-go
 github.com/wxpusher/wxpusher-sdk-go/model
+# github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778
+github.com/xo/terminfo
 # github.com/yosuke-furukawa/json5 v0.1.1
 ## explicit
 github.com/yosuke-furukawa/json5/encoding/json5
