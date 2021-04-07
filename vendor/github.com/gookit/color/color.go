@@ -43,7 +43,10 @@ const CodeExpr = `\033\[[\d;?]+m`
 
 var (
 	// Enable switch color render and display
-	Enable = true
+	//
+	// NOTICE:
+	// if ENV: NO_COLOR is not empty, will disable color render.
+	Enable = os.Getenv("NO_COLOR") == ""
 	// RenderTag render HTML tag on call color.Xprint, color.PrintX
 	RenderTag = true
 	// debug mode for development.
@@ -180,6 +183,40 @@ func IsLikeInCmd() bool {
 // InnerErrs info
 func InnerErrs() []error {
 	return innerErrs
+}
+
+/*************************************************************
+ * quick use color/style print line message
+ *************************************************************/
+
+// Infof print message with Info style
+func Infof(format string, a ...interface{}) {
+	Info.Printf(format, a...)
+}
+
+// Infoln print message with Info style
+func Infoln(a ...interface{}) {
+	Info.Println(a...)
+}
+
+// Errorf print message with Error style
+func Errorf(format string, a ...interface{}) {
+	Error.Printf(format, a...)
+}
+
+// Errorln print message with Error style
+func Errorln(a ...interface{}) {
+	Error.Println(a...)
+}
+
+// Warnf print message with Warn style
+func Warnf(format string, a ...interface{}) {
+	Warn.Printf(format, a...)
+}
+
+// Warnln print message with Warn style
+func Warnln(a ...interface{}) {
+	Warn.Println(a...)
 }
 
 /*************************************************************
