@@ -791,6 +791,9 @@ func isNeField(fl FieldLevel) bool {
 	case reflect.Slice, reflect.Map, reflect.Array:
 		return int64(field.Len()) != int64(currentField.Len())
 
+	case reflect.Bool:
+		return field.Bool() != currentField.Bool()
+
 	case reflect.Struct:
 
 		fieldType := field.Type()
@@ -1544,7 +1547,7 @@ func requiredWithout(fl FieldLevel) bool {
 	return true
 }
 
-// RequiredWithoutAll is the validation function
+// ExcludedWithoutAll is the validation function
 // The field under validation must not be present or is empty when all of the other specified fields are not present.
 func excludedWithoutAll(fl FieldLevel) bool {
 	params := parseOneOfParam2(fl.Param())
