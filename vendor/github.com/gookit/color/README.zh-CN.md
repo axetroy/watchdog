@@ -26,13 +26,15 @@ Golang 下的命令行色彩使用库, 拥有丰富的色彩渲染输出，通�
 - 使用简单方便，无其他依赖
 - 支持丰富的颜色输出, 16 色(4bit)，256 色(8bit)，RGB 色彩(24bit, RGB)
   - 16 色(4bit)是最常用和支持最广的，支持 Windows `cmd.exe`
-  - 自 `v1.2.4` 起 **256 色(8bit)，RGB 色彩(24bit)均支持 windows CMD 和 PowerShell 终端**
+  - 自 `v1.2.4` 起 **256 色(8bit)，RGB 色彩(24bit)均支持 Windows CMD 和 PowerShell 终端**
   - 请查看 [this gist](https://gist.github.com/XVilka/8346728) 了解支持 RGB 色彩的终端
 - 通用的 API 方法：`Print` `Printf` `Println` `Sprint` `Sprintf`
-- 同时支持 html 标签式的颜色渲染. eg: `<green>message</>`
+- 同时支持 html 标签式的颜色渲染.
+  - 例如: `this an <green>message</>` 标签内部的文本将会渲染为绿色字体
 - 基础色彩: `Bold` `Black` `White` `Gray` `Red` `Green` `Yellow` `Blue` `Magenta` `Cyan`
 - 扩展风格: `Info` `Note` `Light` `Error` `Danger` `Notice` `Success` `Comment` `Primary` `Warning` `Question` `Secondary`
-- 支持 Linux、Mac 同时兼容 Windows 系统环境
+- 支持通过设置环境变量 `NO_COLOR` 来禁用色彩，或者使用 `FORCE_COLOR` 来强制使用色彩渲染.
+- 支持 Linux、Mac，同时兼容 Windows 系统环境
 
 ## GoDoc
 
@@ -44,22 +46,6 @@ Golang 下的命令行色彩使用库, 拥有丰富的色彩渲染输出，通�
 ```bash
 go get github.com/gookit/color
 ```
-
-### 提示
-
-如果要在 Windows 上打印颜色消息，应使用 `color.PrintX` 而不是 `fmt.PrintX`
-
-```go
-str := color.Red.Sprint("an colored message string")
-
-// Windows 下将不会输出颜色
-fmt.Println(str)
-
-// Windows 也可以输出色彩
-color.Println(str)
-```
-
-> `color.PrintX` 系列方法是通用的，您可以直接使用它们替代 `fmt.PrintX` 方法
 
 ## 快速开始
 
@@ -168,7 +154,7 @@ color.Bold.Println("bold message")
 color.Yellow.Println("yellow message")
 ```
 
-> 运行 demo: `go run ./_examples/basiccolor.go`
+> 运行 demo: `go run ./_examples/color_16.go`
 
 ![basic-color](_examples/images/basic-color.png)
 

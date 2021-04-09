@@ -33,6 +33,7 @@ Now, 256 colors and RGB colors have also been supported to work in Windows CMD a
   - Support working on Windows `cmd` `powerShell` terminal
 - Basic colors: `Bold`, `Black`, `White`, `Gray`, `Red`, `Green`, `Yellow`, `Blue`, `Magenta`, `Cyan`
 - Additional styles: `Info`, `Note`, `Light`, `Error`, `Danger`, `Notice`, `Success`, `Comment`, `Primary`, `Warning`, `Question`, `Secondary`
+- Support by set `NO_COLOR` for disable color or use `FORCE_COLOR` for force open color render.
 
 ## GoDoc
 
@@ -44,22 +45,6 @@ Now, 256 colors and RGB colors have also been supported to work in Windows CMD a
 ```bash
 go get github.com/gookit/color
 ```
-
-### NOTICE
-
-If you want print custom colors message on windows, should use `color.PrintX` instead of `fmt.PrintX`
-
-```go
-str := color.Red.Sprint("an colored message string")
-
-// Color will not be output under Windows
-fmt.Println(str)
-
-// Color will be output under Windows
-color.Println(str)
-```
-
-> `color.PrintX` is universal, you can use it directly instead of `fmt.PrintX`
 
 ## Quick start
 
@@ -166,7 +151,7 @@ color.Bold.Println("bold message")
 color.Yellow.Println("yellow message")
 ```
 
-Run demo: `go run ./_examples/basiccolor.go`
+Run demo: `go run ./_examples/color_16.go`
 
 ![basic-color](_examples/images/basic-color.png)
 
