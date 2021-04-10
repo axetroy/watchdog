@@ -1,40 +1,11 @@
 package protocol
 
 import (
-	"log"
 	"testing"
-	"time"
 
+	"github.com/axetroy/watchdog/internal/tester"
 	"github.com/stretchr/testify/assert"
-	"goftp.io/server/v2"
 )
-
-func CreateFTPServer(addr string, cb func(c *server.Server)) error {
-	server, err := server.NewServer(&server.Options{
-		Port: 8888,
-		Perm: server.NewSimplePerm("test", "test"),
-	})
-
-	if err != nil {
-		return err
-	}
-
-	defer func() {
-		_ = server.Shutdown()
-	}()
-
-	go func() {
-		if err := server.ListenAndServe(); err != nil {
-			log.Println(err)
-		}
-	}()
-
-	time.Sleep(time.Second * 3)
-
-	cb(server)
-
-	return nil
-}
 
 func TestPingFTP(t *testing.T) {
 	type args struct {
@@ -66,7 +37,7 @@ func TestPingFTP(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if tt.listen == true {
-				err := CreateFTPServer(tt.args.addr, func(connection *server.Server) {
+				err := tester.CreateFTPServer(tt.args.addr, func() {
 					err := PingFTP(tt.args.addr)
 					assert.Equal(t, tt.wantErr, err != nil, tt.name)
 				})

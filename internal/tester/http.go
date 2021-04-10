@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func handler() http.Handler {
+func httpHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		_, _ = io.Copy(w, r.Body)
@@ -17,7 +17,7 @@ func handler() http.Handler {
 func CreateHTTPEchoServer(addr string, cb func()) error {
 	server := &http.Server{
 		Addr:    addr,
-		Handler: handler(),
+		Handler: httpHandler(),
 	}
 
 	go func() {
