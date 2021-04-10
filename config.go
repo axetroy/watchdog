@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"path"
 	"reflect"
 	"regexp"
 	"sort"
@@ -16,6 +17,7 @@ import (
 	enTranslations "github.com/go-playground/validator/v10/translations/en"
 	"github.com/pkg/errors"
 	"github.com/yosuke-furukawa/json5/encoding/json5"
+	"gopkg.in/yaml.v2"
 )
 
 type Config struct {
@@ -185,7 +187,7 @@ func init() {
 
 	if err := validate.RegisterValidation("rest", func(field validator.FieldLevel) bool {
 		val := field.Field().String()
-		reg := regexp.MustCompile(`\d\d:\d\d:\d\d~\d\d:\d\d:\d\d`)
+		reg := regexp.MustCompile(`^\d\d:\d\d:\d\d~\d\d:\d\d:\d\d$`)
 		return reg.MatchString(val)
 	}); err != nil {
 		panic(err)
@@ -216,14 +218,23 @@ func (c *Config) Validate() error {
 	return nil
 }
 
-func NewConfig(content []byte) (*Config, error) {
+func NewConfig(content []byte, ext string) (*Config, error) {
 	var (
 		config = Config{}
 		err    error
 	)
 
-	if err = json5.Unmarshal(content, &config); err != nil {
-		return nil, errors.WithStack(err)
+	switch ext {
+	case ".json":
+		if err = json5.Unmarshal(content, &config); err != nil {
+			return nil, errors.WithStack(err)
+		}
+	case ".yml":
+		fallthrough
+	case ".yaml":
+		if err = yaml.Unmarshal(content, &config); err != nil {
+			return nil, errors.WithStack(err)
+		}
 	}
 
 	if err = config.Validate(); err != nil {
@@ -240,5 +251,5 @@ func NewConfigFromFile(configFilepath string) (*Config, error) {
 		return nil, errors.WithStack(err)
 	}
 
-	return NewConfig(b)
+	return NewConfig(b, path.Ext(configFilepath))
 }

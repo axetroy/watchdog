@@ -25,7 +25,7 @@ USAGE:
 OPTIONS:
   --help        Print help information.
   --version     Print version information.
-  --config      Specify config file. defaults to 'watchdog.config.json'.
+  --config      Specify config file. defaults to 'watchdog.config.json'. allow json/yml file.
   --port        Specify the port for HTTP listening. defaults to '9999'.
 SOURCE CODE:
   https://github.com/axetroy/watchdog`)

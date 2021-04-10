@@ -1,0 +1,22 @@
+interval: 5
+
+service:
+  - name: 百度
+    protocol: https
+    addr: https://www.baidu.com
+    interval: 10
+    report: []
+    rest:
+      - 02:00:00~09:00:00
+
+  - name: Google
+    protocol: https
+    addr: https://google.com
+    interval: 10
+    report: []
+
+  - name: 本地代理
+    protocol: tcp
+    addr: 127.0.0.1:1080
+    interval: 5
+    report: []
