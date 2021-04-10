@@ -24,7 +24,7 @@ github.com/go-playground/validator/v10/translations/en
 # github.com/google/uuid v1.2.0
 ## explicit
 github.com/google/uuid
-# github.com/gookit/color v1.4.1
+# github.com/gookit/color v1.4.2
 ## explicit
 github.com/gookit/color
 # github.com/gorilla/websocket v1.4.2

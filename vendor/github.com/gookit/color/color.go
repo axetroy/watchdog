@@ -55,7 +55,7 @@ var (
 	// 	COLOR_DEBUG_MODE=on
 	// or:
 	// 	COLOR_DEBUG_MODE=on go run ./_examples/envcheck.go
-	debugMode = os.Getenv("COLOR_DEBUG_MODE")
+	debugMode = os.Getenv("COLOR_DEBUG_MODE") == "on"
 	// inner errors record on detect color level
 	innerErrs []error
 	// output the default io.Writer message print
@@ -104,28 +104,15 @@ func SupportTrueColor() bool {
 
 // Set set console color attributes
 func Set(colors ...Color) (int, error) {
-	if !Enable { // not enable
-		return 0, nil
-	}
-
-	if !SupportColor() {
-		return 0, nil
-	}
-
-	return fmt.Printf(SettingTpl, Colors2code(colors...))
+	code := Colors2code(colors...)
+	err := SetTerminal(code)
+	return 0, err
 }
 
 // Reset reset console color attributes
 func Reset() (int, error) {
-	if !Enable { // not enable
-		return 0, nil
-	}
-
-	if !SupportColor() {
-		return 0, nil
-	}
-
-	return fmt.Print(ResetSet)
+	err := ResetTerminal()
+	return 0, err
 }
 
 // Disable disable color output
@@ -176,6 +163,7 @@ func ForceOpenColor() terminfo.ColorLevel {
 }
 
 // IsLikeInCmd check result
+// Deprecated
 func IsLikeInCmd() bool {
 	return isLikeInCmd
 }
@@ -183,40 +171,6 @@ func IsLikeInCmd() bool {
 // InnerErrs info
 func InnerErrs() []error {
 	return innerErrs
-}
-
-/*************************************************************
- * quick use color/style print line message
- *************************************************************/
-
-// Infof print message with Info style
-func Infof(format string, a ...interface{}) {
-	Info.Printf(format, a...)
-}
-
-// Infoln print message with Info style
-func Infoln(a ...interface{}) {
-	Info.Println(a...)
-}
-
-// Errorf print message with Error style
-func Errorf(format string, a ...interface{}) {
-	Error.Printf(format, a...)
-}
-
-// Errorln print message with Error style
-func Errorln(a ...interface{}) {
-	Error.Println(a...)
-}
-
-// Warnf print message with Warn style
-func Warnf(format string, a ...interface{}) {
-	Warn.Printf(format, a...)
-}
-
-// Warnln print message with Warn style
-func Warnln(a ...interface{}) {
-	Warn.Println(a...)
 }
 
 /*************************************************************
@@ -278,8 +232,7 @@ func RenderString(code string, str string) string {
 }
 
 // ClearCode clear color codes.
-// eg:
-// 		"\033[36;1mText\x1b[0m" -> "Text"
+// eg: "\033[36;1mText\x1b[0m" -> "Text"
 func ClearCode(str string) string {
 	return codeRegex.ReplaceAllString(str, "")
 }
