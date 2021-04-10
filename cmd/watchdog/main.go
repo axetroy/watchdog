@@ -78,22 +78,52 @@ func main() {
 		os.Exit(1)
 	}
 
+	// 默认 30 s 间隔
+	if c.Interval == 0 {
+		c.Interval = 30
+	}
+
+	// 默认 发送 100 次提醒每天
+	if c.MaxNotifyTimesForDay == 0 {
+		c.MaxNotifyTimesForDay = 100
+	}
+
+	// 默认 发送 100 次提醒每时
+	if c.MaxNotifyTimesForHour == 0 {
+		c.MaxNotifyTimesForHour = 5
+	}
+
 	for _, s := range c.Service {
-		interval := s.Interval
+		interval := getServiceFieldWithDefault(s, func(s watchdog.Service) uint {
+			return s.Interval
+		}, c.Interval)
 
-		// 如果服务没有单独设置间隔时间，则获取全局配置
-		if interval == 0 {
-			interval = c.Interval
-		}
+		maxNotifyTimesForDay := getServiceFieldWithDefault(s, func(s watchdog.Service) uint {
+			return s.MaxNotifyTimesForDay
+		}, c.MaxNotifyTimesForDay)
 
-		// 默认 30 s 间隔
-		if interval == 0 {
-			interval = 5
-		}
+		maxNotifyTimesForHour := getServiceFieldWithDefault(s, func(s watchdog.Service) uint {
+			return s.MaxNotifyTimesForHour
+		}, c.MaxNotifyTimesForHour)
 
-		scheduler := scheduling.NewScheduling(time.Second*time.Duration(interval), watchdog.NewRunnerJob(s))
+		scheduler := scheduling.NewScheduling(scheduling.Options{
+			Interval:              time.Second * time.Duration(interval),
+			Job:                   watchdog.NewRunnerJob(s),
+			MaxNotifyTimesForDay:  maxNotifyTimesForDay,
+			MaxNotifyTimesForHour: maxNotifyTimesForHour,
+		})
 		go scheduler.Start()
 	}
 
 	watchdog.Serve(port, c)
+}
+
+func getServiceFieldWithDefault(s watchdog.Service, fn func(s watchdog.Service) uint, defaultValue uint) uint {
+	value := fn(s)
+
+	if value == 0 {
+		return defaultValue
+	}
+
+	return value
 }

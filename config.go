@@ -18,17 +18,21 @@ import (
 )
 
 type Config struct {
-	Interval uint      `json:"interval" validate:"required,gt=0"` // 检测间隔时间，单位秒
-	Service  []Service `json:"service" validate:"required,dive"`  // 检测的服务
+	Interval              uint      `json:"interval" validate:"required,gt=0"` // 检测间隔时间，单位秒
+	MaxNotifyTimesForDay  uint      `json:"max_notify_times_for_day"`          // 每日最多通知次数
+	MaxNotifyTimesForHour uint      `json:"max_notify_times_for_hour"`         // 每小时最多通知次数
+	Service               []Service `json:"service" validate:"required,dive"`  // 检测的服务
 }
 
 type Service struct {
-	Name     string      `json:"name" validate:"required"`                     // 服务名称
-	Protocol string      `json:"protocol" validate:"required,detect_protocol"` // 服务协议, 支持 http/https/ws/wss/tcp/tdp/ssh
-	Addr     string      `json:"addr" validate:"required"`                     // 地址
-	Interval uint        `json:"interval" validate:"gt=0"`                     // 检测任务的间隔时间，单位秒
-	Report   []Reporter  `json:"report" validate:"dive"`                       // 通知渠道，支持多个通知渠道
-	Auth     interface{} `json:"auth"`                                         // 身份认证的字段，任意类型，主要是每个协议可能需要的字段不一样
+	Name                  string      `json:"name" validate:"required"`                     // 服务名称
+	Protocol              string      `json:"protocol" validate:"required,detect_protocol"` // 服务协议, 支持 http/https/ws/wss/tcp/tdp/ssh
+	Addr                  string      `json:"addr" validate:"required"`                     // 地址
+	Interval              uint        `json:"interval" validate:"gt=0"`                     // 检测任务的间隔时间，单位秒
+	Report                []Reporter  `json:"report" validate:"dive"`                       // 通知渠道，支持多个通知渠道
+	MaxNotifyTimesForDay  uint        `json:"max_notify_times_for_day"`                     // 每日最多通知次数
+	MaxNotifyTimesForHour uint        `json:"max_notify_times_for_hour"`                    // 每小时最多通知次数
+	Auth                  interface{} `json:"auth"`                                         // 身份认证的字段，任意类型，主要是每个协议可能需要的字段不一样
 }
 
 // 消息通知渠道

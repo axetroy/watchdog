@@ -9,7 +9,11 @@ import (
 
 func TestAlarm(t *testing.T) {
 	{
-		alarm := NewAlarm(time.Microsecond*500, 20) // 间隔 0.5s，每天最多触发次数 20 次
+		// 间隔 0.5s，每天最多触发次数 20 次
+		alarm := NewAlarm(AlertOptions{
+			Interval:       time.Microsecond * 500,
+			MaxTimesForDay: 20,
+		})
 
 		index := 0
 		for {
@@ -36,7 +40,11 @@ func TestAlarm(t *testing.T) {
 	}
 
 	{
-		alarm := NewAlarm(time.Millisecond*200, 20) // 间隔 2s，每天最多触发次数 20 次
+		// 间隔 2s，每天最多触发次数 20 次
+		alarm := NewAlarm(AlertOptions{
+			Interval:       time.Millisecond * 200,
+			MaxTimesForDay: 20,
+		})
 
 		index := 0
 		for {
