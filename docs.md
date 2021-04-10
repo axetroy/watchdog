@@ -164,6 +164,7 @@ Q: 支持分布式吗？
 | reporter                  | [[]Reporter](#通知渠道) | \*   | 服务状态变更的通知渠道                                                                        |
 | max_notify_times_for_day  | uint                    |      | 每日最多通知次数，如果不设置，则使用全局配置                                                  |
 | max_notify_times_for_hour | uint                    |      | 每时最多通知次数，如果不设置，则使用全局配置                                                  |
+| rest                      | []string                |      | 休息时段，在该时段内不会发送通知，格式为 `12:00:00~16:00:00` 可以设置多个时段                 |
 
 ## 服务协议
 

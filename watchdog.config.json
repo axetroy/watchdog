@@ -6,7 +6,8 @@
       "protocol": "https",
       "addr": "https://www.baidu.com",
       "interval": 10,
-      "report": []
+      "report": [],
+      "rest": ["02:00:00~09:00:00"]
     },
     {
       "name": "Google",

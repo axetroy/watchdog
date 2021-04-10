@@ -1,6 +1,7 @@
 package watchdog
 
 import (
+	"strings"
 	"sync"
 	"time"
 )
@@ -15,6 +16,7 @@ type Alarm struct {
 	triggerTimesToDay uint          // 今日已触发次数
 	maxTimesForDay    uint          // 每天最多触发次数，0 无限次数
 	maxTimesForHour   uint          // 每小时最多触发次数，0 无限次数
+	Rest              []string      // 休息时段，这个时段内，不会发送通知，格式是 hh:mm:ss~hh:mm:ss，例如 02:00:00~09:00:00
 }
 
 type AlertOptions struct {
@@ -29,6 +31,7 @@ func NewAlarm(options AlertOptions) *Alarm {
 		interval:        options.Interval,
 		maxTimesForDay:  options.MaxTimesForDay,
 		maxTimesForHour: options.MaxTimesForHour,
+		Rest:            make([]string, 0),
 	}
 }
 
@@ -51,17 +54,13 @@ func (a *Alarm) Tick() (shouldTrigger bool) {
 		}
 	}()
 
-	if a.lastTriggerAt == nil {
-		shouldTrigger = true
-		return
-	}
-
 	now := time.Now()
 
 	// 如果超出了当前报警的量
-	if a.maxTimesForDay > 0 {
+	if a.maxTimesForDay > 0 && a.lastTriggerAt != nil {
 		if now.Day() == a.lastTriggerAt.Day() && a.triggerTimesToDay >= a.maxTimesForDay {
-			return false
+			shouldTrigger = false
+			return
 		}
 	}
 
@@ -82,9 +81,41 @@ func (a *Alarm) Tick() (shouldTrigger bool) {
 			})
 
 			if len(errorHistory) >= int(a.maxTimesForHour) {
+				shouldTrigger = false
 				return
 			}
 		}
+	}
+
+	// 查看是否在休息时段外
+	if a.Rest != nil {
+		for _, ranges := range a.Rest {
+			arr := strings.Split(ranges, "~")
+			start, err := time.Parse(time.Stamp, "Jan _2 "+arr[0])
+
+			if err != nil {
+				break
+			}
+
+			end, err := time.Parse(time.Stamp, "Jan _2 "+arr[1])
+
+			if err != nil {
+				break
+			}
+
+			if now.After(start) && now.Before(end) {
+				// do nothing
+				shouldTrigger = true
+			} else {
+				shouldTrigger = false
+				return
+			}
+		}
+	}
+
+	if a.lastTriggerAt == nil {
+		shouldTrigger = true
+		return
 	}
 
 	// 如果还没有到下一次的报警时间
@@ -93,7 +124,7 @@ func (a *Alarm) Tick() (shouldTrigger bool) {
 		return
 	}
 
-	return
+	return false
 }
 
 func filter(vs []ServiceStatus, f func(ServiceStatus) bool) []ServiceStatus {

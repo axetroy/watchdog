@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"reflect"
+	"regexp"
 	"sort"
 	"strings"
 
@@ -32,6 +33,7 @@ type Service struct {
 	Report                []Reporter  `json:"report" validate:"dive"`                       // 通知渠道，支持多个通知渠道
 	MaxNotifyTimesForDay  uint        `json:"max_notify_times_for_day"`                     // 每日最多通知次数
 	MaxNotifyTimesForHour uint        `json:"max_notify_times_for_hour"`                    // 每小时最多通知次数
+	Rest                  []string    `json:"rest" validate:"dive,rest"`                    // 休息时段，这个时段内，不会发送通知，格式是 hh:mm:ss~hh:mm:ss，例如 02:00:00~09:00:00
 	Auth                  interface{} `json:"auth"`                                         // 身份认证的字段，任意类型，主要是每个协议可能需要的字段不一样
 }
 
@@ -156,6 +158,15 @@ func init() {
 		panic(err)
 	}
 
+	if err := validate.RegisterTranslation("rest", trans, func(ut ut.Translator) error {
+		return ut.Add("rest", "{0} value {1} for match the format 12:00:00~16:00:00", true)
+	}, func(ut ut.Translator, fe validator.FieldError) string {
+		t, _ := ut.T("rest", fe.StructNamespace(), fe.Param())
+		return t
+	}); err != nil {
+		panic(err)
+	}
+
 	// ==== register validation ====
 	if err := validate.RegisterValidation("detect_protocol", func(field validator.FieldLevel) bool {
 		val := field.Field().String()
@@ -168,6 +179,14 @@ func init() {
 		val := field.Field().String()
 
 		return isValidNotifyProtocol(val)
+	}); err != nil {
+		panic(err)
+	}
+
+	if err := validate.RegisterValidation("rest", func(field validator.FieldLevel) bool {
+		val := field.Field().String()
+		reg := regexp.MustCompile(`\d\d:\d\d:\d\d~\d\d:\d\d:\d\d`)
+		return reg.MatchString(val)
 	}); err != nil {
 		panic(err)
 	}
