@@ -7,6 +7,26 @@ import (
 	"strings"
 )
 
+// SetTerminal by given code.
+func SetTerminal(code string) error {
+	if !Enable || !SupportColor() {
+		return nil
+	}
+
+	_, err := fmt.Fprintf(output, SettingTpl, code)
+	return err
+}
+
+// ResetTerminal terminal setting.
+func ResetTerminal() error {
+	if !Enable || !SupportColor() {
+		return nil
+	}
+
+	_, err := fmt.Fprint(output, ResetSet)
+	return err
+}
+
 /*************************************************************
  * print methods(will auto parse color tags)
  *************************************************************/
@@ -148,7 +168,7 @@ func formatArgsForPrintln(args []interface{}) (message string) {
 // }
 
 func debugf(f string, v ...interface{}) {
-	if debugMode == "on" {
+	if debugMode {
 		fmt.Print("COLOR_DEBUG: ")
 		fmt.Printf(f, v...)
 		fmt.Println()
