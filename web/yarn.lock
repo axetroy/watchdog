@@ -651,10 +651,10 @@ vue-echarts@6.0.0-rc.4:
     resize-detector "^0.3.0"
     vue-demi "^0.7.4"
 
-vue-tsc@0.0.23:
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-0.0.23.tgz#e0e53a09ff29ac497f3bafab5a5c9ad63b1422f3"
-  integrity sha512-zQACemcjLMmMo4pJsQyo3g+2oP5lfZB2r1K1dS25gT9r4fpDoq226logIw/QzYYf+SI91QE4hwpdAjij3n6N9w==
+vue-tsc@0.0.24:
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-0.0.24.tgz#0cd90db679f53ea1694254b8663fdb3d624a0872"
+  integrity sha512-Qx0V7jkWMtvddtaWa1SA8YKkBCRmjq9zZUB2UIMZiso6JSH538oHD2VumSzkoDnAfFbY3t0/j1mB2abpA0bGWA==
   dependencies:
     unzipper "0.10.11"
 
