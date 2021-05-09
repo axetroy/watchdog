@@ -9,8 +9,6 @@
   "go.toolsEnvVars": {
     "GOFLAGS": "-mod=vendor"
   },
-  "go.testFlags": [
-    "-v"
-  ],
+  "go.testFlags": ["-v"],
   "markdown.extension.toc.updateOnSave": false
 }

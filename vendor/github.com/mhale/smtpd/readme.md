@@ -4,22 +4,22 @@ An SMTP server package written in Go, in the style of the built-in HTTP server. 
 
 It is based on [Brad Fitzpatrick's go-smtpd](https://github.com/bradfitz/go-smtpd). The differences can be summarised as:
 
-* A simplified message handler
-* Changes made for RFC compliance
-* Testing has been added
-* Code refactoring
-* TLS support
-* RCPT handler
-* Authentication support
+- A simplified message handler
+- Changes made for RFC compliance
+- Testing has been added
+- Code refactoring
+- TLS support
+- RCPT handler
+- Authentication support
 
 ## Features
 
-* A single message handler for simple mail handling with native data types.
-* RFC compliance. It implements the minimum command set, responds to commands and adds a valid Received header to messages as specified in RFC 2821 & 5321.
-* Customisable listening address and port. It defaults to listening on all addresses on port 25 if unset.
-* Customisable host name and application name. It defaults to the system hostname and "smtpd" application name if they are unset.
-* Easy to use TLS support that obeys RFC 3207.
-* Authentication support for the CRAM-MD5, LOGIN and PLAIN mechanisms that obeys RFC 4954.
+- A single message handler for simple mail handling with native data types.
+- RFC compliance. It implements the minimum command set, responds to commands and adds a valid Received header to messages as specified in RFC 2821 & 5321.
+- Customisable listening address and port. It defaults to listening on all addresses on port 25 if unset.
+- Customisable host name and application name. It defaults to the system hostname and "smtpd" application name if they are unset.
+- Easy to use TLS support that obeys RFC 3207.
+- Authentication support for the CRAM-MD5, LOGIN and PLAIN mechanisms that obeys RFC 4954.
 
 ## Usage
 
@@ -43,37 +43,37 @@ func handler(remoteAddr net.Addr, from string, to []string, data []byte)
 
 The parameters are:
 
-* remoteAddr: remote end of the TCP connection i.e. the mail client's IP address and port.
-* from: the email address sent by the client in the MAIL command.
-* to: the set of email addresses sent by the client in the RCPT command.
-* data: the raw bytes of the mail message.
+- remoteAddr: remote end of the TCP connection i.e. the mail client's IP address and port.
+- from: the email address sent by the client in the MAIL command.
+- to: the set of email addresses sent by the client in the RCPT command.
+- data: the raw bytes of the mail message.
 
 ## TLS Support
 
 SMTP over TLS works slightly differently to how you might expect if you are used to the HTTP protocol. Some helpful links for background information are:
 
-* [SSL vs TLS vs STARTTLS](https://www.fastmail.com/help/technical/ssltlsstarttls.html)
-* [Opportunistic TLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)
-* [RFC 2487: SMTP Service Extension for Secure SMTP over TLS](https://tools.ietf.org/html/rfc2487)
-* [func (*Client) StartTLS](https://golang.org/pkg/net/smtp/#Client.StartTLS)
+- [SSL vs TLS vs STARTTLS](https://www.fastmail.com/help/technical/ssltlsstarttls.html)
+- [Opportunistic TLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)
+- [RFC 2487: SMTP Service Extension for Secure SMTP over TLS](https://tools.ietf.org/html/rfc2487)
+- [func (\*Client) StartTLS](https://golang.org/pkg/net/smtp/#Client.StartTLS)
 
 The TLS support has three server configuration options. The bare minimum requirement to enable TLS is to supply certificate and key files as in the TLS example below.
 
-* TLSConfig
+- TLSConfig
 
 This option allows custom TLS configurations such as [requiring strong ciphers](https://cipherli.st/) or using other certificate creation methods. If a certificate file and a key file are supplied to the ConfigureTLS function, the default TLS configuration for Go will be used. The default value for TLSConfig is nil, which disables TLS support.
 
-* TLSRequired
+- TLSRequired
 
 This option sets whether TLS is optional or required. If set to true, the only allowed commands are NOOP, EHLO, STARTTLS and QUIT (as specified in RFC 3207) until the connection is upgraded to TLS i.e. until STARTTLS is issued. This option is ignored if TLS is not configured i.e. if TLSConfig is nil. The default is false.
 
-* TLSListener
+- TLSListener
 
 This option sets whether the listening socket requires an immediate TLS handshake after connecting. It is equivalent to using HTTPS in web servers, or the now defunct SMTPS on port 465. This option is ignored if TLS is not configured i.e. if TLSConfig is nil. The default is false.
 
 There is also a related package configuration option.
 
-* Debug
+- Debug
 
 This option determines if the data being read from or written to the client will be logged. This may help with debugging when using encrypted connections. The default is false.
 
@@ -81,15 +81,15 @@ This option determines if the data being read from or written to the client will
 
 The authentication support offers three mechanisms (CRAM-MD5, LOGIN and PLAIN) and has three server configuration options. The bare minimum requirement to enable authentication is to supply an authentication handler function as in the authentication example below.
 
-* AuthHandler
+- AuthHandler
 
 This option provides an authentication handler function which is called to determine the validity of the supplied credentials.
 
-* AuthMechs
+- AuthMechs
 
 This option allows the list of allowed authentication mechanisms to be explicitly set, overriding the default settings.
 
-* AuthRequired
+- AuthRequired
 
 This option sets whether authentication is optional or required. If set to true, the only allowed commands are AUTH, EHLO, HELO, NOOP, RSET and QUIT (as specified in RFC 4954) until the session is authenticated. This option is ignored if authentication is not configured i.e. if AuthHandler is nil. The default is false.
 
@@ -157,7 +157,7 @@ As the package level helper functions do not set the TLSRequired or TLSListener 
 
 ## RCPT Handler Example
 
-With the same ```mailHandler``` as above:
+With the same `mailHandler` as above:
 
 ```go
 func rcptHandler(remoteAddr net.Addr, from string, to string) bool {
@@ -181,7 +181,7 @@ ListenAndServe("127.0.0.1:2525", mailHandler, rcptHandler)
 
 ## Authentication Example
 
-With the same ```mailHandler``` as above:
+With the same `mailHandler` as above:
 
 ```go
 func authHandler(remoteAddr net.Addr, mechanism string, username []byte, password []byte, shared []byte) (bool, error) {

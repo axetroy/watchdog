@@ -7,7 +7,6 @@ suits you.
 
 ![Color](https://user-images.githubusercontent.com/438920/96832689-03b3e000-13f4-11eb-9803-46f4c4de3406.jpg)
 
-
 ## Install
 
 ```bash
@@ -124,13 +123,13 @@ fmt.Println("All text will now be bold magenta.")
 ```
 
 ### Disable/Enable color
- 
-There might be a case where you want to explicitly disable/enable color output. the 
-`go-isatty` package will automatically disable color output for non-tty output streams 
+
+There might be a case where you want to explicitly disable/enable color output. the
+`go-isatty` package will automatically disable color output for non-tty output streams
 (for example if the output were piped directly to `less`)
 
-`Color` has support to disable/enable colors both globally and for single color 
-definitions. For example suppose you have a CLI app and a `--no-color` bool flag. You 
+`Color` has support to disable/enable colors both globally and for single color
+definitions. For example suppose you have a CLI app and a `--no-color` bool flag. You
 can easily disable the color output with:
 
 ```go
@@ -158,16 +157,14 @@ c.Println("This prints again cyan...")
 
 ## Todo
 
-* Save/Return previous values
-* Evaluate fmt.Formatter interface
-
+- Save/Return previous values
+- Evaluate fmt.Formatter interface
 
 ## Credits
 
- * [Fatih Arslan](https://github.com/fatih)
- * Windows support via @mattn: [colorable](https://github.com/mattn/go-colorable)
+- [Fatih Arslan](https://github.com/fatih)
+- Windows support via @mattn: [colorable](https://github.com/mattn/go-colorable)
 
 ## License
 
 The MIT License (MIT) - see [`LICENSE.md`](https://github.com/fatih/color/blob/master/LICENSE.md) for more details
-

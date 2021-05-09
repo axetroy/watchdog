@@ -166,7 +166,10 @@ export default defineComponent({
               const newHistory =
                 target.length < MAX_HISTORY_SIZE
                   ? target
-                  : target.slice(target.length - MAX_HISTORY_SIZE, target.length);
+                  : target.slice(
+                      target.length - MAX_HISTORY_SIZE,
+                      target.length
+                    );
 
               this.hisgory.set(payload.name, newHistory);
             }
