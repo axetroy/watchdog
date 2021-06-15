@@ -24,7 +24,7 @@ COPY ./cmd/watchdog/main.go ./cmd/watchdog/main.go
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -mod=vendor -trimpath -asmflags=-trimpath=$GOPATH -ldflags "-s -w" -o ./bin/watchdog ./cmd/watchdog/main.go
 
 # target
-FROM alpine:3.13
+FROM alpine:3.14
 WORKDIR /app
 COPY --from=go-builder /app/bin .
 
