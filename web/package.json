@@ -10,7 +10,7 @@
     "date-fns": "2.22.1",
     "echarts": "5.1.2",
     "vue": "3.1.2",
-    "vue-echarts": "6.0.0-rc.5"
+    "vue-echarts": "6.0.0-rc.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "1.2.4",
