@@ -17,7 +17,7 @@ github.com/go-playground/locales/en
 # github.com/go-playground/universal-translator v0.17.0
 ## explicit
 github.com/go-playground/universal-translator
-# github.com/go-playground/validator/v10 v10.5.0
+# github.com/go-playground/validator/v10 v10.7.0
 ## explicit
 github.com/go-playground/validator/v10
 github.com/go-playground/validator/v10/translations/en
