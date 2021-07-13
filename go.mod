@@ -9,7 +9,7 @@ require (
 	github.com/go-playground/locales v0.13.0
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-playground/validator/v10 v10.7.0
-	github.com/google/uuid v1.2.0
+	github.com/google/uuid v1.3.0
 	github.com/gookit/color v1.4.2
 	github.com/gorilla/websocket v1.4.2
 	github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067
