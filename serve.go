@@ -14,6 +14,8 @@ import (
 //go:embed web/dist
 var content embed.FS
 
+var fs = http.FileServer(http.FS(content))
+
 type HTTPHandler struct {
 	config *Config
 }
@@ -61,7 +63,6 @@ func (t HTTPHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 		}
 	} else {
 		req.URL.Path = "/web/dist" + req.URL.Path
-		fs := http.FileServer(http.FS(content))
 
 		fs.ServeHTTP(res, req)
 	}
