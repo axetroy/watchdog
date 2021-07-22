@@ -26,7 +26,7 @@ func TestWebhook(t *testing.T) {
 				content: "test",
 				reporter: watchdog.Reporter{
 					Protocol: "webhook",
-					Target:   []string{"http://localhost:3030"},
+					Target:   []string{"http://localhost:49659"},
 				},
 			},
 			error: "",
@@ -37,10 +37,10 @@ func TestWebhook(t *testing.T) {
 				content: "test",
 				reporter: watchdog.Reporter{
 					Protocol: "webhook",
-					Target:   []string{"http://localhost:12345"},
+					Target:   []string{"http://localhost:49654"},
 				},
 			},
-			error: "Post \"http://localhost:12345\": dial tcp [::1]:12345: connect: connection refused",
+			error: "Post \"http://localhost:49654\": dial tcp [::1]:49654: connect: connection refused",
 		},
 		{
 			name: "multiple target server",
@@ -48,10 +48,10 @@ func TestWebhook(t *testing.T) {
 				content: "test",
 				reporter: watchdog.Reporter{
 					Protocol: "webhook",
-					Target:   []string{"http://localhost:3030", "http://localhost:12345"},
+					Target:   []string{"http://localhost:49659", "http://localhost:49654"},
 				},
 			},
-			error: "Post \"http://localhost:12345\": dial tcp [::1]:12345: connect: connection refused",
+			error: "Post \"http://localhost:49654\": dial tcp [::1]:49654: connect: connection refused",
 		},
 		{
 			name: "multiple target server and all error",
@@ -59,15 +59,15 @@ func TestWebhook(t *testing.T) {
 				content: "test",
 				reporter: watchdog.Reporter{
 					Protocol: "webhook",
-					Target:   []string{"http://localhost:54321", "http://localhost:12345"},
+					Target:   []string{"http://localhost:54321", "http://localhost:49654"},
 				},
 			},
-			error: "Post \"http://localhost:12345\": dial tcp [::1]:12345: connect: connection refused;Post \"http://localhost:54321\": dial tcp [::1]:54321: connect: connection refused",
+			error: "Post \"http://localhost:49654\": dial tcp [::1]:49654: connect: connection refused;Post \"http://localhost:54321\": dial tcp [::1]:54321: connect: connection refused",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			assert.Nil(t, tester.CreateHTTPEchoServer(":3030", func() {
+			assert.Nil(t, tester.CreateHTTPEchoServer(":49659", func() {
 				err := Webhook(tt.args.content, tt.args.reporter)
 				if tt.error != "" {
 					arr := strings.Split(err.Error(), ";")
