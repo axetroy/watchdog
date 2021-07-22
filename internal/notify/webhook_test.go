@@ -40,7 +40,7 @@ func TestWebhook(t *testing.T) {
 					Target:   []string{"http://localhost:12345"},
 				},
 			},
-			error: "Post \"http://localhost:12345\": EOF",
+			error: "Post \"http://localhost:12345\": dial tcp [::1]:12345: connect: connection refused",
 		},
 		{
 			name: "multiple target server",
@@ -51,7 +51,7 @@ func TestWebhook(t *testing.T) {
 					Target:   []string{"http://localhost:3030", "http://localhost:12345"},
 				},
 			},
-			error: "Post \"http://localhost:12345\": EOF",
+			error: "Post \"http://localhost:12345\": dial tcp [::1]:12345: connect: connection refused",
 		},
 		{
 			name: "multiple target server and all error",
@@ -62,7 +62,7 @@ func TestWebhook(t *testing.T) {
 					Target:   []string{"http://localhost:54321", "http://localhost:12345"},
 				},
 			},
-			error: "Post \"http://localhost:12345\": EOF;Post \"http://localhost:54321\": dial tcp [::1]:54321: connect: connection refused",
+			error: "Post \"http://localhost:12345\": dial tcp [::1]:12345: connect: connection refused;Post \"http://localhost:54321\": dial tcp [::1]:54321: connect: connection refused",
 		},
 	}
 	for _, tt := range tests {
@@ -72,7 +72,7 @@ func TestWebhook(t *testing.T) {
 				if tt.error != "" {
 					arr := strings.Split(err.Error(), ";")
 					sort.Strings(arr)
-					assert.Equal(t, tt.error, strings.Join(arr, ";"))
+					assert.Equal(t, strings.Join(arr, ";"), tt.error)
 				} else {
 					assert.Nil(t, err)
 				}

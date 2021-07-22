@@ -32,7 +32,7 @@ func TestWechat(t *testing.T) {
 			error: "1001 业务异常错误 appToken不正确",
 		},
 		{
-			name: "token valid",
+			name: "token error",
 			args: args{
 				content: "test report",
 				reporter: watchdog.Reporter{
