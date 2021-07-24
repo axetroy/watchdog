@@ -7,7 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "date-fns": "2.22.1",
+    "date-fns": "2.23.0",
     "echarts": "5.1.2",
     "vue": "3.1.5",
     "vue-echarts": "6.0.0-rc.6"
