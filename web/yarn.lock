@@ -1031,18 +1031,18 @@ vscode-vue-languageservice@^0.26.6:
     vscode-pug-languageservice "^0.26.6"
     vscode-typescript-languageservice "^0.26.6"
 
-vue-demi@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.9.1.tgz#25d6e1ebd4d4010757ff3571e2bf6a1d7bf3de82"
-  integrity sha512-7s1lufRD2l369eFWPjgLvhqCRk0XzGWJsQc7K4q+0mZtixyGIvsK1Cg88P4NcaRIEiBuuN4q1NN4SZKFKwQswA==
+vue-demi@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.11.2.tgz#faa06da53887c493a695b997f4fcb4784a667990"
+  integrity sha512-J+X8Au6BhQdcej6LY4O986634hZLu55L0ewU2j8my7WIKlu8cK0dqmdUxqVHHMd/cMrKKZ9SywB/id6aLhwCtA==
 
-vue-echarts@6.0.0-rc.6:
-  version "6.0.0-rc.6"
-  resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-6.0.0-rc.6.tgz#c12afdbe2e858c941d434996e9bb9b7af3c8c631"
-  integrity sha512-wvgP77HkK2Cjm4CV/FDbnWQ9UiOvID4ayqpcED/e4MJ3UJO5E8hj8H23CMS7GiNdywBg5GQj1M4TU87zpAX9Qg==
+vue-echarts@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-6.0.0.tgz#480263fc6ed2125b886bb1b7f05bf9273edee552"
+  integrity sha512-eB3fnnu8Oc+kwVTlBz95o/rliTbWIiUdxTG7vRQIIgRpINWW07WLSPm+UhlD6FZ/P8IqCoVG87pJeLRKsaHeMw==
   dependencies:
     resize-detector "^0.3.0"
-    vue-demi "^0.9.1"
+    vue-demi "^0.11.2"
 
 vue-tsc@0.2.2:
   version "0.2.2"
