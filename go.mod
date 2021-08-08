@@ -6,7 +6,7 @@ require (
 	github.com/anmitsu/go-shlex v0.0.0-20200514113438-38f4b401e2be // indirect
 	github.com/fatih/color v1.12.0
 	github.com/gliderlabs/ssh v0.3.3
-	github.com/go-playground/locales v0.13.0
+	github.com/go-playground/locales v0.14.0
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-playground/validator/v10 v10.7.0
 	github.com/google/uuid v1.3.0

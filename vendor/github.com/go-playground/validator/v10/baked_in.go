@@ -189,7 +189,7 @@ var (
 		"iso3166_1_alpha2":              isIso3166Alpha2,
 		"iso3166_1_alpha3":              isIso3166Alpha3,
 		"iso3166_1_alpha_numeric":       isIso3166AlphaNumeric,
-		"iso3166_2":                     isIso31662,
+		"iso3166_2":              	 isIso31662,
 		"bcp47_language_tag":            isBCP47LanguageTag,
 		"postcode_iso3166_alpha2":       isPostcodeByIso3166Alpha2,
 		"postcode_iso3166_alpha2_field": isPostcodeByIso3166Alpha2Field,
