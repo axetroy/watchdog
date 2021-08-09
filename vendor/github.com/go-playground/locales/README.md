@@ -1,5 +1,6 @@
 ## locales
-<img align="right" src="https://raw.githubusercontent.com/go-playground/locales/master/logo.png">![Project status](https://img.shields.io/badge/version-0.13.0-green.svg)
+
+<img align="right" src="https://raw.githubusercontent.com/go-playground/locales/master/logo.png">![Project status](https://img.shields.io/badge/version-0.14.0-green.svg)
 [![Build Status](https://travis-ci.org/go-playground/locales.svg?branch=master)](https://travis-ci.org/go-playground/locales)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-playground/locales)](https://goreportcard.com/report/github.com/go-playground/locales)
 [![GoDoc](https://godoc.org/github.com/go-playground/locales?status.svg)](https://godoc.org/github.com/go-playground/locales)
@@ -9,36 +10,35 @@
 Locales is a set of locales generated from the [Unicode CLDR Project](http://cldr.unicode.org/) which can be used independently or within
 an i18n package; these were built for use with, but not exclusive to, [Universal Translator](https://github.com/go-playground/universal-translator).
 
-Features
---------
-- [x] Rules generated from the latest [CLDR](http://cldr.unicode.org/index/downloads) data, v31.0.1
+## Features
+
+- [x] Rules generated from the latest [CLDR](http://cldr.unicode.org/index/downloads) data, v36.0.1
 - [x] Contains Cardinal, Ordinal and Range Plural Rules
 - [x] Contains Month, Weekday and Timezone translations built in
 - [x] Contains Date & Time formatting functions
 - [x] Contains Number, Currency, Accounting and Percent formatting functions
 - [x] Supports the "Gregorian" calendar only ( my time isn't unlimited, had to draw the line somewhere )
 
-Full Tests
---------------------
+## Full Tests
+
 I could sure use your help adding tests for every locale, it is a huge undertaking and I just don't have the free time to do it all at the moment;
 any help would be **greatly appreciated!!!!** please see [issue](https://github.com/go-playground/locales/issues/1) for details.
 
-Installation
------------
+## Installation
 
-Use go get 
+Use go get
 
 ```shell
 go get github.com/go-playground/locales
-```  
+```
 
-NOTES
---------
+## NOTES
+
 You'll notice most return types are []byte, this is because most of the time the results will be concatenated with a larger body
 of text and can avoid some allocations if already appending to a byte array, otherwise just cast as string.
 
-Usage
--------
+## Usage
+
 ```go
 package main
 
@@ -154,10 +154,10 @@ func main() {
 }
 ```
 
-NOTES:
--------
+## NOTES:
+
 These rules were generated from the [Unicode CLDR Project](http://cldr.unicode.org/), if you encounter any issues
-I strongly encourage contributing to the CLDR project to get the locale information corrected and the next time 
+I strongly encourage contributing to the CLDR project to get the locale information corrected and the next time
 these locales are regenerated the fix will come with.
 
 I do however realize that time constraints are often important and so there are two options:
@@ -167,6 +167,6 @@ I do however realize that time constraints are often important and so there are 
 
 Please to not make fixes inside the locale files, they WILL get overwritten when the locales are regenerated.
 
-License
-------
+## License
+
 Distributed under MIT License, please see license file in code for more details.
