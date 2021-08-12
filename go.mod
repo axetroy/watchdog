@@ -25,6 +25,6 @@ require (
 	github.com/yosuke-furukawa/json5 v0.1.1
 	goftp.io/server/v2 v2.0.0
 	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97
-	golang.org/x/net v0.0.0-20210410081132-afb366fc7cd1
+	golang.org/x/net v0.0.0-20210614182718-04defd469f4e
 	gopkg.in/yaml.v2 v2.4.0
 )
