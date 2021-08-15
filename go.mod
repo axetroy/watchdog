@@ -24,7 +24,7 @@ require (
 	github.com/wxpusher/wxpusher-sdk-go v1.0.3
 	github.com/yosuke-furukawa/json5 v0.1.1
 	goftp.io/server/v2 v2.0.0
-	golang.org/x/crypto v0.0.0-20210812204632-0ba0e8f03122
+	golang.org/x/crypto v0.0.0-20210813211128-0a44fdfbc16e
 	golang.org/x/net v0.0.0-20210410081132-afb366fc7cd1
 	gopkg.in/yaml.v2 v2.4.0
 )
