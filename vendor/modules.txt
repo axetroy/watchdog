@@ -46,7 +46,7 @@ github.com/lestrrat-go/strftime
 github.com/mattn/go-colorable
 # github.com/mattn/go-isatty v0.0.12
 github.com/mattn/go-isatty
-# github.com/mhale/smtpd v0.0.0-20210322105601-438c8edb069c
+# github.com/mhale/smtpd v0.8.0
 ## explicit
 github.com/mhale/smtpd
 # github.com/mitchellh/mapstructure v1.4.1
