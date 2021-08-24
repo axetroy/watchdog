@@ -77,10 +77,10 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.48.tgz#18dc8091b285df90db2f25aa7d906cfc394b7f74"
   integrity sha512-LfZwXoGUDo0C3me81HXgkBg5CTQYb6xzEl+fNmbO4JdRiSKQ8A0GD1OBBvKAIsbCUgoyAty7m99GqqMQe784ew==
 
-"@vitejs/plugin-vue@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-1.4.0.tgz#962ae01b7fd16ad4007898c64ed639136e12215b"
-  integrity sha512-RkqfJHz9wdLKBp5Yi+kQL8BAljdrvPoccQm2PTZc/UcL4EjD11xsv2PPCduYx2oV1a/bpSKA3sD5sxOHFhz+LA==
+"@vitejs/plugin-vue@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-1.6.0.tgz#e5558e20c20e9098cd5bd65b9901fdcd2c354983"
+  integrity sha512-n3i8htn8pTg9M+kM3cnEfsPZx/6ngInlTroth6fA1LQTJq5aTVQ8ggaE5pPoAy9vCgHPtcaXMzwpldhqRAkebQ==
 
 "@volar/code-gen@^0.27.1":
   version "0.27.1"
