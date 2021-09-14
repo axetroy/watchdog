@@ -49,7 +49,7 @@ github.com/mattn/go-isatty
 # github.com/mhale/smtpd v0.0.0-20210322105601-438c8edb069c
 ## explicit
 github.com/mhale/smtpd
-# github.com/mitchellh/mapstructure v1.4.1
+# github.com/mitchellh/mapstructure v1.4.2
 ## explicit
 github.com/mitchellh/mapstructure
 # github.com/patrickmn/go-cache v2.1.0+incompatible
