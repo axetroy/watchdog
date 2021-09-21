@@ -15,13 +15,6 @@ func TestPingHTTP(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "http://baidu.com",
-			args: args{
-				addr: "http://baidu.com",
-			},
-			wantErr: false,
-		},
-		{
 			name: "https://baidu.com",
 			args: args{
 				addr: "https://baidu.com",
