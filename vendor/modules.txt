@@ -18,7 +18,7 @@ github.com/go-playground/locales/en
 # github.com/go-playground/universal-translator v0.18.0
 ## explicit; go 1.13
 github.com/go-playground/universal-translator
-# github.com/go-playground/validator/v10 v10.7.0
+# github.com/go-playground/validator/v10 v10.9.0
 ## explicit; go 1.13
 github.com/go-playground/validator/v10
 github.com/go-playground/validator/v10/translations/en
@@ -36,7 +36,7 @@ github.com/gorilla/websocket
 github.com/jlaffaye/ftp
 # github.com/jonboulle/clockwork v0.2.2
 ## explicit; go 1.13
-# github.com/leodido/go-urn v1.2.0
+# github.com/leodido/go-urn v1.2.1
 ## explicit; go 1.13
 github.com/leodido/go-urn
 # github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
@@ -104,7 +104,7 @@ golang.org/x/crypto/ssh/knownhosts
 # golang.org/x/net v0.0.0-20210410081132-afb366fc7cd1
 ## explicit; go 1.11
 golang.org/x/net/websocket
-# golang.org/x/sys v0.0.0-20210616094352-59db8d763f22
+# golang.org/x/sys v0.0.0-20210806184541-e5e7981a1069
 ## explicit; go 1.17
 golang.org/x/sys/cpu
 golang.org/x/sys/internal/unsafeheader
@@ -119,6 +119,6 @@ golang.org/x/text/language
 # gopkg.in/yaml.v2 v2.4.0
 ## explicit; go 1.15
 gopkg.in/yaml.v2
-# gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
+# gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 ## explicit
 gopkg.in/yaml.v3
