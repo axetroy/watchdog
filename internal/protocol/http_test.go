@@ -15,14 +15,14 @@ func TestPingHTTP(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "https://baidu.com",
+			name: "baidu.com",
 			args: args{
 				addr: "https://baidu.com",
 			},
 			wantErr: false,
 		},
 		{
-			name: "https://not.exist.domain.com",
+			name: "not.exist.domain.com",
 			args: args{
 				addr: "https://not.exist.domain.com",
 			},
