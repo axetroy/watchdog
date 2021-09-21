@@ -4,7 +4,7 @@ github.com/anmitsu/go-shlex
 # github.com/davecgh/go-spew v1.1.1
 ## explicit
 github.com/davecgh/go-spew/spew
-# github.com/fatih/color v1.12.0
+# github.com/fatih/color v1.13.0
 ## explicit; go 1.13
 github.com/fatih/color
 # github.com/gliderlabs/ssh v0.3.3
@@ -46,10 +46,10 @@ github.com/lestrrat-go/file-rotatelogs/internal/option
 # github.com/lestrrat-go/strftime v1.0.4
 ## explicit; go 1.12
 github.com/lestrrat-go/strftime
-# github.com/mattn/go-colorable v0.1.8
+# github.com/mattn/go-colorable v0.1.9
 ## explicit; go 1.13
 github.com/mattn/go-colorable
-# github.com/mattn/go-isatty v0.0.12
+# github.com/mattn/go-isatty v0.0.14
 ## explicit; go 1.12
 github.com/mattn/go-isatty
 # github.com/mhale/smtpd v0.8.0
