@@ -58,9 +58,9 @@
 # 安装最新版本
 curl -fsSL https://raw.githubusercontent.com/axetroy/watchdog/master/install.sh | bash
 # 安装指定版本
-curl -fsSL https://raw.githubusercontent.com/axetroy/watchdog/master/install.sh | bash -s v0.1.1
+curl -fsSL https://raw.githubusercontent.com/axetroy/watchdog/master/install.sh | bash -s v0.2.0
 # 从 gobinaries.com 中安装
-curl -sf https://gobinaries.com/axetroy/watchdog@v0.1.1 | sh
+curl -sf https://gobinaries.com/axetroy/watchdog@v0.2.0 | sh
 ```
 
 或者你可以通过[下载页面](https://github.com/axetroy/watchdog/releases)下载你对应平台的可执行文件
@@ -107,12 +107,12 @@ watchdog --config=./watchdog.config.json --port=9999
 
 ```bash
 # 拉取镜像
-docker pull axetroy/watchdog:v0.1.1
+docker pull axetroy/watchdog:v0.2.0
 # 运行镜像
 docker run -p 9999:80 \
   --mount type=bind,source=./watchdog.config.json,target=/app/watchdog.config.json \
   -v ./logs:/app/logs \
-  axetroy/watchdog:v0.1.1 \
+  axetroy/watchdog:v0.2.0 \
   --port=80 \
   --config=/app/config/watchdog.config.json
 ```
