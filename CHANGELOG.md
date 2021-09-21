@@ -1,4 +1,4 @@
-## Unreleased (2021-09-21)
+## v0.2.0 (2021-09-21)
 
 ### 🔥 New feature:
 
@@ -8,6 +8,9 @@
 
 ### 🐛 Bugs fixed:
 
+- **deps**: update module github.com/mhale/smtpd to v0.8.0 (#101)([`0463511`](https://github.com/axetroy/watchdog/commit/046351101766ad6f15e85741b03540b9c5372676)) (thanks @renovate[bot])
+- **deps**: update dependency echarts to v5.2.1 (#143)([`f7b0fb2`](https://github.com/axetroy/watchdog/commit/f7b0fb26e509f1b2e608e92b16f44bab36d74c43)) (thanks @renovate[bot])
+- http test([`ae4e462`](https://github.com/axetroy/watchdog/commit/ae4e4629fcb9c27a2d228401908573a6e856cf14)) (thanks @Axetroy)
 - lint([`e3e5367`](https://github.com/axetroy/watchdog/commit/e3e53672c42e0fe071c8be5ce5511461a31c2ebf)) (thanks @Axetroy)
 - **deps**: update dependency date-fns to v2.24.0 (#140)([`de70198`](https://github.com/axetroy/watchdog/commit/de70198cef2e6b5f495a8117bf89fae955edb910)) (thanks @renovate[bot])
 - **deps**: update module github.com/mitchellh/mapstructure to v1.4.2 (#137)([`bb638ae`](https://github.com/axetroy/watchdog/commit/bb638ae62343caca2f8349538e59a772a96052a8)) (thanks @renovate[bot])
@@ -58,8 +61,16 @@
 
 - revert [`534085d`](https://github.com/axetroy/watchdog/commit/534085de4e9901b8f6e96cff2d310d15d714795c), test: fix([`1208e61`](https://github.com/axetroy/watchdog/commit/1208e6163a55deeaebb835b6b8ef7545268d7332)\)
 
-### 💪 Commits(148):
+### 💪 Commits(156):
 
+- [`a3d0377`](https://github.com/axetroy/watchdog/commit/a3d0377077a8286a4c13b979ed9b2bce9d84caf3) - v0.2.0
+- [`a933db0`](https://github.com/axetroy/watchdog/commit/a933db0cfe0449f2e39bbe67db6a0057bd07b978) - docs: update commnet
+- [`0463511`](https://github.com/axetroy/watchdog/commit/046351101766ad6f15e85741b03540b9c5372676) - fix(deps): update module github.com/mhale/smtpd to v0.8.0 (#101)
+- [`f7b0fb2`](https://github.com/axetroy/watchdog/commit/f7b0fb26e509f1b2e608e92b16f44bab36d74c43) - fix(deps): update dependency echarts to v5.2.1 (#143)
+- [`577ecdf`](https://github.com/axetroy/watchdog/commit/577ecdff4c1d5fc3a68bd4cd4f300f839d10590f) - test: update test
+- [`89dac59`](https://github.com/axetroy/watchdog/commit/89dac597f09b3002a4012b9c91e208bd8227309c) - test: update
+- [`ae4e462`](https://github.com/axetroy/watchdog/commit/ae4e4629fcb9c27a2d228401908573a6e856cf14) - fix: http test
+- [`22a6c89`](https://github.com/axetroy/watchdog/commit/22a6c890c96ea0117390c69005c9bd09158ff55a) - docs: update changelog
 - [`b71e8bf`](https://github.com/axetroy/watchdog/commit/b71e8bf7ec2683420e54bbd55a095574c51191ea) - bump golangci-lint
 - [`e3e5367`](https://github.com/axetroy/watchdog/commit/e3e53672c42e0fe071c8be5ce5511461a31c2ebf) - fix: lint
 - [`b5a780e`](https://github.com/axetroy/watchdog/commit/b5a780eb5362d8dff300bb0fa6153f27132633cc) - bump to golang 1.17
