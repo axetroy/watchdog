@@ -118,6 +118,7 @@ func main() {
 	watchdog.Serve(port, c)
 }
 
+// 获取这个服务器的默认配置字段，如果没有，则使用全局配置
 func getServiceFieldWithDefault(s watchdog.Service, fn func(s watchdog.Service) uint, defaultValue uint) uint {
 	value := fn(s)
 
