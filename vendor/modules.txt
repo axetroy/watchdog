@@ -34,6 +34,8 @@ github.com/gorilla/websocket
 # github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067
 ## explicit; go 1.14
 github.com/jlaffaye/ftp
+# github.com/jonboulle/clockwork v0.2.2
+## explicit; go 1.13
 # github.com/leodido/go-urn v1.2.0
 ## explicit; go 1.13
 github.com/leodido/go-urn
