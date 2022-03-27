@@ -6,7 +6,7 @@
 
 ## 目录
 
-<table>
+<table style="width: 100%">
     <tr><td width=25% valign=top>
 
 - [介绍](#介绍)
@@ -475,7 +475,7 @@ git clone https://github.com/axetroy/watchdog.git $GOPATH/src/github.com/axetroy
 
 1. 安装 Golang
 
-从 [Golang 官网](https://golang.org/dl/) 下载安装 Golang1.17.x
+从 [Golang 官网](https://golang.org/dl/) 下载安装 Golang1.18.x
 
 并且正确设置好环境变量 `$GOROOT` 和 `$GOPATH`
 
