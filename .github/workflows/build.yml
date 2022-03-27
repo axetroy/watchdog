@@ -1,6 +1,19 @@
 name: ci
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - "**/*.go"
+      - "**/go.mod"
+      - "**/go.sum"
+      - ".github/workflows/build.yml"
+  pull_request:
+    paths:
+      - "**/*.go"
+      - "**/go.mod"
+      - "**/go.sum"
+      - ".github/workflows/build.yml"
+  workflow_dispatch:
 
 jobs:
   ci:
