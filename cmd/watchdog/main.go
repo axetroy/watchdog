@@ -4,11 +4,13 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/axetroy/watchdog"
 	"github.com/axetroy/watchdog/internal/scheduling"
 	"github.com/gookit/color"
+	"github.com/zh-five/xdaemon"
 )
 
 var (
@@ -27,6 +29,7 @@ OPTIONS:
   --version     Print version information.
   --config      Specify config file. defaults to 'watchdog.config.json'. allow json/yml file.
   --port        Specify the port for HTTP listening. defaults to '9999'.
+  --daemon      Run server as daemon service.
 SOURCE CODE:
   https://github.com/axetroy/watchdog`)
 }
@@ -38,6 +41,7 @@ func main() {
 		configPath  string
 		port        string
 		noColor     bool
+		isDaemon    bool
 	)
 
 	defaultPort := os.Getenv("PORT")
@@ -48,6 +52,7 @@ func main() {
 
 	flag.StringVar(&configPath, "config", "watchdog.config.json", "The config file path")
 	flag.StringVar(&port, "port", defaultPort, "Specify the port for HTTP listening")
+	flag.BoolVar(&isDaemon, "daemon", false, "Run server as daemon service")
 	flag.BoolVar(&showHelp, "help", false, "Print help information")
 	flag.BoolVar(&showVersion, "version", false, "Print version information")
 
@@ -69,6 +74,26 @@ func main() {
 		color.Enable = !noColor
 	} else {
 		color.Enable = false
+	}
+
+	cwd, err := os.Getwd()
+
+	if err != nil {
+		panic(err)
+	}
+
+	// 启动守护进程
+	if isDaemon {
+		// 创建一个 Daemon 对象
+		logFile := filepath.Join(cwd, "watchdog.log")
+		d := xdaemon.NewDaemon(logFile)
+		// 调整一些运行参数(可选)
+		d.MaxCount = 10 // 最大重启次数
+		d.MinExitTime = 10
+		d.MaxError = 10
+
+		// 执行守护进程模式
+		d.Run()
 	}
 
 	c, err := watchdog.NewConfigFromFile(configPath)
