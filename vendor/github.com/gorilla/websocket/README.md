@@ -6,7 +6,6 @@
 Gorilla WebSocket is a [Go](http://golang.org/) implementation of the
 [WebSocket](http://www.rfc-editor.org/rfc/rfc6455.txt) protocol.
 
-
 ---
 
 ⚠️ **[The Gorilla WebSocket Package is looking for a new maintainer](https://github.com/gorilla/websocket/issues/370)**
@@ -15,11 +14,11 @@ Gorilla WebSocket is a [Go](http://golang.org/) implementation of the
 
 ### Documentation
 
-* [API Reference](https://pkg.go.dev/github.com/gorilla/websocket?tab=doc)
-* [Chat example](https://github.com/gorilla/websocket/tree/master/examples/chat)
-* [Command example](https://github.com/gorilla/websocket/tree/master/examples/command)
-* [Client and server example](https://github.com/gorilla/websocket/tree/master/examples/echo)
-* [File watch example](https://github.com/gorilla/websocket/tree/master/examples/filewatch)
+- [API Reference](https://pkg.go.dev/github.com/gorilla/websocket?tab=doc)
+- [Chat example](https://github.com/gorilla/websocket/tree/master/examples/chat)
+- [Command example](https://github.com/gorilla/websocket/tree/master/examples/command)
+- [Client and server example](https://github.com/gorilla/websocket/tree/master/examples/echo)
+- [File watch example](https://github.com/gorilla/websocket/tree/master/examples/filewatch)
 
 ### Status
 
@@ -36,4 +35,3 @@ package API is stable.
 The Gorilla WebSocket package passes the server tests in the [Autobahn Test
 Suite](https://github.com/crossbario/autobahn-testsuite) using the application in the [examples/autobahn
 subdirectory](https://github.com/gorilla/websocket/tree/master/examples/autobahn).
-

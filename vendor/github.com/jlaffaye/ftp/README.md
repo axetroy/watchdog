@@ -1,4 +1,4 @@
-# goftp #
+# goftp
 
 [![Units tests](https://github.com/jlaffaye/ftp/actions/workflows/unit_tests.yaml/badge.svg)](https://github.com/jlaffaye/ftp/actions/workflows/unit_tests.yaml)
 [![Coverage Status](https://coveralls.io/repos/jlaffaye/ftp/badge.svg?branch=master&service=github)](https://coveralls.io/github/jlaffaye/ftp?branch=master)
@@ -7,17 +7,17 @@
 
 A FTP client package for Go
 
-## Install ##
+## Install
 
 ```
 go get -u github.com/jlaffaye/ftp
 ```
 
-## Documentation ##
+## Documentation
 
 https://pkg.go.dev/github.com/jlaffaye/ftp
 
-## Example ##
+## Example
 
 ```go
 c, err := ftp.Dial("ftp.example.org:21", ftp.DialWithTimeout(5*time.Second))
@@ -37,7 +37,7 @@ if err := c.Quit(); err != nil {
 }
 ```
 
-## Store a file example ##
+## Store a file example
 
 ```go
 data := bytes.NewBufferString("Hello World")
@@ -47,7 +47,7 @@ if err != nil {
 }
 ```
 
-## Read a file example ##
+## Read a file example
 
 ```go
 r, err := c.Retr("test-file.txt")

@@ -23,26 +23,26 @@ Now, 256 colors and RGB colors have also been supported to work in Windows CMD a
 
 ## Features
 
-  - Simple to use, zero dependencies
-  - Supports rich color output: 16-color (4-bit), 256-color (8-bit), true color (24-bit, RGB)
-    - 16-color output is the most commonly used and most widely supported, working on any Windows version
-    - Since `v1.2.4` **the 256-color (8-bit), true color (24-bit) support windows CMD and PowerShell**
-    - See [this gist](https://gist.github.com/XVilka/8346728) for information on true color support
-  - Support converts `HEX` `HSL` value to RGB color
-  - Generic API methods: `Print`, `Printf`, `Println`, `Sprint`, `Sprintf`
-  - Supports HTML tag-style color rendering, such as `<green>message</>`.
-    - In addition to using built-in tags, it also supports custom color attributes
-    - Custom color attributes support the use of 16 color names, 256 color values, rgb color values and hex color values
-    - Support working on Windows `cmd` and `powerShell` terminal
-  - Basic colors: `Bold`, `Black`, `White`, `Gray`, `Red`, `Green`, `Yellow`, `Blue`, `Magenta`, `Cyan`
-  - Additional styles: `Info`, `Note`, `Light`, `Error`, `Danger`, `Notice`, `Success`, `Comment`, `Primary`, `Warning`, `Question`, `Secondary`
-  - Support by set `NO_COLOR` for disable color or use `FORCE_COLOR` for force open color render.
-  - Support Rgb, 256, 16 color conversion
+- Simple to use, zero dependencies
+- Supports rich color output: 16-color (4-bit), 256-color (8-bit), true color (24-bit, RGB)
+  - 16-color output is the most commonly used and most widely supported, working on any Windows version
+  - Since `v1.2.4` **the 256-color (8-bit), true color (24-bit) support windows CMD and PowerShell**
+  - See [this gist](https://gist.github.com/XVilka/8346728) for information on true color support
+- Support converts `HEX` `HSL` value to RGB color
+- Generic API methods: `Print`, `Printf`, `Println`, `Sprint`, `Sprintf`
+- Supports HTML tag-style color rendering, such as `<green>message</>`.
+  - In addition to using built-in tags, it also supports custom color attributes
+  - Custom color attributes support the use of 16 color names, 256 color values, rgb color values and hex color values
+  - Support working on Windows `cmd` and `powerShell` terminal
+- Basic colors: `Bold`, `Black`, `White`, `Gray`, `Red`, `Green`, `Yellow`, `Blue`, `Magenta`, `Cyan`
+- Additional styles: `Info`, `Note`, `Light`, `Error`, `Danger`, `Notice`, `Success`, `Comment`, `Primary`, `Warning`, `Question`, `Secondary`
+- Support by set `NO_COLOR` for disable color or use `FORCE_COLOR` for force open color render.
+- Support Rgb, 256, 16 color conversion
 
 ## GoDoc
 
-  - [godoc for gopkg](https://pkg.go.dev/gopkg.in/gookit/color.v1)
-  - [godoc for github](https://pkg.go.dev/github.com/gookit/color)
+- [godoc for gopkg](https://pkg.go.dev/gopkg.in/gookit/color.v1)
+- [godoc for github](https://pkg.go.dev/github.com/gookit/color)
 
 ## Install
 
@@ -446,10 +446,10 @@ There are some useful functions reference
 Check out these projects, which use https://github.com/gookit/color :
 
 - https://github.com/Delta456/box-cli-maker Make Highly Customized Boxes for your CLI
-- https://github.com/flipped-aurora/gin-vue-admin 基于gin+vue搭建的（中）后台系统框架
+- https://github.com/flipped-aurora/gin-vue-admin 基于 gin+vue 搭建的（中）后台系统框架
 - https://github.com/JanDeDobbeleer/oh-my-posh A prompt theme engine for any shell.
 - https://github.com/jesseduffield/lazygit Simple terminal UI for git commands
-- https://github.com/olivia-ai/olivia 💁‍♀️Your new best friend powered by an artificial neural network  
+- https://github.com/olivia-ai/olivia 💁‍♀️Your new best friend powered by an artificial neural network
 - https://github.com/pterm/pterm PTerm is a modern Go module to beautify console output. Featuring charts, progressbars, tables, trees, etc.
 - https://github.com/securego/gosec Golang security checker
 - https://github.com/TNK-Studio/lazykube ⎈ The lazier way to manage kubernetes.
@@ -457,28 +457,28 @@ Check out these projects, which use https://github.com/gookit/color :
 
 ## Gookit packages
 
-  - [gookit/ini](https://github.com/gookit/ini) Go config management, use INI files
-  - [gookit/rux](https://github.com/gookit/rux) Simple and fast request router for golang HTTP 
-  - [gookit/gcli](https://github.com/gookit/gcli) build CLI application, tool library, running CLI commands
-  - [gookit/slog](https://github.com/gookit/slog) Concise and extensible go log library
-  - [gookit/event](https://github.com/gookit/event) Lightweight event manager and dispatcher implements by Go
-  - [gookit/cache](https://github.com/gookit/cache) Generic cache use and cache manager for golang. support File, Memory, Redis, Memcached.
-  - [gookit/config](https://github.com/gookit/config) Go config management. support JSON, YAML, TOML, INI, HCL, ENV and Flags
-  - [gookit/color](https://github.com/gookit/color) A command-line color library with true color support, universal API methods and Windows support
-  - [gookit/filter](https://github.com/gookit/filter) Provide filtering, sanitizing, and conversion of golang data
-  - [gookit/validate](https://github.com/gookit/validate) Use for data validation and filtering. support Map, Struct, Form data
-  - [gookit/goutil](https://github.com/gookit/goutil) Some utils for the Go: string, array/slice, map, format, cli, env, filesystem, test and more
-  - More, please see https://github.com/gookit
+- [gookit/ini](https://github.com/gookit/ini) Go config management, use INI files
+- [gookit/rux](https://github.com/gookit/rux) Simple and fast request router for golang HTTP
+- [gookit/gcli](https://github.com/gookit/gcli) build CLI application, tool library, running CLI commands
+- [gookit/slog](https://github.com/gookit/slog) Concise and extensible go log library
+- [gookit/event](https://github.com/gookit/event) Lightweight event manager and dispatcher implements by Go
+- [gookit/cache](https://github.com/gookit/cache) Generic cache use and cache manager for golang. support File, Memory, Redis, Memcached.
+- [gookit/config](https://github.com/gookit/config) Go config management. support JSON, YAML, TOML, INI, HCL, ENV and Flags
+- [gookit/color](https://github.com/gookit/color) A command-line color library with true color support, universal API methods and Windows support
+- [gookit/filter](https://github.com/gookit/filter) Provide filtering, sanitizing, and conversion of golang data
+- [gookit/validate](https://github.com/gookit/validate) Use for data validation and filtering. support Map, Struct, Form data
+- [gookit/goutil](https://github.com/gookit/goutil) Some utils for the Go: string, array/slice, map, format, cli, env, filesystem, test and more
+- More, please see https://github.com/gookit
 
 ## See also
 
-  - [inhere/console](https://github.com/inhere/php-console)
-  - [xo/terminfo](https://github.com/xo/terminfo)
-  - [beego/bee](https://github.com/beego/bee)
-  - [issue9/term](https://github.com/issue9/term)
-  - [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code)
-  - [Standard ANSI color map](https://conemu.github.io/en/AnsiEscapeCodes.html#Standard_ANSI_color_map)
-  - [Terminal Colors](https://gist.github.com/XVilka/8346728)
+- [inhere/console](https://github.com/inhere/php-console)
+- [xo/terminfo](https://github.com/xo/terminfo)
+- [beego/bee](https://github.com/beego/bee)
+- [issue9/term](https://github.com/issue9/term)
+- [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code)
+- [Standard ANSI color map](https://conemu.github.io/en/AnsiEscapeCodes.html#Standard_ANSI_color_map)
+- [Terminal Colors](https://gist.github.com/XVilka/8346728)
 
 ## License
 
