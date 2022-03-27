@@ -22,7 +22,7 @@
 
 ### New feature:
 
-- 支持yml配置文件([`ea2170d`](https://github.com/axetroy/watchdog/commit/ea2170d9f4b2216237773badfc425f5504c0641f)) (by axetroy)
+- 支持 yml 配置文件([`ea2170d`](https://github.com/axetroy/watchdog/commit/ea2170d9f4b2216237773badfc425f5504c0641f)) (by axetroy)
 - 支持休息时段内，不发送通知([`874402c`](https://github.com/axetroy/watchdog/commit/874402c273901860ae666defd0ecd6676c952911)) (by axetroy)
 - 支持每小时最多发送的通知数量，防止频率过高而打扰([`08c1d28`](https://github.com/axetroy/watchdog/commit/08c1d28790a2bfacaf319e29e72b8d593f7d07a6)) (by axetroy)
 
