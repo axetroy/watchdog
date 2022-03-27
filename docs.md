@@ -6,7 +6,7 @@
 
 ## 目录
 
-<table width="700px">
+<table width="700px" style="width: 700px">
     <tr><td width=25% valign=top>
 
 - [介绍](#介绍)
