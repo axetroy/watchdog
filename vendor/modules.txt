@@ -89,9 +89,6 @@ github.com/xo/terminfo
 # github.com/yosuke-furukawa/json5 v0.1.1
 ## explicit
 github.com/yosuke-furukawa/json5/encoding/json5
-# github.com/zh-five/xdaemon v0.1.1
-## explicit
-github.com/zh-five/xdaemon
 # goftp.io/server/v2 v2.0.0
 ## explicit; go 1.12
 goftp.io/server/v2
