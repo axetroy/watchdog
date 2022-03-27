@@ -12,6 +12,7 @@
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 [![DeepSource](https://deepsource.io/gh/axetroy/watchdog.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/axetroy/watchdog/?ref=repository-badge)
 [![Build Status](https://github.com/axetroy/watchdog/workflows/ci/badge.svg)](https://github.com/axetroy/watchdog/actions)
+[![docker](https://github.com/axetroy/watchdog/actions/workflows/docker.yml/badge.svg)](https://github.com/axetroy/watchdog/actions/workflows/docker.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/axetroy/watchdog)](https://goreportcard.com/report/github.com/axetroy/watchdog)
 ![Latest Version](https://img.shields.io/github/v/release/axetroy/watchdog.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/axetroy/watchdog.svg)
