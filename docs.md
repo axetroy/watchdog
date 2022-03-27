@@ -6,7 +6,7 @@
 
 ## 目录
 
-<table width="700px" style="width: 700px">
+<table>
     <tr><td width=25% valign=top>
 
 - [介绍](#介绍)
@@ -38,7 +38,7 @@
     - [Webhook](#Webhook-例子)
     - [SMTP](#SMTP-例子)
 
-</td><td width=25% valign=top>
+</td><td width="300px" valign=top>
 
 - [开发](#开发)
   - [开发环境](#开发环境)
