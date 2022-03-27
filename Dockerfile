@@ -10,7 +10,7 @@ RUN yarn
 RUN yarn build
 
 # builder for backend
-FROM golang:1.17.1-alpine AS go-builder
+FROM golang:1.18-alpine AS go-builder
 
 WORKDIR /app
 

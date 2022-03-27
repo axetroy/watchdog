@@ -8,13 +8,14 @@ import (
 	"context"
 	"crypto/tls"
 	"errors"
-	"fmt"
 	"io"
 	"net"
 	"net/textproto"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/hashicorp/go-multierror"
 )
 
 // EntryType describes the different types of an Entry.
@@ -27,18 +28,25 @@ const (
 	EntryTypeLink
 )
 
+// Time format used by the MDTM and MFMT commands
+const timeFormat = "20060102150405"
+
 // ServerConn represents the connection to a remote FTP server.
 // A single connection only supports one in-flight data connection.
 // It is not safe to be called concurrently.
 type ServerConn struct {
 	options *dialOptions
-	conn    *textproto.Conn
+	conn    *textproto.Conn // connection wrapper for text protocol
+	netConn net.Conn        // underlying network connection
 	host    string
 
 	// Server capabilities discovered at runtime
 	features      map[string]string
 	skipEPSV      bool
 	mlstSupported bool
+	mfmtSupported bool
+	mdtmSupported bool
+	mdtmCanWrite  bool
 	usePRET       bool
 }
 
@@ -57,9 +65,11 @@ type dialOptions struct {
 	disableEPSV bool
 	disableUTF8 bool
 	disableMLSD bool
+	writingMDTM bool
 	location    *time.Location
 	debugOutput io.Writer
 	dialFunc    func(network, address string) (net.Conn, error)
+	shutTimeout time.Duration // time to wait for data connection closing status
 }
 
 // Entry describes a file and is returned by List().
@@ -120,6 +130,7 @@ func Dial(addr string, options ...DialOption) (*ServerConn, error) {
 		options:  do,
 		features: make(map[string]string),
 		conn:     textproto.NewConn(do.wrapConn(tconn)),
+		netConn:  tconn,
 		host:     remoteAddr.IP.String(),
 	}
 
@@ -145,6 +156,15 @@ func Dial(addr string, options ...DialOption) (*ServerConn, error) {
 func DialWithTimeout(timeout time.Duration) DialOption {
 	return DialOption{func(do *dialOptions) {
 		do.dialer.Timeout = timeout
+	}}
+}
+
+// DialWithShutTimeout returns a DialOption that configures the ServerConn with
+// maximum time to wait for the data closing status on control connection
+// and nudging the control connection deadline before reading status.
+func DialWithShutTimeout(shutTimeout time.Duration) DialOption {
+	return DialOption{func(do *dialOptions) {
+		do.shutTimeout = shutTimeout
 	}}
 }
 
@@ -184,6 +204,18 @@ func DialWithDisabledUTF8(disabled bool) DialOption {
 func DialWithDisabledMLSD(disabled bool) DialOption {
 	return DialOption{func(do *dialOptions) {
 		do.disableMLSD = disabled
+	}}
+}
+
+// DialWithWritingMDTM returns a DialOption making ServerConn use MDTM to set file time
+//
+// This option addresses a quirk in the VsFtpd server which doesn't support
+// the MFMT command for setting file time like other servers but by default
+// uses the MDTM command with non-standard arguments for that.
+// See "mdtm_write" in https://security.appspot.com/vsftpd/vsftpd_conf.html
+func DialWithWritingMDTM(enabled bool) DialOption {
+	return DialOption{func(do *dialOptions) {
+		do.writingMDTM = enabled
 	}}
 }
 
@@ -251,6 +283,14 @@ func (o *dialOptions) wrapConn(netConn net.Conn) io.ReadWriteCloser {
 	return newDebugWrapper(netConn, o.debugOutput)
 }
 
+func (o *dialOptions) wrapStream(rd io.ReadCloser) io.ReadCloser {
+	if o.debugOutput == nil {
+		return rd
+	}
+
+	return newStreamDebugWrapper(rd, o.debugOutput)
+}
+
 // Connect is an alias to Dial, for backward compatibility
 func Connect(addr string) (*ServerConn, error) {
 	return Dial(addr)
@@ -293,9 +333,11 @@ func (c *ServerConn) Login(user, password string) error {
 	if _, mlstSupported := c.features["MLST"]; mlstSupported && !c.options.disableMLSD {
 		c.mlstSupported = true
 	}
-	if _, usePRET := c.features["PRET"]; usePRET {
-		c.usePRET = true
-	}
+	_, c.usePRET = c.features["PRET"]
+
+	_, c.mfmtSupported = c.features["MFMT"]
+	_, c.mdtmSupported = c.features["MDTM"]
+	c.mdtmCanWrite = c.mdtmSupported && c.options.writingMDTM
 
 	// Switch to binary mode
 	if _, _, err = c.cmd(StatusCommandOK, "TYPE I"); err != nil {
@@ -477,11 +519,7 @@ func (c *ServerConn) openDataConn() (net.Conn, error) {
 	}
 
 	if c.options.tlsConfig != nil {
-		conn, err := c.options.dialer.Dial("tcp", addr)
-		if err != nil {
-			return nil, err
-		}
-		return tls.Client(conn, c.options.tlsConfig), err
+		return tls.DialWithDialer(&c.options.dialer, "tcp", addr, c.options.tlsConfig)
 	}
 
 	return c.options.dialer.Dial("tcp", addr)
@@ -553,21 +591,23 @@ func (c *ServerConn) NameList(path string) (entries []string, err error) {
 		return nil, err
 	}
 
-	r := &Response{conn: conn, c: c}
-	defer func() {
-		errClose := r.Close()
-		if err == nil {
-			err = errClose
-		}
-	}()
+	var errs *multierror.Error
 
-	scanner := bufio.NewScanner(r)
+	r := &Response{conn: conn, c: c}
+
+	scanner := bufio.NewScanner(c.options.wrapStream(r))
 	for scanner.Scan() {
 		entries = append(entries, scanner.Text())
 	}
 
-	err = scanner.Err()
-	return entries, err
+	if err := scanner.Err(); err != nil {
+		errs = multierror.Append(errs, err)
+	}
+	if err := r.Close(); err != nil {
+		errs = multierror.Append(errs, err)
+	}
+
+	return entries, errs.ErrorOrNil()
 }
 
 // List issues a LIST FTP command.
@@ -592,15 +632,11 @@ func (c *ServerConn) List(path string) (entries []*Entry, err error) {
 		return nil, err
 	}
 
-	r := &Response{conn: conn, c: c}
-	defer func() {
-		errClose := r.Close()
-		if err == nil {
-			err = errClose
-		}
-	}()
+	var errs *multierror.Error
 
-	scanner := bufio.NewScanner(r)
+	r := &Response{conn: conn, c: c}
+
+	scanner := bufio.NewScanner(c.options.wrapStream(r))
 	now := time.Now()
 	for scanner.Scan() {
 		entry, errParse := parser(scanner.Text(), now, c.options.location)
@@ -609,8 +645,20 @@ func (c *ServerConn) List(path string) (entries []*Entry, err error) {
 		}
 	}
 
-	err = scanner.Err()
-	return entries, err
+	if err := scanner.Err(); err != nil {
+		errs = multierror.Append(errs, err)
+	}
+	if err := r.Close(); err != nil {
+		errs = multierror.Append(errs, err)
+	}
+
+	return entries, errs.ErrorOrNil()
+}
+
+// IsTimePreciseInList returns true if client and server support the MLSD
+// command so List can return time with 1-second precision for all files.
+func (c *ServerConn) IsTimePreciseInList() bool {
+	return c.mlstSupported
 }
 
 // ChangeDir issues a CWD FTP command, which changes the current directory to
@@ -656,6 +704,49 @@ func (c *ServerConn) FileSize(path string) (int64, error) {
 	return strconv.ParseInt(msg, 10, 64)
 }
 
+// GetTime issues the MDTM FTP command to obtain the file modification time.
+// It returns a UTC time.
+func (c *ServerConn) GetTime(path string) (time.Time, error) {
+	var t time.Time
+	if !c.mdtmSupported {
+		return t, errors.New("GetTime is not supported")
+	}
+	_, msg, err := c.cmd(StatusFile, "MDTM %s", path)
+	if err != nil {
+		return t, err
+	}
+	return time.ParseInLocation(timeFormat, msg, time.UTC)
+}
+
+// IsGetTimeSupported allows library callers to check in advance that they
+// can use GetTime to get file time.
+func (c *ServerConn) IsGetTimeSupported() bool {
+	return c.mdtmSupported
+}
+
+// SetTime issues the MFMT FTP command to set the file modification time.
+// Also it can use a non-standard form of the MDTM command supported by
+// the VsFtpd server instead of MFMT for the same purpose.
+// See "mdtm_write" in https://security.appspot.com/vsftpd/vsftpd_conf.html
+func (c *ServerConn) SetTime(path string, t time.Time) (err error) {
+	utime := t.In(time.UTC).Format(timeFormat)
+	switch {
+	case c.mfmtSupported:
+		_, _, err = c.cmd(StatusFile, "MFMT %s %s", utime, path)
+	case c.mdtmCanWrite:
+		_, _, err = c.cmd(StatusFile, "MDTM %s %s", utime, path)
+	default:
+		err = errors.New("SetTime is not supported")
+	}
+	return
+}
+
+// IsSetTimeSupported allows library callers to check in advance that they
+// can use SetTime to set file time.
+func (c *ServerConn) IsSetTimeSupported() bool {
+	return c.mfmtSupported || c.mdtmCanWrite
+}
+
 // Retr issues a RETR FTP command to fetch the specified file from the remote
 // FTP server.
 //
@@ -685,6 +776,24 @@ func (c *ServerConn) Stor(path string, r io.Reader) error {
 	return c.StorFrom(path, r, 0)
 }
 
+// checkDataShut reads the "closing data connection" status from the
+// control connection. It is called after transferring a piece of data
+// on the data connection during which the control connection was idle.
+// This may result in the idle timeout triggering on the control connection
+// right when we try to read the response.
+// The ShutTimeout dial option will rescue here. It will nudge the control
+// connection deadline right before checking the data closing status.
+func (c *ServerConn) checkDataShut() error {
+	if c.options.shutTimeout != 0 {
+		shutDeadline := time.Now().Add(c.options.shutTimeout)
+		if err := c.netConn.SetDeadline(shutDeadline); err != nil {
+			return err
+		}
+	}
+	_, _, err := c.conn.ReadResponse(StatusClosingDataConnection)
+	return err
+}
+
 // StorFrom issues a STOR FTP command to store a file to the remote FTP server.
 // Stor creates the specified file with the content of the io.Reader, writing
 // on the server will start at the given file offset.
@@ -696,41 +805,25 @@ func (c *ServerConn) StorFrom(path string, r io.Reader, offset uint64) error {
 		return err
 	}
 
+	var errs *multierror.Error
+
 	// if the upload fails we still need to try to read the server
 	// response otherwise if the failure is not due to a connection problem,
 	// for example the server denied the upload for quota limits, we miss
 	// the response and we cannot use the connection to send other commands.
-	// So we don't check io.Copy error and we return the error from
-	// ReadResponse so the user can see the real error
-	var n int64
-	n, err = io.Copy(conn, r)
-
-	// If we wrote no bytes but got no error, make sure we call
-	// tls.Handshake on the connection as it won't get called
-	// unless Write() is called.
-	//
-	// ProFTP doesn't like this and returns "Unable to build data
-	// connection: Operation not permitted" when trying to upload
-	// an empty file without this.
-	if n == 0 && err == nil {
-		if do, ok := conn.(interface{ Handshake() error }); ok {
-			err = do.Handshake()
-		}
+	if _, err := io.Copy(conn, r); err != nil {
+		errs = multierror.Append(errs, err)
 	}
 
-	// Use io.Copy or Handshake error in preference to this one
-	closeErr := conn.Close()
-	if err == nil {
-		err = closeErr
+	if err := conn.Close(); err != nil {
+		errs = multierror.Append(errs, err)
 	}
 
-	// Read the response and use this error in preference to
-	// previous errors
-	_, _, respErr := c.conn.ReadResponse(StatusClosingDataConnection)
-	if respErr != nil {
-		err = respErr
+	if err := c.checkDataShut(); err != nil {
+		errs = multierror.Append(errs, err)
 	}
-	return err
+
+	return errs.ErrorOrNil()
 }
 
 // Append issues a APPE FTP command to store a file to the remote FTP server.
@@ -744,20 +837,21 @@ func (c *ServerConn) Append(path string, r io.Reader) error {
 		return err
 	}
 
-	// see the comment for StorFrom above
-	_, err = io.Copy(conn, r)
-	errClose := conn.Close()
+	var errs *multierror.Error
 
-	_, _, respErr := c.conn.ReadResponse(StatusClosingDataConnection)
-	if respErr != nil {
-		err = respErr
+	if _, err := io.Copy(conn, r); err != nil {
+		errs = multierror.Append(errs, err)
 	}
 
-	if err == nil {
-		err = errClose
+	if err := conn.Close(); err != nil {
+		errs = multierror.Append(errs, err)
 	}
 
-	return err
+	if err := c.checkDataShut(); err != nil {
+		errs = multierror.Append(errs, err)
+	}
+
+	return errs.ErrorOrNil()
 }
 
 // Rename renames a file on the remote FTP server.
@@ -864,17 +958,17 @@ func (c *ServerConn) Logout() error {
 // Quit issues a QUIT FTP command to properly close the connection from the
 // remote FTP server.
 func (c *ServerConn) Quit() error {
-	_, errQuit := c.conn.Cmd("QUIT")
-	err := c.conn.Close()
+	var errs *multierror.Error
 
-	if errQuit != nil {
-		if err != nil {
-			return fmt.Errorf("error while quitting: %s: %w", errQuit, err)
-		}
-		return errQuit
+	if _, err := c.conn.Cmd("QUIT"); err != nil {
+		errs = multierror.Append(errs, err)
 	}
 
-	return err
+	if err := c.conn.Close(); err != nil {
+		errs = multierror.Append(errs, err)
+	}
+
+	return errs.ErrorOrNil()
 }
 
 // Read implements the io.Reader interface on a FTP data connection.
@@ -888,13 +982,19 @@ func (r *Response) Close() error {
 	if r.closed {
 		return nil
 	}
-	err := r.conn.Close()
-	_, _, err2 := r.c.conn.ReadResponse(StatusClosingDataConnection)
-	if err2 != nil {
-		err = err2
+
+	var errs *multierror.Error
+
+	if err := r.conn.Close(); err != nil {
+		errs = multierror.Append(errs, err)
 	}
+
+	if err := r.c.checkDataShut(); err != nil {
+		errs = multierror.Append(errs, err)
+	}
+
 	r.closed = true
-	return err
+	return errs.ErrorOrNil()
 }
 
 // SetDeadline sets the deadlines associated with the connection.
