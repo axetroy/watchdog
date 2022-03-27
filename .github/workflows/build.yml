@@ -41,7 +41,7 @@ jobs:
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
         with:
-          version: v1.42.1
+          version: v1.45.0
           args: -v --timeout 10m0s
           skip-go-installation: true
 
@@ -76,7 +76,7 @@ jobs:
 
       - uses: axetroy/setup-whatchanged@v1
         with:
-          version: v0.3.6
+          version: v0.5.7
 
       - name: Generate release.md
         run: |
