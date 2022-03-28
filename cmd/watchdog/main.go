@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"os"
@@ -69,6 +70,16 @@ func main() {
 		color.Enable = !noColor
 	} else {
 		color.Enable = false
+	}
+
+	if configPath == "" {
+		fmt.Println("--config=<path> is required.")
+		os.Exit(1)
+	}
+
+	if _, err := os.Stat(configPath); errors.Is(err, os.ErrNotExist) {
+		fmt.Printf("config file %s does not exists.\n", configPath)
+		os.Exit(1)
 	}
 
 	c, err := watchdog.NewConfigFromFile(configPath)

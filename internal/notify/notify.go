@@ -44,7 +44,7 @@ func (n notifier) Push(content string) error {
 	wg := sync.WaitGroup{}
 	wg.Add(len(n.reporter))
 
-	for _, reporter := range n.reporter {
+	for _, r := range n.reporter {
 		go func(reporter watchdog.Reporter) {
 			var (
 				err error
@@ -64,7 +64,7 @@ func (n notifier) Push(content string) error {
 			} else {
 				err = errors.Errorf("invlid protocol '%s'", reporter.Protocol)
 			}
-		}(reporter)
+		}(r)
 	}
 
 	wg.Wait()
