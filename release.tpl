@@ -35,3 +35,4 @@
 {{ .Field.Footer.BreakingChange.Content | indent 2 | unescape }}
 
 {{ end -}}
+{{ end }}
