@@ -52,29 +52,27 @@
 
 ## 安装
 
-如果你是用 `Linux`/`MacOS` 系统，可以运行以下命令进行安装
-
 1. [Cask](https://github.com/cask-pkg/cask.rs)
 
-```shell
-cask install github.com/axetroy/watchdog
-```
+   ```shell
+   cask install github.com/axetroy/watchdog
+   ```
 
 2. Shell (Mac/Linux)
 
-```shell
-curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r=axetroy/watchdog
-```
+   ```shell
+   curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r=axetroy/watchdog
+   ```
 
 3. PowerShell (Windows)
 
-```powershell
-$r="axetroy/watchdog";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
-```
+   ```powershell
+   $r="axetroy/watchdog";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
+   ```
 
 4. Github release
 
-或者你可以通过[下载页面](https://github.com/axetroy/watchdog/releases)下载你对应平台的可执行文件
+   或者你可以通过[下载页面](https://github.com/axetroy/watchdog/releases)下载你对应平台的可执行文件
 
 > 注意: watchdog 只有一个可执行文件，没有任何其他依赖
 
