@@ -1,43 +1,37 @@
 {{- define "body" -}}
 {{range . -}}
-- {{if .Field.Header.Scope }}**{{ unescape .Field.Header.Scope }}**: {{ end }}{{ unescape .Field.Header.Subject }}({{ hashURL .Hash}}) (thanks @{{ unescape .Author.Name }}){{if .Field.Footer }} {{if .Field.Footer.Closes }}, Closes: {{ stringsJoin .Field.Footer.Closes "," }} {{- end }}  {{- end}}
+- {{if .Field.Header.Scope }}**{{ .Field.Header.Scope | unescape }}**: {{ end }}{{ .Field.Header.Subject | unescape }}({{ .HashURL }}){{if .Closes }}, Closes: {{ range $index, $element := .Closes}}{{if $index}},{{end}}{{$element}}{{- end -}} {{- end }}
 {{ end }}
 {{- end -}}
 
 {{if .Feat}}
-### 🔥  New feature:
+### New feature:
 {{ template "body" .Feat }}
 {{ end }}
 
 {{if .Fix}}
-### 🐛  Bugs fixed:
+### Bugs fixed:
 {{ template "body" .Fix }}
 {{ end }}
 
 {{if .Perf}}
-### ⚡️ Performance improves:
+### Performance improves:
 {{ template "body" .Perf }}
 {{ end }}
 
 {{if .Revert}}
-### 🔙 Revert:
+### Revert:
 {{range .Revert -}}
-- {{if .RevertCommitHash }}revert {{ hashURL .RevertCommitHash }}, {{ end }}{{ unescape .Field.Header.Subject }}({{ hashURL .Hash}})
+- {{if .RevertCommitHash }}revert {{ .RevertCommitHashURL }}, {{ end }}{{ .Field.Header.Subject | unescape }}({{ .HashURL }})
 {{ end }}
 {{ end }}
 
 {{if .BreakingChanges}}
-### ❤️ BREAKING CHANGES:
+### BREAKING CHANGES:
 {{ range .BreakingChanges -}}
 
-- {{if .Field.Footer.BreakingChange.Title}}{{ unescape .Field.Footer.BreakingChange.Title }}{{ else }}{{ unescape .Field.Title }}{{ end }}
+- {{if .Field.Footer.BreakingChange.Title}}{{ .Field.Footer.BreakingChange.Title | unescape }}{{ else }}{{ .Field.Title | unescape }}{{ end }}
 
-{{ unescape .Field.Footer.BreakingChange.Content }}
+{{ .Field.Footer.BreakingChange.Content | indent 2 | unescape }}
 
 {{ end -}}
-{{ end }}
-
-### 💪  Commits({{ len .Commits }}):
-{{range .Commits -}}
-- {{ hashURL .Hash}} - {{ unescape .Field.Title }}
-{{ end }}
