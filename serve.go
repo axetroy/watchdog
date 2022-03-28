@@ -77,5 +77,7 @@ func Serve(port string, config *Config) {
 		ReadTimeout:       30 * time.Second,
 		ReadHeaderTimeout: 30 * time.Second,
 	}
+
+	log.Printf("Listen on %s \n", server.Addr)
 	log.Fatal(server.ListenAndServe())
 }
